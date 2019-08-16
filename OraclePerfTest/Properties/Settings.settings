@@ -1,7 +1,159 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OraclePerfTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ServerIp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">211.171.200.221</Value>
+    </Setting>
+    <Setting Name="ServerPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1521</Value>
+    </Setting>
+    <Setting Name="DatabaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALADIN</Value>
+    </Setting>
+    <Setting Name="DatabaseId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MANNA</Value>
+    </Setting>
+    <Setting Name="DatabasePassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ekswnr59</Value>
+    </Setting>
+    <Setting Name="UserCount" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="QueryRate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0</Value>
+    </Setting>
+    <Setting Name="Query" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD_PK) NLJ_BATCHING */
+       A.ORD_NO,
+       A.ORD_TODAY_NO,
+       A.ORD_TODAY_ADD_NO,
+       A.ORD_TODAY_ALL_NO,
+       A.ORD_TYPE_CD,
+       A.ORD_STATUS_CD,
+       A.ORD_DATE,
+       A.MOD_DATE,
+       A.PICKUP_DATE,
+       A.TAKEOUT_DATE,
+       A.END_DATE,
+       A.ORD_CU_TEL,
+       A.ORD_CU_END_CNT,
+       A.EA_ADDR_4,
+       A.DVRY_DISTANCE,
+       A.DVRY_AMT,
+       A.ORD_AMT,
+       A.DISCOUNT_AMT,
+       A.SRV_AMT,
+       A.CHARGE_TYPE,
+       A.PAY_TYPE_CD,
+       A.PAY_AMT,
+       A.PAY_MILEAGE,
+       B.TRAN_TYPE,
+       A.CTH_WK_NAME,
+       A.CTH_WK_TEL,
+       A.ORD_MEMO,
+       B.CTH_ST_NAME,
+       A.DVRY_CNT,
+       A.ORD_PATH_CD,
+       B.CTH_ST_TEL,
+       B.ORD_CU_NAME,
+       A.TAKEOUT_YN,
+       A.ORD_ST_CODE,
+       A.ORD_ST_NAME,
+       A.DVRY_TYPE_CD,
+       A.XY_ACC_TYPE,
+       A.EA_ADDR_5,
+       A.READY_TIME,
+       A.GOODS_NAMES,
+       A.ORG_PAY_TYPE,
+       A.CASH_MOVE_CNT,
+       A.CASH_MOVE_AMT,
+       B.ORD_BR_CODE,
+       A.EA_ADDR_6,
+       A.EA_ADDR_7,
+       A.PUT_USER_ID,
+       B.CTH_BR_CODE,
+       B.CTH_ST_CODE,
+       A.CTH_WK_ARR_TIME,
+       A.CTH_DATE,
+       A.READY_CHANGE_DATE,
+       A.CTH_DVRY_TYPE_CD,
+       A.DVRY_LOCK_TIME,
+       A.ST_DVRY_TYPE_CD,
+       B.ORD_CU_MULTI_END_CNT,
+       A.DVRY_EX_CHARGE,
+       A.DVRY_MNG_TYPE,
+       A.DVRY_MNG_FEE,
+       B.VAN_TYPE_CD,
+       B.CARD_APPR_NUM,
+       A.MOD_USER_ID,
+       B.ORD_MASTER_ST_CODE,
+       B.CTH_MNG_BR_CODE,
+       B.CTH_MNG_HD_CODE,
+       B.ORD_HD_CODE,
+       A.EA_ADDR_MOD_CNT,
+       A.CTH_WK_ARR_DATE,
+       A.READY_CTH_YN,
+       A.CALL_ST_CODE,
+       A.SA_LAT_Y,
+       A.SA_LNG_X,
+       A.CANCEL_DATE,
+       A.SA_APP_ADDR,
+       A.POS_ORD_CODE,
+       B.EA_ADDR_10,
+       A.CTH_WK_CODE,
+       B.ACQUIRER_NAME,
+       A.EA_LAT_Y,
+       A.EA_LNG_X,
+       B.ORD_BR_NAME,
+       A.CU_050_NUM,
+       TO_CHAR (A.ORD_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_ORD_DATE,
+       TO_CHAR (A.READY_CHANGE_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_READY_CHANGE_DATE,
+       TO_CHAR (A.CTH_WK_ARR_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_CTH_WK_ARR_DATE,
+       TO_CHAR (A.PICKUP_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_PICKUP_DATE,
+       TO_CHAR (A.END_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_END_DATE,
+       TO_CHAR (A.CANCEL_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_CANCEL_DATE,
+       TO_CHAR (A.CTH_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_CTH_DATE,
+       TO_CHAR (A.MOD_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_MOD_DATE,
+       TO_CHAR (A.MOD_DATE, 'YYYYMMDDHH24MISSFF3')
+           AS CUSTOM_MOD_DATE_FF3,
+       TRUNC (A.DVRY_DISTANCE / 1000, 1)
+           AS CUSTOM_DVRY_DISTANCE,
+       B.EA_ADDR_STR,
+       A.ORG_ORD_NO,
+       A.ORG_ORD_PATH_CD,
+       B.VAN_TYPE_STR
+           AS ARR_VAN_TYPE_CD,
+       TO_CHAR (A.PUT_DATE, 'YYYYMMDDHH24MISS')
+           AS CUSTOM_PUT_DATE,
+       A.ORD_DATA_YN,
+       A.DVRY_TAX_YN,
+       A.DVRY_NLT_TYPE,
+       B.ST_DVRY_HD_CODE,
+       B.ST_DVRY_BR_CODE,
+       A.CHARGE_HISTORY,
+       A.ARR_TIME,
+       A.DVRY_GRP_TYPE,
+       A.ORD_ST_TEL,
+       A.PRE_CTH_YN,
+       A.CTH_WK_GOODS_PAY_TYPE,
+       A.MOD_SEQ_NO,
+       A.EXT_ORD_NO
+  FROM MN_A1_TODAY A, MN_A1_TODAY_ADD B
+ WHERE     A.ORD_NO = B.ORD_NO
+       AND A.ORD_DATA_YN = 'Y'
+       AND A.MOD_DATE &gt;= TO_DATE ('20190814173544', 'YYYYMMDDHH24MISS')</Value>
+    </Setting>
+    <Setting Name="QueryArguments" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
 </SettingsFile>
