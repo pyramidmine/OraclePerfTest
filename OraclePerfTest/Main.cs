@@ -23,6 +23,7 @@ namespace OraclePerfTest
 			string query = inputQuery.Replace("$1", "20190814173544");
 			Console.WriteLine(query);
 			*/
+			this.buttonStop.Enabled = false;
 		}
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -30,6 +31,32 @@ namespace OraclePerfTest
 			Properties.Settings.Default.Save();
             this.Close();
         }
+
+		private void ButtonStart_Click(object sender, EventArgs e)
+		{
+			this.buttonStart.Enabled = false;
+			this.buttonStop.Enabled = true;			// only Stop button is enabled
+			this.textBoxIp.Enabled = false;
+			this.textBoxPort.Enabled = false;
+			this.textBoxDatabase.Enabled = false;
+			this.textBoxId.Enabled = false;
+			this.textBoxPassword.Enabled = false;
+			this.textBoxQuery.Enabled = false;
+			this.textBoxArguments.Enabled = false;
+		}
+
+		private void ButtonStop_Click(object sender, EventArgs e)
+		{
+			this.buttonStart.Enabled = true;
+			this.buttonStop.Enabled = false;		// only Stop button is disabled
+			this.textBoxIp.Enabled = true;
+			this.textBoxPort.Enabled = true;
+			this.textBoxDatabase.Enabled = true;
+			this.textBoxId.Enabled = true;
+			this.textBoxPassword.Enabled = true;
+			this.textBoxQuery.Enabled = true;
+			this.textBoxArguments.Enabled = true;
+		}
 
 		private void numericUpDownUserCount_TextChanged(object sender, EventArgs e)
 		{

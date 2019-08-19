@@ -49,19 +49,19 @@
 			this.listBoxLogs = new System.Windows.Forms.ListBox();
 			this.labelLogs = new System.Windows.Forms.Label();
 			this.groupBoxServer = new System.Windows.Forms.GroupBox();
-			this.groupBoxStress = new System.Windows.Forms.GroupBox();
-			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
 			this.textBoxIp = new System.Windows.Forms.TextBox();
 			this.textBoxDatabase = new System.Windows.Forms.TextBox();
 			this.textBoxPort = new System.Windows.Forms.TextBox();
+			this.groupBoxStress = new System.Windows.Forms.GroupBox();
 			this.numericUpDownUserCount = new System.Windows.Forms.NumericUpDown();
 			this.textBoxQueryRate = new System.Windows.Forms.TextBox();
+			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
 			this.textBoxArguments = new System.Windows.Forms.TextBox();
 			this.textBoxQuery = new System.Windows.Forms.TextBox();
 			this.groupBoxServer.SuspendLayout();
 			this.groupBoxStress.SuspendLayout();
-			this.groupBoxQuery.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).BeginInit();
+			this.groupBoxQuery.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelIp
@@ -189,6 +189,7 @@
 			this.buttonStart.TabIndex = 1;
 			this.buttonStart.Text = "Start";
 			this.buttonStart.UseVisualStyleBackColor = true;
+			this.buttonStart.Click += new System.EventHandler(this.ButtonStart_Click);
 			// 
 			// buttonStop
 			// 
@@ -198,6 +199,7 @@
 			this.buttonStop.TabIndex = 2;
 			this.buttonStop.Text = "Stop";
 			this.buttonStop.UseVisualStyleBackColor = true;
+			this.buttonStop.Click += new System.EventHandler(this.ButtonStop_Click);
 			// 
 			// buttonClose
 			// 
@@ -265,36 +267,6 @@
 			this.groupBoxServer.TabStop = false;
 			this.groupBoxServer.Text = "Server";
 			// 
-			// groupBoxStress
-			// 
-			this.groupBoxStress.Controls.Add(this.labelUserCount);
-			this.groupBoxStress.Controls.Add(this.numericUpDownUserCount);
-			this.groupBoxStress.Controls.Add(this.labelQueryRate);
-			this.groupBoxStress.Controls.Add(this.textBoxQueryRate);
-			this.groupBoxStress.Controls.Add(this.textBoxTotalQueryRate);
-			this.groupBoxStress.Controls.Add(this.labelTotalQueryRate);
-			this.groupBoxStress.Controls.Add(this.label1);
-			this.groupBoxStress.Controls.Add(this.labelQueryPerSecond);
-			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
-			this.groupBoxStress.Name = "groupBoxStress";
-			this.groupBoxStress.Size = new System.Drawing.Size(267, 108);
-			this.groupBoxStress.TabIndex = 7;
-			this.groupBoxStress.TabStop = false;
-			this.groupBoxStress.Text = "Stress";
-			// 
-			// groupBoxQuery
-			// 
-			this.groupBoxQuery.Controls.Add(this.labelQuery);
-			this.groupBoxQuery.Controls.Add(this.textBoxArguments);
-			this.groupBoxQuery.Controls.Add(this.textBoxQuery);
-			this.groupBoxQuery.Controls.Add(this.labelArguments);
-			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
-			this.groupBoxQuery.Name = "groupBoxQuery";
-			this.groupBoxQuery.Size = new System.Drawing.Size(487, 278);
-			this.groupBoxQuery.TabIndex = 8;
-			this.groupBoxQuery.TabStop = false;
-			this.groupBoxQuery.Text = "Query";
-			// 
 			// textBoxIp
 			// 
 			this.textBoxIp.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "ServerIp", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -321,6 +293,23 @@
 			this.textBoxPort.Size = new System.Drawing.Size(168, 21);
 			this.textBoxPort.TabIndex = 1;
 			this.textBoxPort.Text = global::OraclePerfTest.Properties.Settings.Default.ServerPort;
+			// 
+			// groupBoxStress
+			// 
+			this.groupBoxStress.Controls.Add(this.labelUserCount);
+			this.groupBoxStress.Controls.Add(this.numericUpDownUserCount);
+			this.groupBoxStress.Controls.Add(this.labelQueryRate);
+			this.groupBoxStress.Controls.Add(this.textBoxQueryRate);
+			this.groupBoxStress.Controls.Add(this.textBoxTotalQueryRate);
+			this.groupBoxStress.Controls.Add(this.labelTotalQueryRate);
+			this.groupBoxStress.Controls.Add(this.label1);
+			this.groupBoxStress.Controls.Add(this.labelQueryPerSecond);
+			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
+			this.groupBoxStress.Name = "groupBoxStress";
+			this.groupBoxStress.Size = new System.Drawing.Size(267, 108);
+			this.groupBoxStress.TabIndex = 7;
+			this.groupBoxStress.TabStop = false;
+			this.groupBoxStress.Text = "Stress";
 			// 
 			// numericUpDownUserCount
 			// 
@@ -352,6 +341,19 @@
 			this.textBoxQueryRate.TabIndex = 1;
 			this.textBoxQueryRate.Text = global::OraclePerfTest.Properties.Settings.Default.QueryRate;
 			this.textBoxQueryRate.TextChanged += new System.EventHandler(this.textBoxQueryRate_TextChanged);
+			// 
+			// groupBoxQuery
+			// 
+			this.groupBoxQuery.Controls.Add(this.labelQuery);
+			this.groupBoxQuery.Controls.Add(this.textBoxArguments);
+			this.groupBoxQuery.Controls.Add(this.textBoxQuery);
+			this.groupBoxQuery.Controls.Add(this.labelArguments);
+			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
+			this.groupBoxQuery.Name = "groupBoxQuery";
+			this.groupBoxQuery.Size = new System.Drawing.Size(487, 278);
+			this.groupBoxQuery.TabIndex = 8;
+			this.groupBoxQuery.TabStop = false;
+			this.groupBoxQuery.Text = "Query";
 			// 
 			// textBoxArguments
 			// 
@@ -392,9 +394,9 @@
 			this.groupBoxServer.PerformLayout();
 			this.groupBoxStress.ResumeLayout(false);
 			this.groupBoxStress.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).EndInit();
 			this.groupBoxQuery.ResumeLayout(false);
 			this.groupBoxQuery.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
