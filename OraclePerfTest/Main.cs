@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace OraclePerfTest
 	{
 		static private readonly int MAX_LOG_COUNT = 1024;
 
+		List<OracleConnection> connections = new List<OracleConnection>();
+
 		public Main()
 		{
 			InitializeComponent();
@@ -26,7 +29,63 @@ namespace OraclePerfTest
 			this.buttonStop.Enabled = false;
 		}
 
-        private void buttonClose_Click(object sender, EventArgs e)
+		private void ButtonCBT_Click(object sender, EventArgs e)
+		{
+			string connectionString = $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={Properties.Settings.Default.ServerIp})(PORT={Properties.Settings.Default.ServerPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={Properties.Settings.Default.DatabaseName})));User ID={Properties.Settings.Default.DatabaseId};Password={Properties.Settings.Default.DatabasePassword};Connection Timeout=30;";
+
+			using (OracleConnection conn = new OracleConnection(connectionString))
+			{
+				try
+				{
+					conn.Open();
+					if (conn.State == ConnectionState.Open)
+					{
+						string query = Properties.Settings.Default.Query.Replace("\r\n", "");
+						List<string> arquments = Properties.Settings.Default.QueryArguments.Split('\n').ToList();
+						for (int i = 0; i < arquments.Count; i++)
+						{
+							string arg = $"${i + 1}";
+							query = query.Replace(arg, arquments[i]);
+						}
+
+						if (this.radioButtonConnection.Checked)
+						{
+							using (OracleCommand cmd = new OracleCommand())
+							{
+								cmd.Connection = conn;
+								cmd.CommandText = query;
+								using (OracleDataReader reader = cmd.ExecuteReader())
+								{
+									while (reader.Read())
+									{
+										AddLog($"OracleDataReader, field count = {reader.FieldCount}");
+									}
+								}
+							}
+						}
+						else
+						{
+							using (OracleDataAdapter adapter = new OracleDataAdapter(query, conn))
+							{
+								DataTable dataTable = new DataTable();
+								adapter.Fill(dataTable);
+								AddLog($"OracleDataAdapter, columns = {dataTable.Columns}, rows = {dataTable.Rows}");
+							}
+						}
+					}
+				}
+				catch (OracleException ex)
+				{
+					AddLog($"ButtonCBT_Click, OracleException, {ex.Message}");
+				}
+				catch (Exception ex)
+				{
+					AddLog($"ButtonCBT_Click, {ex.ToString()}, {ex.Message}");
+				}
+			}
+		}
+
+		private void ButtonClose_Click(object sender, EventArgs e)
         {
 			Properties.Settings.Default.Save();
             this.Close();
@@ -43,6 +102,8 @@ namespace OraclePerfTest
 			this.textBoxPassword.Enabled = false;
 			this.textBoxQuery.Enabled = false;
 			this.textBoxArguments.Enabled = false;
+
+
 		}
 
 		private void ButtonStop_Click(object sender, EventArgs e)
@@ -58,12 +119,33 @@ namespace OraclePerfTest
 			this.textBoxArguments.Enabled = true;
 		}
 
-		private void numericUpDownUserCount_TextChanged(object sender, EventArgs e)
+		private void Main_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (this.buttonStart.Enabled == false && this.buttonStop.Enabled == true)
+			{
+				DialogResult result = MessageBox.Show(
+					"테스트가 진행중인 것 같습니다.\n\n그래도 종료하시겠습니까?",
+					"종료 확인",
+					MessageBoxButtons.OKCancel,
+					MessageBoxIcon.Question);
+				if (result == DialogResult.Cancel)
+				{
+					e.Cancel = true;
+					return;
+				}
+				else
+				{
+					// TODO: Stop testing
+				}
+			}
+		}
+
+		private void NumericUpDownUserCount_TextChanged(object sender, EventArgs e)
 		{
 			CalculateTotalQueryRate();
 		}
 
-		private void textBoxQueryRate_TextChanged(object sender, EventArgs e)
+		private void TextBoxQueryRate_TextChanged(object sender, EventArgs e)
 		{
 			CalculateTotalQueryRate();
 		}

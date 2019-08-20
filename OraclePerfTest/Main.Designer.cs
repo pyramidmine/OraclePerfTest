@@ -56,12 +56,17 @@
 			this.numericUpDownUserCount = new System.Windows.Forms.NumericUpDown();
 			this.textBoxQueryRate = new System.Windows.Forms.TextBox();
 			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
+			this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
+			this.radioButtonDisconnected = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnection = new System.Windows.Forms.RadioButton();
 			this.textBoxArguments = new System.Windows.Forms.TextBox();
 			this.textBoxQuery = new System.Windows.Forms.TextBox();
+			this.buttonCBT = new System.Windows.Forms.Button();
 			this.groupBoxServer.SuspendLayout();
 			this.groupBoxStress.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).BeginInit();
 			this.groupBoxQuery.SuspendLayout();
+			this.groupBoxConnectionMode.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelIp
@@ -209,7 +214,7 @@
 			this.buttonClose.TabIndex = 3;
 			this.buttonClose.Text = "Close";
 			this.buttonClose.UseVisualStyleBackColor = true;
-			this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+			this.buttonClose.Click += new System.EventHandler(this.ButtonClose_Click);
 			// 
 			// labelQuery
 			// 
@@ -330,7 +335,7 @@
 			this.numericUpDownUserCount.TabIndex = 0;
 			this.numericUpDownUserCount.ThousandsSeparator = true;
 			this.numericUpDownUserCount.Value = global::OraclePerfTest.Properties.Settings.Default.UserCount;
-			this.numericUpDownUserCount.TextChanged += new System.EventHandler(this.numericUpDownUserCount_TextChanged);
+			this.numericUpDownUserCount.TextChanged += new System.EventHandler(this.NumericUpDownUserCount_TextChanged);
 			// 
 			// textBoxQueryRate
 			// 
@@ -340,10 +345,11 @@
 			this.textBoxQueryRate.Size = new System.Drawing.Size(94, 21);
 			this.textBoxQueryRate.TabIndex = 1;
 			this.textBoxQueryRate.Text = global::OraclePerfTest.Properties.Settings.Default.QueryRate;
-			this.textBoxQueryRate.TextChanged += new System.EventHandler(this.textBoxQueryRate_TextChanged);
+			this.textBoxQueryRate.TextChanged += new System.EventHandler(this.TextBoxQueryRate_TextChanged);
 			// 
 			// groupBoxQuery
 			// 
+			this.groupBoxQuery.Controls.Add(this.groupBoxConnectionMode);
 			this.groupBoxQuery.Controls.Add(this.labelQuery);
 			this.groupBoxQuery.Controls.Add(this.textBoxArguments);
 			this.groupBoxQuery.Controls.Add(this.textBoxQuery);
@@ -355,13 +361,47 @@
 			this.groupBoxQuery.TabStop = false;
 			this.groupBoxQuery.Text = "Query";
 			// 
+			// groupBoxConnectionMode
+			// 
+			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
+			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnection);
+			this.groupBoxConnectionMode.Location = new System.Drawing.Point(293, 196);
+			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
+			this.groupBoxConnectionMode.Size = new System.Drawing.Size(184, 69);
+			this.groupBoxConnectionMode.TabIndex = 2;
+			this.groupBoxConnectionMode.TabStop = false;
+			this.groupBoxConnectionMode.Text = "Connection Mode:";
+			// 
+			// radioButtonDisconnected
+			// 
+			this.radioButtonDisconnected.AutoSize = true;
+			this.radioButtonDisconnected.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonDisconnected.Name = "radioButtonDisconnected";
+			this.radioButtonDisconnected.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonDisconnected.TabIndex = 0;
+			this.radioButtonDisconnected.TabStop = true;
+			this.radioButtonDisconnected.Text = "Disconnected";
+			this.radioButtonDisconnected.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnection
+			// 
+			this.radioButtonConnection.AutoSize = true;
+			this.radioButtonConnection.Checked = true;
+			this.radioButtonConnection.Location = new System.Drawing.Point(6, 22);
+			this.radioButtonConnection.Name = "radioButtonConnection";
+			this.radioButtonConnection.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnection.TabIndex = 0;
+			this.radioButtonConnection.TabStop = true;
+			this.radioButtonConnection.Text = "Connected";
+			this.radioButtonConnection.UseVisualStyleBackColor = true;
+			// 
 			// textBoxArguments
 			// 
 			this.textBoxArguments.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.textBoxArguments.Location = new System.Drawing.Point(9, 211);
 			this.textBoxArguments.Multiline = true;
 			this.textBoxArguments.Name = "textBoxArguments";
-			this.textBoxArguments.Size = new System.Drawing.Size(468, 54);
+			this.textBoxArguments.Size = new System.Drawing.Size(272, 54);
 			this.textBoxArguments.TabIndex = 1;
 			this.textBoxArguments.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments;
 			// 
@@ -371,15 +411,27 @@
 			this.textBoxQuery.Location = new System.Drawing.Point(11, 35);
 			this.textBoxQuery.Multiline = true;
 			this.textBoxQuery.Name = "textBoxQuery";
+			this.textBoxQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBoxQuery.Size = new System.Drawing.Size(466, 150);
 			this.textBoxQuery.TabIndex = 0;
 			this.textBoxQuery.Text = global::OraclePerfTest.Properties.Settings.Default.Query;
+			// 
+			// buttonCBT
+			// 
+			this.buttonCBT.Location = new System.Drawing.Point(174, 526);
+			this.buttonCBT.Name = "buttonCBT";
+			this.buttonCBT.Size = new System.Drawing.Size(75, 23);
+			this.buttonCBT.TabIndex = 9;
+			this.buttonCBT.Text = "CBT";
+			this.buttonCBT.UseVisualStyleBackColor = true;
+			this.buttonCBT.Click += new System.EventHandler(this.ButtonCBT_Click);
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.Controls.Add(this.buttonCBT);
 			this.Controls.Add(this.listBoxLogs);
 			this.Controls.Add(this.buttonClose);
 			this.Controls.Add(this.buttonStop);
@@ -390,6 +442,7 @@
 			this.Controls.Add(this.groupBoxQuery);
 			this.Name = "Main";
 			this.Text = "Oracle Performance Test";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
 			this.groupBoxServer.ResumeLayout(false);
 			this.groupBoxServer.PerformLayout();
 			this.groupBoxStress.ResumeLayout(false);
@@ -397,6 +450,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).EndInit();
 			this.groupBoxQuery.ResumeLayout(false);
 			this.groupBoxQuery.PerformLayout();
+			this.groupBoxConnectionMode.ResumeLayout(false);
+			this.groupBoxConnectionMode.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -434,6 +489,10 @@
 		private System.Windows.Forms.GroupBox groupBoxServer;
 		private System.Windows.Forms.GroupBox groupBoxStress;
 		private System.Windows.Forms.GroupBox groupBoxQuery;
+		private System.Windows.Forms.Button buttonCBT;
+		private System.Windows.Forms.GroupBox groupBoxConnectionMode;
+		private System.Windows.Forms.RadioButton radioButtonDisconnected;
+		private System.Windows.Forms.RadioButton radioButtonConnection;
 	}
 }
 
