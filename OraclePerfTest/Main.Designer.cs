@@ -62,6 +62,9 @@
 			this.textBoxArguments = new System.Windows.Forms.TextBox();
 			this.textBoxQuery = new System.Windows.Forms.TextBox();
 			this.buttonCBT = new System.Windows.Forms.Button();
+			this.labelRequestPerSecond = new System.Windows.Forms.Label();
+			this.textBoxOpenRate = new System.Windows.Forms.TextBox();
+			this.labelOpenRate = new System.Windows.Forms.Label();
 			this.groupBoxServer.SuspendLayout();
 			this.groupBoxStress.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).BeginInit();
@@ -188,7 +191,7 @@
 			// 
 			// buttonStart
 			// 
-			this.buttonStart.Location = new System.Drawing.Point(12, 526);
+			this.buttonStart.Location = new System.Drawing.Point(11, 559);
 			this.buttonStart.Name = "buttonStart";
 			this.buttonStart.Size = new System.Drawing.Size(75, 23);
 			this.buttonStart.TabIndex = 1;
@@ -198,7 +201,7 @@
 			// 
 			// buttonStop
 			// 
-			this.buttonStop.Location = new System.Drawing.Point(93, 526);
+			this.buttonStop.Location = new System.Drawing.Point(92, 559);
 			this.buttonStop.Name = "buttonStop";
 			this.buttonStop.Size = new System.Drawing.Size(75, 23);
 			this.buttonStop.TabIndex = 2;
@@ -208,7 +211,7 @@
 			// 
 			// buttonClose
 			// 
-			this.buttonClose.Location = new System.Drawing.Point(697, 526);
+			this.buttonClose.Location = new System.Drawing.Point(696, 559);
 			this.buttonClose.Name = "buttonClose";
 			this.buttonClose.Size = new System.Drawing.Size(75, 23);
 			this.buttonClose.TabIndex = 3;
@@ -228,7 +231,7 @@
 			// labelArguments
 			// 
 			this.labelArguments.AutoSize = true;
-			this.labelArguments.Location = new System.Drawing.Point(9, 196);
+			this.labelArguments.Location = new System.Drawing.Point(9, 226);
 			this.labelArguments.Name = "labelArguments";
 			this.labelArguments.Size = new System.Drawing.Size(70, 12);
 			this.labelArguments.TabIndex = 0;
@@ -238,7 +241,7 @@
 			// 
 			this.listBoxLogs.FormattingEnabled = true;
 			this.listBoxLogs.ItemHeight = 12;
-			this.listBoxLogs.Location = new System.Drawing.Point(12, 308);
+			this.listBoxLogs.Location = new System.Drawing.Point(11, 341);
 			this.listBoxLogs.Name = "listBoxLogs";
 			this.listBoxLogs.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.listBoxLogs.Size = new System.Drawing.Size(760, 208);
@@ -247,7 +250,7 @@
 			// labelLogs
 			// 
 			this.labelLogs.AutoSize = true;
-			this.labelLogs.Location = new System.Drawing.Point(12, 293);
+			this.labelLogs.Location = new System.Drawing.Point(11, 326);
 			this.labelLogs.Name = "labelLogs";
 			this.labelLogs.Size = new System.Drawing.Size(37, 12);
 			this.labelLogs.TabIndex = 0;
@@ -303,15 +306,18 @@
 			// 
 			this.groupBoxStress.Controls.Add(this.labelUserCount);
 			this.groupBoxStress.Controls.Add(this.numericUpDownUserCount);
+			this.groupBoxStress.Controls.Add(this.labelOpenRate);
 			this.groupBoxStress.Controls.Add(this.labelQueryRate);
+			this.groupBoxStress.Controls.Add(this.textBoxOpenRate);
 			this.groupBoxStress.Controls.Add(this.textBoxQueryRate);
 			this.groupBoxStress.Controls.Add(this.textBoxTotalQueryRate);
 			this.groupBoxStress.Controls.Add(this.labelTotalQueryRate);
+			this.groupBoxStress.Controls.Add(this.labelRequestPerSecond);
 			this.groupBoxStress.Controls.Add(this.label1);
 			this.groupBoxStress.Controls.Add(this.labelQueryPerSecond);
 			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
 			this.groupBoxStress.Name = "groupBoxStress";
-			this.groupBoxStress.Size = new System.Drawing.Size(267, 108);
+			this.groupBoxStress.Size = new System.Drawing.Size(267, 134);
 			this.groupBoxStress.TabIndex = 7;
 			this.groupBoxStress.TabStop = false;
 			this.groupBoxStress.Text = "Stress";
@@ -356,7 +362,7 @@
 			this.groupBoxQuery.Controls.Add(this.labelArguments);
 			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
 			this.groupBoxQuery.Name = "groupBoxQuery";
-			this.groupBoxQuery.Size = new System.Drawing.Size(487, 278);
+			this.groupBoxQuery.Size = new System.Drawing.Size(487, 304);
 			this.groupBoxQuery.TabIndex = 8;
 			this.groupBoxQuery.TabStop = false;
 			this.groupBoxQuery.Text = "Query";
@@ -365,7 +371,7 @@
 			// 
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnection);
-			this.groupBoxConnectionMode.Location = new System.Drawing.Point(293, 196);
+			this.groupBoxConnectionMode.Location = new System.Drawing.Point(293, 226);
 			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
 			this.groupBoxConnectionMode.Size = new System.Drawing.Size(184, 69);
 			this.groupBoxConnectionMode.TabIndex = 2;
@@ -398,7 +404,7 @@
 			// textBoxArguments
 			// 
 			this.textBoxArguments.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxArguments.Location = new System.Drawing.Point(9, 211);
+			this.textBoxArguments.Location = new System.Drawing.Point(9, 241);
 			this.textBoxArguments.Multiline = true;
 			this.textBoxArguments.Name = "textBoxArguments";
 			this.textBoxArguments.Size = new System.Drawing.Size(272, 54);
@@ -411,14 +417,15 @@
 			this.textBoxQuery.Location = new System.Drawing.Point(11, 35);
 			this.textBoxQuery.Multiline = true;
 			this.textBoxQuery.Name = "textBoxQuery";
-			this.textBoxQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxQuery.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBoxQuery.Size = new System.Drawing.Size(466, 150);
 			this.textBoxQuery.TabIndex = 0;
 			this.textBoxQuery.Text = global::OraclePerfTest.Properties.Settings.Default.Query;
+			this.textBoxQuery.WordWrap = false;
 			// 
 			// buttonCBT
 			// 
-			this.buttonCBT.Location = new System.Drawing.Point(174, 526);
+			this.buttonCBT.Location = new System.Drawing.Point(173, 559);
 			this.buttonCBT.Name = "buttonCBT";
 			this.buttonCBT.Size = new System.Drawing.Size(75, 23);
 			this.buttonCBT.TabIndex = 9;
@@ -426,11 +433,39 @@
 			this.buttonCBT.UseVisualStyleBackColor = true;
 			this.buttonCBT.Click += new System.EventHandler(this.ButtonCBT_Click);
 			// 
+			// labelRequestPerSecond
+			// 
+			this.labelRequestPerSecond.AutoSize = true;
+			this.labelRequestPerSecond.Location = new System.Drawing.Point(184, 103);
+			this.labelRequestPerSecond.Name = "labelRequestPerSecond";
+			this.labelRequestPerSecond.Size = new System.Drawing.Size(66, 12);
+			this.labelRequestPerSecond.TabIndex = 0;
+			this.labelRequestPerSecond.Text = "req. / sec.";
+			// 
+			// textBoxOpenRate
+			// 
+			this.textBoxOpenRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "OpenRate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxOpenRate.Location = new System.Drawing.Point(84, 101);
+			this.textBoxOpenRate.Name = "textBoxOpenRate";
+			this.textBoxOpenRate.Size = new System.Drawing.Size(94, 21);
+			this.textBoxOpenRate.TabIndex = 1;
+			this.textBoxOpenRate.Text = global::OraclePerfTest.Properties.Settings.Default.OpenRate;
+			this.textBoxOpenRate.TextChanged += new System.EventHandler(this.TextBoxQueryRate_TextChanged);
+			// 
+			// labelOpenRate
+			// 
+			this.labelOpenRate.AutoSize = true;
+			this.labelOpenRate.Location = new System.Drawing.Point(6, 103);
+			this.labelOpenRate.Name = "labelOpenRate";
+			this.labelOpenRate.Size = new System.Drawing.Size(68, 12);
+			this.labelOpenRate.TabIndex = 0;
+			this.labelOpenRate.Text = "Open Rate:";
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.ClientSize = new System.Drawing.Size(784, 594);
 			this.Controls.Add(this.buttonCBT);
 			this.Controls.Add(this.listBoxLogs);
 			this.Controls.Add(this.buttonClose);
@@ -493,6 +528,9 @@
 		private System.Windows.Forms.GroupBox groupBoxConnectionMode;
 		private System.Windows.Forms.RadioButton radioButtonDisconnected;
 		private System.Windows.Forms.RadioButton radioButtonConnection;
+		private System.Windows.Forms.Label labelOpenRate;
+		private System.Windows.Forms.TextBox textBoxOpenRate;
+		private System.Windows.Forms.Label labelRequestPerSecond;
 	}
 }
 

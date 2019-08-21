@@ -97,7 +97,7 @@ namespace OraclePerfTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
         public string QueryRate {
             get {
                 return ((string)(this["QueryRate"]));
@@ -170,6 +170,18 @@ namespace OraclePerfTest.Properties {
             }
             set {
                 this["QueryArguments"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public string OpenRate {
+            get {
+                return ((string)(this["OpenRate"]));
+            }
+            set {
+                this["OpenRate"] = value;
             }
         }
     }

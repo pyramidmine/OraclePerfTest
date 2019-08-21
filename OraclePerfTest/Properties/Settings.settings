@@ -21,7 +21,7 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="QueryRate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.0</Value>
+      <Value Profile="(Default)">0.1</Value>
     </Setting>
     <Setting Name="Query" Type="System.String" Scope="User">
       <Value Profile="(Default)">SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD_PK) NLJ_BATCHING */
@@ -143,6 +143,9 @@
     </Setting>
     <Setting Name="QueryArguments" Type="System.String" Scope="User">
       <Value Profile="(Default)">70</Value>
+    </Setting>
+    <Setting Name="OpenRate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.1</Value>
     </Setting>
   </Settings>
 </SettingsFile>
