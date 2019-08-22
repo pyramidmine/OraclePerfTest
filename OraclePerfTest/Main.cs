@@ -104,6 +104,9 @@ namespace OraclePerfTest
 								AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
 							}
 						}
+
+                        conn.Close();
+                        AddLog("ButtonCBT_Click, closed.");
 					}
 				}
 				catch (OracleException ex)
@@ -281,9 +284,10 @@ namespace OraclePerfTest
 			{
 				foreach (var mock in this.mocks)
 				{
-					mock?.Connection?.Dispose();
+					mock?.Connection?.Close();
 				}
 				this.mocks.Clear();
+                AddLog($"ClearConnections, mock list cleared.");
 			}
 			catch (Exception ex)
 			{
@@ -394,10 +398,6 @@ namespace OraclePerfTest
 						}
 					}
 				}
-				catch (NullReferenceException)
-				{
-					// Ignore state change while using socket
-				}
 				catch (Exception ex)
 				{
 					AddLog($"ReadingJob, mock index = {mock.SerialNumber}, {ex.ToString()}, {ex.Message}");
@@ -437,6 +437,7 @@ namespace OraclePerfTest
 				MockClient mock = null;
 				try
 				{
+                    this.stat.AddReadRequestCount();
 					mock = this.mocks[randomIndex[i]];
 					Task.Factory.StartNew(() => ReadingJob(mock, this.readingCancellationToken));
 				}
@@ -559,6 +560,7 @@ namespace OraclePerfTest
 			object lockObject = new object();
 			long openCount;
 			long readCount;
+            long readRequestCount;
 			long rowCount;
 			long columnCount;
 			long fieldCount;
@@ -571,6 +573,7 @@ namespace OraclePerfTest
 
 			public long AddOpenCount(long count = 1) { return Interlocked.Add(ref this.openCount, count); }
 			public long AddReadCount(long count = 1) { return Interlocked.Add(ref this.readCount, count); }
+            public long AddReadRequestCount(long count = 1) { return Interlocked.Add(ref this.readRequestCount, count); }
 			public long AddRowCount(long count = 1) { return Interlocked.Add(ref this.rowCount, count); }
 			public long AddColumnCount(long count = 1) { return Interlocked.Add(ref this.columnCount, count); }
 			public long AddFieldCount(long count = 1) { return Interlocked.Add(ref this.fieldCount, count); }
@@ -581,7 +584,7 @@ namespace OraclePerfTest
 				StringBuilder sb = new StringBuilder(128);
 				lock (this.lockObject)
 				{
-					sb.AppendFormat($"OpenCount:{this.openCount},ReadCount:{this.readCount},RowCount:{this.rowCount},ErrorCount:{this.errorCount}");
+					sb.AppendFormat($"OpenCount:{this.openCount},ReadRequestCount:{this.readRequestCount},ReadCount:{this.readCount},RowCount:{this.rowCount},ErrorCount:{this.errorCount}");
 					Reset();
 				}
 				return sb.ToString();
@@ -592,6 +595,7 @@ namespace OraclePerfTest
 				lock (this.lockObject)
 				{
 					Interlocked.Exchange(ref this.openCount, 0);
+                    Interlocked.Exchange(ref this.readRequestCount, 0);
 					Interlocked.Exchange(ref this.readCount, 0);
 					Interlocked.Exchange(ref this.rowCount, 0);
 					Interlocked.Exchange(ref this.errorCount, 0);
