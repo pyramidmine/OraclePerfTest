@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -280,42 +281,86 @@ namespace OraclePerfTest
 
 		private void ClearConnections()
 		{
+			CancellationTokenSource cts = new CancellationTokenSource();
 			try
 			{
-				foreach (var mock in this.mocks)
+				cts.CancelAfter(3000);
+				CancellationToken ct = cts.Token;
+				Task.Factory.StartNew(() =>
 				{
-					mock?.Connection?.Close();
-				}
-				this.mocks.Clear();
-                AddLog($"ClearConnections, mock list cleared.");
+					bool allClosed = false;
+					while (!allClosed && !ct.IsCancellationRequested)
+					{
+						allClosed = true;
+						foreach (var mock in this.mocks)
+						{
+							if (mock.IsBusy == 1)
+							{
+								allClosed = false;
+							}
+							else if (mock.Connection.State == ConnectionState.Open)
+							{
+								mock.Connection.Close();
+								allClosed = false;
+							}
+						}
+					}
+				});
+			}
+			catch (OperationCanceledException ex)
+			{
+				// Operation cancelled
 			}
 			catch (Exception ex)
 			{
 				AddLog($"ClearConnections, {ex.ToString()}, {ex.Message}");
 				this.stat.AddErrorCount();
 			}
+			this.mocks.Clear();
 		}
 
-		private void OpeningJob(MockClient mock, CancellationToken cancellationToken)
+		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
 		{
-			if (CanOpen(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
+			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
+
+			int i = 0;
+			while (this.openingCancellationToken != CancellationToken.None
+				&& !this.openingCancellationToken.IsCancellationRequested
+				&& i < randomIndex.Count)
 			{
+				MockClient mock = null;
 				try
 				{
-					mock.Connection.Open();
-					if (mock.Connection.State == ConnectionState.Open)
+					mock = this.mocks[randomIndex[i]];
+					if (CanOpen(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
 					{
-						this.stat.AddOpenCount();
+						try
+						{
+							mock.Connection.Open();
+							if (mock.Connection.State == ConnectionState.Open)
+							{
+								this.stat.AddOpenCount();
+							}
+						}
+						catch (Exception ex)
+						{
+							AddLog($"OpeningJob, {ex.ToString()}, {ex.Message}");
+							this.stat.AddErrorCount();
+						}
+						finally
+						{
+							Interlocked.Exchange(ref mock.IsBusy, 0);
+						}
 					}
 				}
 				catch (Exception ex)
 				{
-					AddLog($"OpeningJob, {ex.ToString()}, {ex.Message}");
+					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
 					this.stat.AddErrorCount();
 				}
 				finally
 				{
-					Interlocked.Exchange(ref mock.IsBusy, 0);
+					i++;
 				}
 			}
 
@@ -336,86 +381,49 @@ namespace OraclePerfTest
 			}
 		}
 
-		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
-		{
-			/*
-			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
-
-			int i = 0;
-			while (this.openingCancellationToken != CancellationToken.None
-				&& !this.openingCancellationToken.IsCancellationRequested
-				&& i < randomIndex.Count)
-			{
-				MockClient mock = null;
-				try
-				{
-					mock = this.mocks[randomIndex[i]];
-					Task.Factory.StartNew(() => OpeningJob(mock, this.openingCancellationToken));
-				}
-				catch (Exception ex)
-				{
-					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
-					this.stat.AddErrorCount();
-				}
-				finally
-				{
-					i++;
-				}
-			}
-			*/
-			try
-			{
-				Parallel.For(0, this.mocks.Count, (index) =>
-				{
-					OpeningJob(this.mocks[index], this.openingCancellationToken);
-					this.stat.AddOpenCount();
-				});
-			}
-			catch (OperationCanceledException ex)
-			{
-				// Operation cancelled
-			}
-			catch (Exception ex)
-			{
-				AddLog($"OpeningTimerHandler, {ex.ToString()}, {ex.Message}");
-			}
-		}
-
 		private void ReadingJob(MockClient mock, CancellationToken cancellationToken)
 		{
 			try
 			{
-				cancellationToken.ThrowIfCancellationRequested();
-
 				if (CanRead(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
 				{
-					if (this.radioButtonConnection.Checked)
+					try
 					{
-						using (OracleCommand cmd = new OracleCommand())
+						if (this.radioButtonConnection.Checked)
 						{
-							cmd.Connection = mock.Connection;
-							cmd.CommandText = this.readingQuery;
-							using (OracleDataReader reader = cmd.ExecuteReader())
+							using (OracleCommand cmd = new OracleCommand())
 							{
-								this.stat.AddReadCount();
-								while (reader.Read())
+								cmd.Connection = mock.Connection;
+								cmd.CommandText = this.readingQuery;
+								using (OracleDataReader reader = cmd.ExecuteReader())
 								{
-									this.stat.AddRowCount();
-									this.stat.AddFieldCount(reader.FieldCount);
+									this.stat.AddReadCount();
+									while (reader.Read() && !cancellationToken.IsCancellationRequested)
+									{
+										this.stat.AddRowCount();
+										this.stat.AddFieldCount(reader.FieldCount);
+									}
+									reader.Dispose();
 								}
+								cmd.Dispose();
+							}
+						}
+						else
+						{
+							using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
+							{
+								DataTable dataTable = new DataTable();
+								adapter.Fill(dataTable);
+								this.stat.AddReadCount();
+								this.stat.AddRowCount(dataTable.Rows.Count);
+								this.stat.AddColumnCount(dataTable.Columns.Count);
+								adapter.Dispose();
 							}
 						}
 					}
-					else
+					finally
 					{
-						using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
-						{
-							DataTable dataTable = new DataTable();
-							adapter.Fill(dataTable);
-							this.stat.AddReadCount();
-							this.stat.AddRowCount(dataTable.Rows.Count);
-							this.stat.AddColumnCount(dataTable.Columns.Count);
-						}
+						Interlocked.Exchange(ref mock.IsBusy, 0);
 					}
 				}
 			}
@@ -427,10 +435,6 @@ namespace OraclePerfTest
 			{
 				AddLog($"ReadingJob, mock index = {mock.SerialNumber}, {ex.ToString()}, {ex.Message}");
 				this.stat.AddErrorCount();
-			}
-			finally
-			{
-				Interlocked.Exchange(ref mock.IsBusy, 0);
 			}
 
 			bool CanRead(ConnectionState state)
@@ -451,7 +455,6 @@ namespace OraclePerfTest
 
 		private void ReadingTimerHandler(object sender, ElapsedEventArgs args)
 		{
-            /*
 			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
 
 			int i = 0;
@@ -475,19 +478,6 @@ namespace OraclePerfTest
 				{
 					i++;
 				}
-			}
-            */
-			try
-			{
-				Parallel.For(0, this.mocks.Count, (index) =>
-				{
-					ReadingJob(this.mocks[index], this.readingCancellationToken);
-					this.stat.AddReadRequestCount();
-				});
-			}
-			catch (OperationCanceledException ex)
-			{
-				// Operation cancelled
 			}
 		}
 
@@ -569,12 +559,9 @@ namespace OraclePerfTest
 				AddLog($"StopJobs, {ex.ToString()}, {ex.Message}");
 			}
 
-			Task.Delay(1000).ContinueWith(arg =>
-			{
-				ResetOpeningJob();
-				ResetReadingJob();
-				ClearConnections();
-			});
+			ResetOpeningJob();
+			ResetReadingJob();
+			ClearConnections();
 
 			SetButtonState(false);
 		}
@@ -609,20 +596,68 @@ namespace OraclePerfTest
 				Reset();
 			}
 
-			public long AddOpenCount(long count = 1) { return Interlocked.Add(ref this.openCount, count); }
-			public long AddReadCount(long count = 1) { return Interlocked.Add(ref this.readCount, count); }
-            public long AddReadRequestCount(long count = 1) { return Interlocked.Add(ref this.readRequestCount, count); }
-			public long AddRowCount(long count = 1) { return Interlocked.Add(ref this.rowCount, count); }
-			public long AddColumnCount(long count = 1) { return Interlocked.Add(ref this.columnCount, count); }
-			public long AddFieldCount(long count = 1) { return Interlocked.Add(ref this.fieldCount, count); }
-			public long AddErrorCount(long count = 1) { return Interlocked.Add(ref this.errorCount, count); }
+			public long AddOpenCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.openCount, count);
+				}
+			}
+
+			public long AddReadCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.readCount, count);
+				}
+			}
+
+			public long AddReadRequestCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.readRequestCount, count);
+				}
+			}
+
+			public long AddRowCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.rowCount, count);
+				}
+			}
+
+			public long AddColumnCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.columnCount, count);
+				}
+			}
+
+			public long AddFieldCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.fieldCount, count);
+				}
+			}
+
+			public long AddErrorCount(long count = 1)
+			{
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.errorCount, count);
+				}
+			}
 
 			public string ReportAndReset()
 			{
 				StringBuilder sb = new StringBuilder(128);
 				lock (this.lockObject)
 				{
-					sb.AppendFormat($"OpenCount:{this.openCount},ReadRequestCount:{this.readRequestCount},ReadCount:{this.readCount},RowCount:{this.rowCount},ErrorCount:{this.errorCount}");
+					sb.AppendFormat($"OpenCnt:{this.openCount,2}, RequestCnt:{this.readRequestCount,3}, ReadCnt:{this.readCount,4}, RowCnt:{this.rowCount,5}, AverageRowCnt:{this.rowCount / Math.Max(1, this.readCount),4}, ErrorCnt:{this.errorCount,2}, ThreadCnt:{Process.GetCurrentProcess().Threads.Count,3}");
 					Reset();
 				}
 				return sb.ToString();
@@ -632,11 +667,11 @@ namespace OraclePerfTest
 			{
 				lock (this.lockObject)
 				{
-					Interlocked.Exchange(ref this.openCount, 0);
-                    Interlocked.Exchange(ref this.readRequestCount, 0);
-					Interlocked.Exchange(ref this.readCount, 0);
-					Interlocked.Exchange(ref this.rowCount, 0);
-					Interlocked.Exchange(ref this.errorCount, 0);
+					this.openCount = 0;
+                    this.readRequestCount = 0;
+					this.readCount = 0;
+					this.rowCount = 0;
+					this.errorCount = 0;
 				}
 			}
 		}
