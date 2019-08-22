@@ -17,6 +17,7 @@ namespace OraclePerfTest
 	{
 		static private readonly int MAX_LOG_COUNT = 1024;
 		static private readonly int RANDOM_SEED = 8987;
+		static private readonly int STAT_REPORT_INTERVAL = 1000;
 
 		List<MockClient> mocks = new List<MockClient>();
 
@@ -27,6 +28,8 @@ namespace OraclePerfTest
 
 		System.Timers.Timer openingTimer;
 		System.Timers.Timer readingTimer;
+		System.Windows.Forms.Timer statTimer;
+		Statistics stat;
 		string readingQuery;
 		Random rand;
 
@@ -34,11 +37,6 @@ namespace OraclePerfTest
 		{
 			InitializeComponent();
 
-			/*
-			string inputQuery = "WHERE TO_DATA('$1')";
-			string query = inputQuery.Replace("$1", "20190814173544");
-			Console.WriteLine(query);
-			*/
 			this.buttonStop.Enabled = false;
 
 			this.openingTimer = new System.Timers.Timer();
@@ -47,11 +45,18 @@ namespace OraclePerfTest
 			this.readingTimer = new System.Timers.Timer();
 			this.readingTimer.Elapsed += ReadingTimerHandler;
 
+			this.statTimer = new System.Windows.Forms.Timer();
+			this.statTimer.Interval = STAT_REPORT_INTERVAL;
+			this.statTimer.Tick += StatTimerHandler;
+			this.stat = new Statistics();
+
 			this.rand = new Random(RANDOM_SEED);
 		}
 
 		private void ButtonCBT_Click(object sender, EventArgs e)
 		{
+			AddLog("ButtonCBT_Click, started.");
+
 			string connectionString = $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={Properties.Settings.Default.ServerIp})(PORT={Properties.Settings.Default.ServerPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={Properties.Settings.Default.DatabaseName})));User ID={Properties.Settings.Default.DatabaseId};Password={Properties.Settings.Default.DatabasePassword};Connection Timeout=30;";
 
 			using (OracleConnection conn = new OracleConnection(connectionString))
@@ -61,6 +66,8 @@ namespace OraclePerfTest
 					conn.Open();
 					if (conn.State == ConnectionState.Open)
 					{
+						AddLog("ButtonCBT_Click, opened.");
+
 						string query = Properties.Settings.Default.Query.Replace("\r\n", "");
 						List<string> arquments = Properties.Settings.Default.QueryArguments.Split('\n').ToList();
 						for (int i = 0; i < arquments.Count; i++)
@@ -77,10 +84,14 @@ namespace OraclePerfTest
 								cmd.CommandText = query;
 								using (OracleDataReader reader = cmd.ExecuteReader())
 								{
+									int rows = 0;
+									int fields = 0;
 									while (reader.Read())
 									{
-										AddLog($"OracleDataReader, field count = {reader.FieldCount}");
+										rows++;
+										fields = reader.FieldCount;
 									}
+									AddLog($"ButtonCBT_Click, OracleDataReader, row count = {rows}, fields = {fields}");
 								}
 							}
 						}
@@ -90,7 +101,7 @@ namespace OraclePerfTest
 							{
 								DataTable dataTable = new DataTable();
 								adapter.Fill(dataTable);
-								AddLog($"OracleDataAdapter, columns = {dataTable.Columns}, rows = {dataTable.Rows}");
+								AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
 							}
 						}
 					}
@@ -114,6 +125,8 @@ namespace OraclePerfTest
 
 		private void ButtonStart_Click(object sender, EventArgs e)
 		{
+			AddLog("ButtonStart_Click, started.");
+
 			// 
 			// Create connections
 			//
@@ -123,13 +136,14 @@ namespace OraclePerfTest
 
 				for (int i = 0; i < Properties.Settings.Default.UserCount; i++)
 				{
-					var mock = new MockClient(new OracleConnection(connectionString));
+					var mock = new MockClient(i, new OracleConnection(connectionString));
 					this.mocks.Add(mock);
 				}
 			}
 			catch (Exception ex)
 			{
 				AddLog($"ButtonStart_Click, create connections, {ex.ToString()}, {ex.Message}");
+				this.stat.AddErrorCount();
 				ClearConnections();
 				return;
 			}
@@ -147,6 +161,7 @@ namespace OraclePerfTest
 			catch (Exception ex)
 			{
 				AddLog($"ButtonStart_Click, open connections, {ex.ToString()}, {ex.Message}");
+				this.stat.AddErrorCount();
 				ClearConnections();
 				ResetOpeningJob();
 				return;
@@ -172,10 +187,15 @@ namespace OraclePerfTest
 				this.readingCancellationToken = this.readingCancellation.Token;
 				this.readingTimer.Interval = 1000 / double.Parse(Properties.Settings.Default.QueryRate);
 				this.readingTimer.Start();
+
+				this.statTimer.Start();
+
+				AddLog("ButtonStart_Click, job scheduled.");
 			}
 			catch (Exception ex)
 			{
 				AddLog($"ButtonStart_Click, send queries, {ex.ToString()}, {ex.Message}");
+				this.stat.AddErrorCount();
 				ClearConnections();
 				ResetOpeningJob();
 				ResetReadingJob();
@@ -188,6 +208,7 @@ namespace OraclePerfTest
 		private void ButtonStop_Click(object sender, EventArgs e)
 		{
 			StopJobs();
+			AddLog("ButtonStop_Click, stopped.");
 		}
 
 		private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -267,47 +288,30 @@ namespace OraclePerfTest
 			catch (Exception ex)
 			{
 				AddLog($"ClearConnections, {ex.ToString()}, {ex.Message}");
+				this.stat.AddErrorCount();
 			}
 		}
 
-		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
+		private void OpeningJob(MockClient mock, CancellationToken cancellationToken)
 		{
-			var randomIndex = Enumerable.Range(0, this.mocks.Count);
-
-			while (this.openingCancellationToken != CancellationToken.None && !this.openingCancellationToken.IsCancellationRequested)
+			if (CanOpen(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
 			{
-				MockClient mock = null;
-				int mockIndex = -1;
 				try
 				{
-					mockIndex = this.rand.Next(this.mocks.Count);
-					mock = this.mocks[mockIndex];
-					Task.Factory.StartNew(() =>
+					mock.Connection.Open();
+					if (mock.Connection.State == ConnectionState.Open)
 					{
-						if (CanOpen(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
-						{
-							try
-							{
-								mock.Connection.Open();
-								if (mock.Connection.State == ConnectionState.Open)
-								{
-									AddLog($"OpeningTimerHandler, mock index = {mockIndex}, connected");
-								}
-							}
-							catch (Exception ex)
-							{
-								throw ex;
-							}
-							finally
-							{
-								Interlocked.Exchange(ref mock.IsBusy, 0);
-							}
-						}
-					}, this.openingCancellationToken);
+						this.stat.AddOpenCount();
+					}
 				}
 				catch (Exception ex)
 				{
-					AddLog($"OpeningTimerHandler, mock index = {mockIndex}, {ex.ToString()}, {ex.Message}");
+					AddLog($"OpeningJob, {ex.ToString()}, {ex.Message}");
+					this.stat.AddErrorCount();
+				}
+				finally
+				{
+					Interlocked.Exchange(ref mock.IsBusy, 0);
 				}
 			}
 
@@ -328,62 +332,80 @@ namespace OraclePerfTest
 			}
 		}
 
-		private void ReadingTimerHandler(object sender, ElapsedEventArgs args)
+		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
 		{
-			while (this.readingCancellationToken != CancellationToken.None && !this.readingCancellationToken.IsCancellationRequested)
+			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
+
+			int i = 0;
+			while (this.openingCancellationToken != CancellationToken.None
+				&& !this.openingCancellationToken.IsCancellationRequested
+				&& i < randomIndex.Count)
 			{
 				MockClient mock = null;
-				int mockIndex = -1;
 				try
 				{
-					mockIndex = this.rand.Next(this.mocks.Count);
-					mock = this.mocks[mockIndex];
-					Task.Factory.StartNew(() =>
-					{
-						if (CanRead(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
-						{
-							AddLog($"ReadingTimerHandler, Task, mock index = {mockIndex}");
-							try
-							{
-								if (this.radioButtonConnection.Checked)
-								{
-									using (OracleCommand cmd = new OracleCommand())
-									{
-										cmd.Connection = mock.Connection;
-										cmd.CommandText = this.readingQuery;
-										using (OracleDataReader reader = cmd.ExecuteReader())
-										{
-											while (reader.Read())
-											{
-												AddLog($"OracleDataReader, field count = {reader.FieldCount}");
-											}
-										}
-									}
-								}
-								else
-								{
-									using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
-									{
-										DataTable dataTable = new DataTable();
-										adapter.Fill(dataTable);
-										AddLog($"OracleDataAdapter, columns = {dataTable.Columns}, rows = {dataTable.Rows}");
-									}
-								}
-							}
-							catch (Exception)
-							{
-								throw;
-							}
-							finally
-							{
-								Interlocked.Exchange(ref mock.IsBusy, 0);
-							}
-						}
-					}, this.openingCancellationToken);
+					mock = this.mocks[randomIndex[i]];
+					Task.Factory.StartNew(() => OpeningJob(mock, this.openingCancellationToken));
 				}
 				catch (Exception ex)
 				{
-					AddLog($"OpeningTimerHandler, mock index = {mockIndex}, {ex.ToString()}, {ex.Message}");
+					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
+					this.stat.AddErrorCount();
+				}
+				finally
+				{
+					i++;
+				}
+			}
+		}
+
+		private void ReadingJob(MockClient mock, CancellationToken cancellationToken)
+		{
+			if (CanRead(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
+			{
+				try
+				{
+					if (this.radioButtonConnection.Checked)
+					{
+						using (OracleCommand cmd = new OracleCommand())
+						{
+							cmd.Connection = mock.Connection;
+							cmd.CommandText = this.readingQuery;
+							using (OracleDataReader reader = cmd.ExecuteReader())
+							{
+								this.stat.AddReadCount();
+								while (reader.Read())
+								{
+									this.stat.AddRowCount();
+									this.stat.AddFieldCount(reader.FieldCount);
+								}
+							}
+						}
+					}
+					else
+					{
+						using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
+						{
+							DataTable dataTable = new DataTable();
+							adapter.Fill(dataTable);
+							this.stat.AddReadCount();
+							this.stat.AddRowCount(dataTable.Rows.Count);
+							this.stat.AddColumnCount(dataTable.Columns.Count);
+						}
+					}
+				}
+				catch (NullReferenceException)
+				{
+					// Ignore state change while using socket
+				}
+				catch (Exception ex)
+				{
+					AddLog($"ReadingJob, mock index = {mock.SerialNumber}, {ex.ToString()}, {ex.Message}");
+					this.stat.AddErrorCount();
+				}
+				finally
+				{
+					Interlocked.Exchange(ref mock.IsBusy, 0);
 				}
 			}
 
@@ -400,6 +422,33 @@ namespace OraclePerfTest
 						break;
 				}
 				return result;
+			}
+		}
+
+		private void ReadingTimerHandler(object sender, ElapsedEventArgs args)
+		{
+			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
+
+			int i = 0;
+			while (this.readingCancellationToken != CancellationToken.None 
+				&& !this.readingCancellationToken.IsCancellationRequested
+				&& i < randomIndex.Count)
+			{
+				MockClient mock = null;
+				try
+				{
+					mock = this.mocks[randomIndex[i]];
+					Task.Factory.StartNew(() => ReadingJob(mock, this.readingCancellationToken));
+				}
+				catch (Exception ex)
+				{
+					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
+					this.stat.AddErrorCount();
+				}
+				finally
+				{
+					i++;
+				}
 			}
 		}
 
@@ -459,10 +508,17 @@ namespace OraclePerfTest
 			}
 		}
 
+		private void StatTimerHandler(object sender, EventArgs args)
+		{
+			AddLog(this.stat.ReportAndReset());
+		}
+
 		private void StopJobs()
 		{
 			try
 			{
+				this.statTimer.Stop();
+
 				this.readingCancellation.Cancel();
 				this.readingTimer.Stop();
 
@@ -473,24 +529,73 @@ namespace OraclePerfTest
 			{
 				AddLog($"StopJobs, {ex.ToString()}, {ex.Message}");
 			}
-			finally
+
+			Task.Delay(1000).ContinueWith(arg =>
 			{
 				ResetOpeningJob();
 				ResetReadingJob();
 				ClearConnections();
-				SetButtonState(false);
-			}
+			});
+
+			SetButtonState(false);
 		}
 
 		class MockClient
 		{
 			public OracleConnection Connection { get; set; }
 			public int IsBusy;
+			public int SerialNumber { get; set; }
 
-			public MockClient(OracleConnection conn = null)
+			public MockClient(int serialNumber, OracleConnection conn = null)
 			{
 				Connection = conn;
 				IsBusy = 0;
+				SerialNumber = serialNumber;
+			}
+		}
+
+		class Statistics
+		{
+			object lockObject = new object();
+			long openCount;
+			long readCount;
+			long rowCount;
+			long columnCount;
+			long fieldCount;
+			long errorCount;
+
+			public Statistics()
+			{
+				Reset();
+			}
+
+			public long AddOpenCount(long count = 1) { return Interlocked.Add(ref this.openCount, count); }
+			public long AddReadCount(long count = 1) { return Interlocked.Add(ref this.readCount, count); }
+			public long AddRowCount(long count = 1) { return Interlocked.Add(ref this.rowCount, count); }
+			public long AddColumnCount(long count = 1) { return Interlocked.Add(ref this.columnCount, count); }
+			public long AddFieldCount(long count = 1) { return Interlocked.Add(ref this.fieldCount, count); }
+			public long AddErrorCount(long count = 1) { return Interlocked.Add(ref this.errorCount, count); }
+
+			public string ReportAndReset()
+			{
+				StringBuilder sb = new StringBuilder(128);
+				lock (this.lockObject)
+				{
+					sb.AppendFormat($"OpenCount:{this.openCount},ReadCount:{this.readCount},RowCount:{this.rowCount},ErrorCount:{this.errorCount}");
+					Reset();
+				}
+				return sb.ToString();
+			}
+
+			public void Reset()
+			{
+				lock (this.lockObject)
+				{
+					Interlocked.Exchange(ref this.openCount, 0);
+					Interlocked.Exchange(ref this.readCount, 0);
+					Interlocked.Exchange(ref this.rowCount, 0);
+					Interlocked.Exchange(ref this.errorCount, 0);
+				}
 			}
 		}
 	}
