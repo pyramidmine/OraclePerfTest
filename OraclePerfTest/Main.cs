@@ -338,6 +338,7 @@ namespace OraclePerfTest
 
 		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
 		{
+			/*
 			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
 
 			int i = 0;
@@ -361,13 +362,32 @@ namespace OraclePerfTest
 					i++;
 				}
 			}
+			*/
+			try
+			{
+				Parallel.For(0, this.mocks.Count, (index) =>
+				{
+					OpeningJob(this.mocks[index], this.openingCancellationToken);
+					this.stat.AddOpenCount();
+				});
+			}
+			catch (OperationCanceledException ex)
+			{
+				// Operation cancelled
+			}
+			catch (Exception ex)
+			{
+				AddLog($"OpeningTimerHandler, {ex.ToString()}, {ex.Message}");
+			}
 		}
 
 		private void ReadingJob(MockClient mock, CancellationToken cancellationToken)
 		{
-			if (CanRead(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
+			try
 			{
-				try
+				cancellationToken.ThrowIfCancellationRequested();
+
+				if (CanRead(mock.Connection.State) && Interlocked.Exchange(ref mock.IsBusy, 1) == 0)
 				{
 					if (this.radioButtonConnection.Checked)
 					{
@@ -398,15 +418,19 @@ namespace OraclePerfTest
 						}
 					}
 				}
-				catch (Exception ex)
-				{
-					AddLog($"ReadingJob, mock index = {mock.SerialNumber}, {ex.ToString()}, {ex.Message}");
-					this.stat.AddErrorCount();
-				}
-				finally
-				{
-					Interlocked.Exchange(ref mock.IsBusy, 0);
-				}
+			}
+			catch (OperationCanceledException ex)
+			{
+				// Operation cancelled
+			}
+			catch (Exception ex)
+			{
+				AddLog($"ReadingJob, mock index = {mock.SerialNumber}, {ex.ToString()}, {ex.Message}");
+				this.stat.AddErrorCount();
+			}
+			finally
+			{
+				Interlocked.Exchange(ref mock.IsBusy, 0);
 			}
 
 			bool CanRead(ConnectionState state)
@@ -427,6 +451,7 @@ namespace OraclePerfTest
 
 		private void ReadingTimerHandler(object sender, ElapsedEventArgs args)
 		{
+            /*
 			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
 
 			int i = 0;
@@ -450,6 +475,19 @@ namespace OraclePerfTest
 				{
 					i++;
 				}
+			}
+            */
+			try
+			{
+				Parallel.For(0, this.mocks.Count, (index) =>
+				{
+					ReadingJob(this.mocks[index], this.readingCancellationToken);
+					this.stat.AddReadRequestCount();
+				});
+			}
+			catch (OperationCanceledException ex)
+			{
+				// Operation cancelled
 			}
 		}
 
