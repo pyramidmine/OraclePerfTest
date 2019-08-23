@@ -62,14 +62,12 @@ namespace OraclePerfTest
 			try
 			{
 				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.DatabaseId, Config.Default.DatabasePassword);
-
 				using (OracleConnection conn = new OracleConnection(connectionString))
 				{
 					conn.Open();
 					if (conn.State == ConnectionState.Open)
 					{
 						AddLog("ButtonCBT_Click, opened.");
-
 						using (OracleCommand cmd = new OracleCommand())
 						{
 							cmd.Connection = conn;
@@ -79,24 +77,38 @@ namespace OraclePerfTest
 								{
 									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
-										reader.FetchSize = long.Parse(Config.Default.FetchSize);
-										int rows = 0;
-										int fields = 0;
-										while (reader.Read())
+										if (this.radioButtonReadingModeSelectRead.Checked)
 										{
-											rows++;
-											fields = reader.FieldCount;
+											reader.FetchSize = long.Parse(Config.Default.FetchSize);
+											int rows = 0;
+											int fields = 0;
+											while (reader.Read())
+											{
+												rows++;
+												fields = reader.FieldCount;
+											}
+											AddLog($"ButtonCBT_Click, OracleDataReader, row count = {rows}, fields = {fields}");
 										}
-										AddLog($"ButtonCBT_Click, OracleDataReader, row count = {rows}, fields = {fields}");
+										else
+										{
+											AddLog($"ButtonCBT_Click, OracleDataReader, has rows = {reader.HasRows}");
+										}
 									}
 								}
 								else
 								{
 									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
 									{
-										DataTable dataTable = new DataTable();
-										adapter.Fill(dataTable);
-										AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
+										if (this.radioButtonReadingModeSelectRead.Checked)
+										{
+											DataTable dataTable = new DataTable();
+											adapter.Fill(dataTable);
+											AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
+										}
+										else
+										{
+											AddLog($"ButtonCBT_Click, OracleDataAdapter, done.");
+										}
 									}
 								}
 							}
@@ -421,11 +433,14 @@ namespace OraclePerfTest
 									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
 										this.stat.AddReadCount();
-										reader.FetchSize = long.Parse(Config.Default.FetchSize);
-										while (reader.Read() && !cancellationToken.IsCancellationRequested)
+										if (this.radioButtonReadingModeSelectRead.Checked)
 										{
-											this.stat.AddRowCount();
-											this.stat.AddFieldCount(reader.FieldCount);
+											reader.FetchSize = long.Parse(Config.Default.FetchSize);
+											while (reader.Read() && !cancellationToken.IsCancellationRequested)
+											{
+												this.stat.AddRowCount();
+												this.stat.AddFieldCount(reader.FieldCount);
+											}
 										}
 									}
 								}
@@ -434,10 +449,13 @@ namespace OraclePerfTest
 									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
 									{
 										this.stat.AddReadCount();
-										DataTable dataTable = new DataTable();
-										adapter.Fill(dataTable);
-										this.stat.AddRowCount(dataTable.Rows.Count);
-										this.stat.AddColumnCount(dataTable.Columns.Count);
+										if (this.radioButtonReadingModeSelectRead.Checked)
+										{
+											DataTable dataTable = new DataTable();
+											adapter.Fill(dataTable);
+											this.stat.AddRowCount(dataTable.Rows.Count);
+											this.stat.AddColumnCount(dataTable.Columns.Count);
+										}
 									}
 								}
 							}

@@ -59,6 +59,9 @@
 			this.textBoxQueryRate = new System.Windows.Forms.TextBox();
 			this.labelRequestPerSecond = new System.Windows.Forms.Label();
 			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
+			this.groupBoxReadingMode = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead = new System.Windows.Forms.RadioButton();
 			this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
 			this.radioButtonDisconnected = new System.Windows.Forms.RadioButton();
 			this.radioButtonConnected = new System.Windows.Forms.RadioButton();
@@ -71,6 +74,7 @@
 			this.groupBoxStress.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).BeginInit();
 			this.groupBoxQuery.SuspendLayout();
+			this.groupBoxReadingMode.SuspendLayout();
 			this.groupBoxConnectionMode.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -388,6 +392,7 @@
 			// 
 			// groupBoxQuery
 			// 
+			this.groupBoxQuery.Controls.Add(this.groupBoxReadingMode);
 			this.groupBoxQuery.Controls.Add(this.groupBoxConnectionMode);
 			this.groupBoxQuery.Controls.Add(this.labelQuery);
 			this.groupBoxQuery.Controls.Add(this.textBoxFetchSize);
@@ -402,13 +407,47 @@
 			this.groupBoxQuery.TabStop = false;
 			this.groupBoxQuery.Text = "Query";
 			// 
+			// groupBoxReadingMode
+			// 
+			this.groupBoxReadingMode.Controls.Add(this.radioButtonReadingModeSelect);
+			this.groupBoxReadingMode.Controls.Add(this.radioButtonReadingModeSelectRead);
+			this.groupBoxReadingMode.Location = new System.Drawing.Point(350, 222);
+			this.groupBoxReadingMode.Name = "groupBoxReadingMode";
+			this.groupBoxReadingMode.Size = new System.Drawing.Size(127, 72);
+			this.groupBoxReadingMode.TabIndex = 6;
+			this.groupBoxReadingMode.TabStop = false;
+			this.groupBoxReadingMode.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect
+			// 
+			this.radioButtonReadingModeSelect.AutoSize = true;
+			this.radioButtonReadingModeSelect.Location = new System.Drawing.Point(6, 43);
+			this.radioButtonReadingModeSelect.Name = "radioButtonReadingModeSelect";
+			this.radioButtonReadingModeSelect.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect.TabIndex = 1;
+			this.radioButtonReadingModeSelect.TabStop = true;
+			this.radioButtonReadingModeSelect.Text = "Select (only)";
+			this.radioButtonReadingModeSelect.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead
+			// 
+			this.radioButtonReadingModeSelectRead.AutoSize = true;
+			this.radioButtonReadingModeSelectRead.Checked = true;
+			this.radioButtonReadingModeSelectRead.Location = new System.Drawing.Point(6, 21);
+			this.radioButtonReadingModeSelectRead.Name = "radioButtonReadingModeSelectRead";
+			this.radioButtonReadingModeSelectRead.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead.TabStop = true;
+			this.radioButtonReadingModeSelectRead.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead.UseVisualStyleBackColor = true;
+			// 
 			// groupBoxConnectionMode
 			// 
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnected);
-			this.groupBoxConnectionMode.Location = new System.Drawing.Point(328, 222);
+			this.groupBoxConnectionMode.Location = new System.Drawing.Point(217, 222);
 			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
-			this.groupBoxConnectionMode.Size = new System.Drawing.Size(149, 72);
+			this.groupBoxConnectionMode.Size = new System.Drawing.Size(127, 72);
 			this.groupBoxConnectionMode.TabIndex = 5;
 			this.groupBoxConnectionMode.TabStop = false;
 			this.groupBoxConnectionMode.Text = "Connection Mode:";
@@ -438,9 +477,9 @@
 			// textBoxFetchSize
 			// 
 			this.textBoxFetchSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxFetchSize.Location = new System.Drawing.Point(170, 237);
+			this.textBoxFetchSize.Location = new System.Drawing.Point(123, 237);
 			this.textBoxFetchSize.Name = "textBoxFetchSize";
-			this.textBoxFetchSize.Size = new System.Drawing.Size(149, 21);
+			this.textBoxFetchSize.Size = new System.Drawing.Size(88, 21);
 			this.textBoxFetchSize.TabIndex = 4;
 			this.textBoxFetchSize.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize;
 			// 
@@ -450,7 +489,7 @@
 			this.textBoxArguments.Location = new System.Drawing.Point(11, 237);
 			this.textBoxArguments.Multiline = true;
 			this.textBoxArguments.Name = "textBoxArguments";
-			this.textBoxArguments.Size = new System.Drawing.Size(149, 56);
+			this.textBoxArguments.Size = new System.Drawing.Size(106, 56);
 			this.textBoxArguments.TabIndex = 2;
 			this.textBoxArguments.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments;
 			// 
@@ -469,7 +508,7 @@
 			// labelFetchSize
 			// 
 			this.labelFetchSize.AutoSize = true;
-			this.labelFetchSize.Location = new System.Drawing.Point(168, 222);
+			this.labelFetchSize.Location = new System.Drawing.Point(121, 222);
 			this.labelFetchSize.Name = "labelFetchSize";
 			this.labelFetchSize.Size = new System.Drawing.Size(69, 12);
 			this.labelFetchSize.TabIndex = 3;
@@ -510,6 +549,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).EndInit();
 			this.groupBoxQuery.ResumeLayout(false);
 			this.groupBoxQuery.PerformLayout();
+			this.groupBoxReadingMode.ResumeLayout(false);
+			this.groupBoxReadingMode.PerformLayout();
 			this.groupBoxConnectionMode.ResumeLayout(false);
 			this.groupBoxConnectionMode.PerformLayout();
 			this.ResumeLayout(false);
@@ -558,6 +599,9 @@
 		private System.Windows.Forms.Label labelRequestPerSecond;
 		private System.Windows.Forms.TextBox textBoxFetchSize;
 		private System.Windows.Forms.Label labelFetchSize;
+		private System.Windows.Forms.GroupBox groupBoxReadingMode;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead;
 	}
 }
 
