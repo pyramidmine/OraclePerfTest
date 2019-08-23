@@ -139,13 +139,16 @@
        MN_A1_TODAY_ADD B
  WHERE A.ORD_NO = B.ORD_NO
    AND A.ORD_DATA_YN = 'Y'
-   AND A.MOD_DATE &gt;= sysdate-$1/(24*60*60)</Value>
+   AND A.MOD_DATE &gt;= sysdate-:1/(24*60*60)</Value>
     </Setting>
     <Setting Name="QueryArguments" Type="System.String" Scope="User">
-      <Value Profile="(Default)">70</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="OpenRate" Type="System.String" Scope="User">
       <Value Profile="(Default)">0.1</Value>
+    </Setting>
+    <Setting Name="FetchSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1048576</Value>
     </Setting>
   </Settings>
 </SettingsFile>

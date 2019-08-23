@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 
+using Config = OraclePerfTest.Properties.Settings;
+
 namespace OraclePerfTest
 {
 	public partial class Main : Form
@@ -31,7 +33,6 @@ namespace OraclePerfTest
 		System.Timers.Timer readingTimer;
 		System.Windows.Forms.Timer statTimer;
 		Statistics stat;
-		string readingQuery;
 		Random rand;
 
 		public Main()
@@ -58,72 +59,72 @@ namespace OraclePerfTest
 		{
 			AddLog("ButtonCBT_Click, started.");
 
-			string connectionString = $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={Properties.Settings.Default.ServerIp})(PORT={Properties.Settings.Default.ServerPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={Properties.Settings.Default.DatabaseName})));User ID={Properties.Settings.Default.DatabaseId};Password={Properties.Settings.Default.DatabasePassword};Connection Timeout=30;";
-
-			using (OracleConnection conn = new OracleConnection(connectionString))
+			try
 			{
-				try
+				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.DatabaseId, Config.Default.DatabasePassword);
+
+				using (OracleConnection conn = new OracleConnection(connectionString))
 				{
 					conn.Open();
 					if (conn.State == ConnectionState.Open)
 					{
 						AddLog("ButtonCBT_Click, opened.");
 
-						string query = Properties.Settings.Default.Query.Replace("\r\n", "");
-						List<string> arquments = Properties.Settings.Default.QueryArguments.Split('\n').ToList();
-						for (int i = 0; i < arquments.Count; i++)
+						using (OracleCommand cmd = new OracleCommand())
 						{
-							string arg = $"${i + 1}";
-							query = query.Replace(arg, arquments[i]);
-						}
-
-						if (this.radioButtonConnected.Checked)
-						{
-							using (OracleCommand cmd = new OracleCommand())
+							cmd.Connection = conn;
+							if (GenerateOracleCommand(cmd))
 							{
-								cmd.Connection = conn;
-								cmd.CommandText = query;
-								using (OracleDataReader reader = cmd.ExecuteReader())
+								if (this.radioButtonConnected.Checked)
 								{
-									int rows = 0;
-									int fields = 0;
-									while (reader.Read())
+									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
-										rows++;
-										fields = reader.FieldCount;
+										reader.FetchSize = long.Parse(Config.Default.FetchSize);
+										int rows = 0;
+										int fields = 0;
+										while (reader.Read())
+										{
+											rows++;
+											fields = reader.FieldCount;
+										}
+										AddLog($"ButtonCBT_Click, OracleDataReader, row count = {rows}, fields = {fields}");
 									}
-									AddLog($"ButtonCBT_Click, OracleDataReader, row count = {rows}, fields = {fields}");
+								}
+								else
+								{
+									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
+									{
+										DataTable dataTable = new DataTable();
+										adapter.Fill(dataTable);
+										AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
+									}
 								}
 							}
 						}
-						else
-						{
-							using (OracleDataAdapter adapter = new OracleDataAdapter(query, conn))
-							{
-								DataTable dataTable = new DataTable();
-								adapter.Fill(dataTable);
-								AddLog($"ButtonCBT_Click, OracleDataAdapter, row count = {dataTable.Rows.Count}, columns = {dataTable.Columns.Count}");
-							}
-						}
-
-                        conn.Close();
-                        AddLog("ButtonCBT_Click, closed.");
+					}
+					else
+					{
+						AddLog($"ButtonCBT_Click, open failed, connection state = {conn.State.ToString()}");
 					}
 				}
-				catch (OracleException ex)
-				{
-					AddLog($"ButtonCBT_Click, OracleException, {ex.Message}");
-				}
-				catch (Exception ex)
-				{
-					AddLog($"ButtonCBT_Click, {ex.ToString()}, {ex.Message}");
-				}
+			}
+			catch (OracleException ex)
+			{
+				AddLog($"ButtonCBT_Click, OracleException, {ex.Message}");
+			}
+			catch (Exception ex)
+			{
+				AddLog($"ButtonCBT_Click, {ex.ToString()}, {ex.Message}");
+			}
+			finally
+			{
+				AddLog("ButtonCBT_Click, ended.");
 			}
 		}
 
 		private void ButtonClose_Click(object sender, EventArgs e)
         {
-			Properties.Settings.Default.Save();
+			Config.Default.Save();
             this.Close();
         }
 
@@ -136,9 +137,9 @@ namespace OraclePerfTest
 			//
 			try
 			{
-				string connectionString = $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={Properties.Settings.Default.ServerIp})(PORT={Properties.Settings.Default.ServerPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={Properties.Settings.Default.DatabaseName})));User ID={Properties.Settings.Default.DatabaseId};Password={Properties.Settings.Default.DatabasePassword};Connection Timeout=30;";
+				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.DatabaseId, Config.Default.DatabasePassword);
 
-				for (int i = 0; i < Properties.Settings.Default.UserCount; i++)
+				for (int i = 0; i < Config.Default.UserCount; i++)
 				{
 					var mock = new MockClient(i, new OracleConnection(connectionString));
 					this.mocks.Add(mock);
@@ -159,7 +160,7 @@ namespace OraclePerfTest
 			{
 				this.openingCancellation = new CancellationTokenSource();
 				this.openingCancellationToken = this.openingCancellation.Token;
-				this.openingTimer.Interval = 1000 / double.Parse(Properties.Settings.Default.OpenRate);
+				this.openingTimer.Interval = 1000 / double.Parse(Config.Default.OpenRate);
 				this.openingTimer.Start();
 			}
 			catch (Exception ex)
@@ -176,20 +177,9 @@ namespace OraclePerfTest
 			//
 			try
 			{
-				StringBuilder sb = new StringBuilder(1024);
-				sb.Append(Properties.Settings.Default.Query);
-				sb.Replace("\r\n", "");
-				List<string> arquments = Properties.Settings.Default.QueryArguments.Split('\n').ToList();
-				for (int i = 0; i < arquments.Count; i++)
-				{
-					string arg = $"${i + 1}";
-					sb.Replace(arg, arquments[i]);
-				}
-				this.readingQuery = sb.ToString();
-
 				this.readingCancellation = new CancellationTokenSource();
 				this.readingCancellationToken = this.readingCancellation.Token;
-				this.readingTimer.Interval = 1000 / double.Parse(Properties.Settings.Default.QueryRate);
+				this.readingTimer.Interval = 1000 / double.Parse(Config.Default.QueryRate);
 				this.readingTimer.Start();
 
 				this.statTimer.Start();
@@ -319,6 +309,38 @@ namespace OraclePerfTest
 			this.mocks.Clear();
 		}
 
+		private string GenerateConnectionString(string serverIp, string serverPort, string databaseName, string databaseId, string databasePassword)
+		{
+			return $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={serverIp})(PORT={serverPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={databaseName})));User ID={databaseId};Password={databasePassword};Connection Timeout=30;Pooling=true;Statement Cache Size=1;";
+		}
+
+		private bool GenerateOracleCommand(OracleCommand cmd)
+		{
+			try
+			{
+				cmd.AddToStatementCache = true;
+				cmd.CommandText = Config.Default.Query.Replace("\r\n", "");
+
+				List<string> arquments = Config.Default.QueryArguments.Split('\n').ToList();
+				for (int i = 0; i < arquments.Count; i++)
+				{
+					//
+					// TODO: Use correct OracleDbType
+					//
+					OracleParameter paramPeriod = new OracleParameter();
+					paramPeriod.OracleDbType = OracleDbType.Decimal;
+					paramPeriod.Value = int.Parse(arquments[i].Trim());
+					cmd.Parameters.Add(paramPeriod);
+				}
+			}
+			catch (OracleException ex)
+			{
+				AddLog($"GenerateOracleCommand, {ex.ToString()}, {ex.Message}");
+				return false;
+			}
+			return true;
+		}
+
 		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
 		{
 			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
@@ -389,17 +411,17 @@ namespace OraclePerfTest
 				{
 					try
 					{
-						if (this.radioButtonConnected.Checked)
+						using (OracleCommand cmd = new OracleCommand())
 						{
-							using (OracleCommand cmd = new OracleCommand())
+							cmd.Connection = mock.Connection;
+							if (GenerateOracleCommand(cmd))
 							{
-								cmd.Connection = mock.Connection;
-								cmd.CommandText = this.readingQuery;
-								using (OracleDataReader reader = cmd.ExecuteReader())
+								if (this.radioButtonConnected.Checked)
 								{
-									this.stat.AddReadCount();
-									if (Properties.Settings.Default.ReadModeSelectRead)
+									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
+										this.stat.AddReadCount();
+										reader.FetchSize = long.Parse(Config.Default.FetchSize);
 										while (reader.Read() && !cancellationToken.IsCancellationRequested)
 										{
 											this.stat.AddRowCount();
@@ -407,19 +429,16 @@ namespace OraclePerfTest
 										}
 									}
 								}
-							}
-						}
-						else
-						{
-							using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
-							{
-								this.stat.AddReadCount();
-								if (Properties.Settings.Default.ReadModeSelectRead)
+								else
 								{
-									DataTable dataTable = new DataTable();
-									adapter.Fill(dataTable);
-									this.stat.AddRowCount(dataTable.Rows.Count);
-									this.stat.AddColumnCount(dataTable.Columns.Count);
+									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
+									{
+										this.stat.AddReadCount();
+										DataTable dataTable = new DataTable();
+										adapter.Fill(dataTable);
+										this.stat.AddRowCount(dataTable.Rows.Count);
+										this.stat.AddColumnCount(dataTable.Columns.Count);
+									}
 								}
 							}
 						}

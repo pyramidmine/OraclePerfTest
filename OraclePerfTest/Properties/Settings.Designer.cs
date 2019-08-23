@@ -151,7 +151,7 @@ namespace OraclePerfTest.Properties {
             "RR_TIME,\r\n       A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n " +
             "      A.CTH_WK_GOODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FR" +
             "OM MN_A1_TODAY A,\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND " +
-            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-$1/(24*60*60)")]
+            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60)")]
         public string Query {
             get {
                 return ((string)(this["Query"]));
@@ -163,7 +163,7 @@ namespace OraclePerfTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         public string QueryArguments {
             get {
                 return ((string)(this["QueryArguments"]));
@@ -182,6 +182,18 @@ namespace OraclePerfTest.Properties {
             }
             set {
                 this["OpenRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize {
+            get {
+                return ((string)(this["FetchSize"]));
+            }
+            set {
+                this["FetchSize"] = value;
             }
         }
     }

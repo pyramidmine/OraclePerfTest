@@ -62,8 +62,10 @@
 			this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
 			this.radioButtonDisconnected = new System.Windows.Forms.RadioButton();
 			this.radioButtonConnected = new System.Windows.Forms.RadioButton();
+			this.textBoxFetchSize = new System.Windows.Forms.TextBox();
 			this.textBoxArguments = new System.Windows.Forms.TextBox();
 			this.textBoxQuery = new System.Windows.Forms.TextBox();
+			this.labelFetchSize = new System.Windows.Forms.Label();
 			this.buttonCBT = new System.Windows.Forms.Button();
 			this.groupBoxServer.SuspendLayout();
 			this.groupBoxStress.SuspendLayout();
@@ -234,7 +236,7 @@
 			this.labelArguments.Location = new System.Drawing.Point(9, 222);
 			this.labelArguments.Name = "labelArguments";
 			this.labelArguments.Size = new System.Drawing.Size(70, 12);
-			this.labelArguments.TabIndex = 0;
+			this.labelArguments.TabIndex = 1;
 			this.labelArguments.Text = "Arguments:";
 			// 
 			// listBoxLogs
@@ -247,7 +249,7 @@
 			this.listBoxLogs.Name = "listBoxLogs";
 			this.listBoxLogs.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.listBoxLogs.Size = new System.Drawing.Size(760, 200);
-			this.listBoxLogs.TabIndex = 0;
+			this.listBoxLogs.TabIndex = 6;
 			this.listBoxLogs.TabStop = false;
 			// 
 			// labelLogs
@@ -388,8 +390,10 @@
 			// 
 			this.groupBoxQuery.Controls.Add(this.groupBoxConnectionMode);
 			this.groupBoxQuery.Controls.Add(this.labelQuery);
+			this.groupBoxQuery.Controls.Add(this.textBoxFetchSize);
 			this.groupBoxQuery.Controls.Add(this.textBoxArguments);
 			this.groupBoxQuery.Controls.Add(this.textBoxQuery);
+			this.groupBoxQuery.Controls.Add(this.labelFetchSize);
 			this.groupBoxQuery.Controls.Add(this.labelArguments);
 			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
 			this.groupBoxQuery.Name = "groupBoxQuery";
@@ -402,10 +406,10 @@
 			// 
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnected);
-			this.groupBoxConnectionMode.Location = new System.Drawing.Point(169, 225);
+			this.groupBoxConnectionMode.Location = new System.Drawing.Point(328, 222);
 			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
-			this.groupBoxConnectionMode.Size = new System.Drawing.Size(149, 69);
-			this.groupBoxConnectionMode.TabIndex = 2;
+			this.groupBoxConnectionMode.Size = new System.Drawing.Size(149, 72);
+			this.groupBoxConnectionMode.TabIndex = 5;
 			this.groupBoxConnectionMode.TabStop = false;
 			this.groupBoxConnectionMode.Text = "Connection Mode:";
 			// 
@@ -431,6 +435,15 @@
 			this.radioButtonConnected.Text = "Connected";
 			this.radioButtonConnected.UseVisualStyleBackColor = true;
 			// 
+			// textBoxFetchSize
+			// 
+			this.textBoxFetchSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize.Location = new System.Drawing.Point(170, 237);
+			this.textBoxFetchSize.Name = "textBoxFetchSize";
+			this.textBoxFetchSize.Size = new System.Drawing.Size(149, 21);
+			this.textBoxFetchSize.TabIndex = 4;
+			this.textBoxFetchSize.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize;
+			// 
 			// textBoxArguments
 			// 
 			this.textBoxArguments.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -438,7 +451,7 @@
 			this.textBoxArguments.Multiline = true;
 			this.textBoxArguments.Name = "textBoxArguments";
 			this.textBoxArguments.Size = new System.Drawing.Size(149, 56);
-			this.textBoxArguments.TabIndex = 1;
+			this.textBoxArguments.TabIndex = 2;
 			this.textBoxArguments.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments;
 			// 
 			// textBoxQuery
@@ -453,12 +466,21 @@
 			this.textBoxQuery.Text = global::OraclePerfTest.Properties.Settings.Default.Query;
 			this.textBoxQuery.WordWrap = false;
 			// 
+			// labelFetchSize
+			// 
+			this.labelFetchSize.AutoSize = true;
+			this.labelFetchSize.Location = new System.Drawing.Point(168, 222);
+			this.labelFetchSize.Name = "labelFetchSize";
+			this.labelFetchSize.Size = new System.Drawing.Size(69, 12);
+			this.labelFetchSize.TabIndex = 3;
+			this.labelFetchSize.Text = "Fetch Size:";
+			// 
 			// buttonCBT
 			// 
 			this.buttonCBT.Location = new System.Drawing.Point(173, 559);
 			this.buttonCBT.Name = "buttonCBT";
 			this.buttonCBT.Size = new System.Drawing.Size(75, 23);
-			this.buttonCBT.TabIndex = 9;
+			this.buttonCBT.TabIndex = 7;
 			this.buttonCBT.TabStop = false;
 			this.buttonCBT.Text = "CBT";
 			this.buttonCBT.UseVisualStyleBackColor = true;
@@ -534,6 +556,8 @@
 		private System.Windows.Forms.Label labelOpenRate;
 		private System.Windows.Forms.TextBox textBoxOpenRate;
 		private System.Windows.Forms.Label labelRequestPerSecond;
+		private System.Windows.Forms.TextBox textBoxFetchSize;
+		private System.Windows.Forms.Label labelFetchSize;
 	}
 }
 
