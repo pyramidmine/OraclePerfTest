@@ -61,7 +61,7 @@
 			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
 			this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
 			this.radioButtonDisconnected = new System.Windows.Forms.RadioButton();
-			this.radioButtonConnection = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnected = new System.Windows.Forms.RadioButton();
 			this.textBoxArguments = new System.Windows.Forms.TextBox();
 			this.textBoxQuery = new System.Windows.Forms.TextBox();
 			this.buttonCBT = new System.Windows.Forms.Button();
@@ -231,7 +231,7 @@
 			// labelArguments
 			// 
 			this.labelArguments.AutoSize = true;
-			this.labelArguments.Location = new System.Drawing.Point(9, 226);
+			this.labelArguments.Location = new System.Drawing.Point(9, 222);
 			this.labelArguments.Name = "labelArguments";
 			this.labelArguments.Size = new System.Drawing.Size(70, 12);
 			this.labelArguments.TabIndex = 0;
@@ -274,7 +274,7 @@
 			this.groupBoxServer.Location = new System.Drawing.Point(12, 12);
 			this.groupBoxServer.Name = "groupBoxServer";
 			this.groupBoxServer.Size = new System.Drawing.Size(267, 164);
-			this.groupBoxServer.TabIndex = 6;
+			this.groupBoxServer.TabIndex = 3;
 			this.groupBoxServer.TabStop = false;
 			this.groupBoxServer.Text = "Server";
 			// 
@@ -321,7 +321,7 @@
 			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
 			this.groupBoxStress.Name = "groupBoxStress";
 			this.groupBoxStress.Size = new System.Drawing.Size(267, 134);
-			this.groupBoxStress.TabIndex = 7;
+			this.groupBoxStress.TabIndex = 4;
 			this.groupBoxStress.TabStop = false;
 			this.groupBoxStress.Text = "Stress";
 			// 
@@ -394,17 +394,17 @@
 			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
 			this.groupBoxQuery.Name = "groupBoxQuery";
 			this.groupBoxQuery.Size = new System.Drawing.Size(487, 304);
-			this.groupBoxQuery.TabIndex = 8;
+			this.groupBoxQuery.TabIndex = 5;
 			this.groupBoxQuery.TabStop = false;
 			this.groupBoxQuery.Text = "Query";
 			// 
 			// groupBoxConnectionMode
 			// 
 			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
-			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnection);
-			this.groupBoxConnectionMode.Location = new System.Drawing.Point(293, 226);
+			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnected);
+			this.groupBoxConnectionMode.Location = new System.Drawing.Point(169, 225);
 			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
-			this.groupBoxConnectionMode.Size = new System.Drawing.Size(184, 69);
+			this.groupBoxConnectionMode.Size = new System.Drawing.Size(149, 69);
 			this.groupBoxConnectionMode.TabIndex = 2;
 			this.groupBoxConnectionMode.TabStop = false;
 			this.groupBoxConnectionMode.Text = "Connection Mode:";
@@ -416,29 +416,28 @@
 			this.radioButtonDisconnected.Name = "radioButtonDisconnected";
 			this.radioButtonDisconnected.Size = new System.Drawing.Size(100, 16);
 			this.radioButtonDisconnected.TabIndex = 1;
-			this.radioButtonDisconnected.TabStop = true;
 			this.radioButtonDisconnected.Text = "Disconnected";
 			this.radioButtonDisconnected.UseVisualStyleBackColor = true;
 			// 
-			// radioButtonConnection
+			// radioButtonConnected
 			// 
-			this.radioButtonConnection.AutoSize = true;
-			this.radioButtonConnection.Checked = true;
-			this.radioButtonConnection.Location = new System.Drawing.Point(6, 22);
-			this.radioButtonConnection.Name = "radioButtonConnection";
-			this.radioButtonConnection.Size = new System.Drawing.Size(84, 16);
-			this.radioButtonConnection.TabIndex = 0;
-			this.radioButtonConnection.TabStop = true;
-			this.radioButtonConnection.Text = "Connected";
-			this.radioButtonConnection.UseVisualStyleBackColor = true;
+			this.radioButtonConnected.AutoSize = true;
+			this.radioButtonConnected.Checked = true;
+			this.radioButtonConnected.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnected.Name = "radioButtonConnected";
+			this.radioButtonConnected.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnected.TabIndex = 0;
+			this.radioButtonConnected.TabStop = true;
+			this.radioButtonConnected.Text = "Connected";
+			this.radioButtonConnected.UseVisualStyleBackColor = true;
 			// 
 			// textBoxArguments
 			// 
 			this.textBoxArguments.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxArguments.Location = new System.Drawing.Point(9, 241);
+			this.textBoxArguments.Location = new System.Drawing.Point(11, 237);
 			this.textBoxArguments.Multiline = true;
 			this.textBoxArguments.Name = "textBoxArguments";
-			this.textBoxArguments.Size = new System.Drawing.Size(272, 54);
+			this.textBoxArguments.Size = new System.Drawing.Size(149, 56);
 			this.textBoxArguments.TabIndex = 1;
 			this.textBoxArguments.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments;
 			// 
@@ -449,7 +448,7 @@
 			this.textBoxQuery.Multiline = true;
 			this.textBoxQuery.Name = "textBoxQuery";
 			this.textBoxQuery.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxQuery.Size = new System.Drawing.Size(466, 150);
+			this.textBoxQuery.Size = new System.Drawing.Size(466, 176);
 			this.textBoxQuery.TabIndex = 0;
 			this.textBoxQuery.Text = global::OraclePerfTest.Properties.Settings.Default.Query;
 			this.textBoxQuery.WordWrap = false;
@@ -531,7 +530,7 @@
 		private System.Windows.Forms.Button buttonCBT;
 		private System.Windows.Forms.GroupBox groupBoxConnectionMode;
 		private System.Windows.Forms.RadioButton radioButtonDisconnected;
-		private System.Windows.Forms.RadioButton radioButtonConnection;
+		private System.Windows.Forms.RadioButton radioButtonConnected;
 		private System.Windows.Forms.Label labelOpenRate;
 		private System.Windows.Forms.TextBox textBoxOpenRate;
 		private System.Windows.Forms.Label labelRequestPerSecond;

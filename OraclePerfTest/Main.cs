@@ -77,7 +77,7 @@ namespace OraclePerfTest
 							query = query.Replace(arg, arquments[i]);
 						}
 
-						if (this.radioButtonConnection.Checked)
+						if (this.radioButtonConnected.Checked)
 						{
 							using (OracleCommand cmd = new OracleCommand())
 							{
@@ -389,7 +389,7 @@ namespace OraclePerfTest
 				{
 					try
 					{
-						if (this.radioButtonConnection.Checked)
+						if (this.radioButtonConnected.Checked)
 						{
 							using (OracleCommand cmd = new OracleCommand())
 							{
@@ -398,26 +398,29 @@ namespace OraclePerfTest
 								using (OracleDataReader reader = cmd.ExecuteReader())
 								{
 									this.stat.AddReadCount();
-									while (reader.Read() && !cancellationToken.IsCancellationRequested)
+									if (Properties.Settings.Default.ReadModeSelectRead)
 									{
-										this.stat.AddRowCount();
-										this.stat.AddFieldCount(reader.FieldCount);
+										while (reader.Read() && !cancellationToken.IsCancellationRequested)
+										{
+											this.stat.AddRowCount();
+											this.stat.AddFieldCount(reader.FieldCount);
+										}
 									}
-									reader.Dispose();
 								}
-								cmd.Dispose();
 							}
 						}
 						else
 						{
 							using (OracleDataAdapter adapter = new OracleDataAdapter(this.readingQuery, mock.Connection))
 							{
-								DataTable dataTable = new DataTable();
-								adapter.Fill(dataTable);
 								this.stat.AddReadCount();
-								this.stat.AddRowCount(dataTable.Rows.Count);
-								this.stat.AddColumnCount(dataTable.Columns.Count);
-								adapter.Dispose();
+								if (Properties.Settings.Default.ReadModeSelectRead)
+								{
+									DataTable dataTable = new DataTable();
+									adapter.Fill(dataTable);
+									this.stat.AddRowCount(dataTable.Rows.Count);
+									this.stat.AddColumnCount(dataTable.Columns.Count);
+								}
 							}
 						}
 					}
