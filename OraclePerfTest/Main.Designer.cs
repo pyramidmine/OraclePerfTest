@@ -44,38 +44,119 @@
 			this.buttonStart = new System.Windows.Forms.Button();
 			this.buttonStop = new System.Windows.Forms.Button();
 			this.buttonClose = new System.Windows.Forms.Button();
-			this.labelQuery = new System.Windows.Forms.Label();
-			this.labelArguments = new System.Windows.Forms.Label();
 			this.listBoxLogs = new System.Windows.Forms.ListBox();
 			this.labelLogs = new System.Windows.Forms.Label();
 			this.groupBoxServer = new System.Windows.Forms.GroupBox();
+			this.groupBoxStress = new System.Windows.Forms.GroupBox();
+			this.labelOpenRate = new System.Windows.Forms.Label();
+			this.labelRequestPerSecond = new System.Windows.Forms.Label();
+			this.buttonCBT = new System.Windows.Forms.Button();
+			this.labelFetchSize1 = new System.Windows.Forms.Label();
+			this.groupBoxConnectionMode1 = new System.Windows.Forms.GroupBox();
+			this.radioButtonConnectionModeDisconnected1 = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnectionModeConnected1 = new System.Windows.Forms.RadioButton();
+			this.groupBoxReadingMode1 = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect1 = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead1 = new System.Windows.Forms.RadioButton();
+			this.tabControlQuery = new System.Windows.Forms.TabControl();
+			this.tabPageQuery1 = new System.Windows.Forms.TabPage();
+			this.labelQuery1 = new System.Windows.Forms.Label();
+			this.labelWeight1 = new System.Windows.Forms.Label();
+			this.labelArguments1 = new System.Windows.Forms.Label();
+			this.tabPageQuery3 = new System.Windows.Forms.TabPage();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect3 = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead3 = new System.Windows.Forms.RadioButton();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.radioButtonConnectionModeDisconnected3 = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnectionModeConnected3 = new System.Windows.Forms.RadioButton();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.tabPageQuery4 = new System.Windows.Forms.TabPage();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect4 = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead4 = new System.Windows.Forms.RadioButton();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.radioButtonConnectionModeDisconnected4 = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnectionModeConnected4 = new System.Windows.Forms.RadioButton();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.tabPageQuery5 = new System.Windows.Forms.TabPage();
+			this.groupBox7 = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect5 = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead5 = new System.Windows.Forms.RadioButton();
+			this.groupBox8 = new System.Windows.Forms.GroupBox();
+			this.radioButtonConnectionModeDisconnected5 = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnectionModeConnected5 = new System.Windows.Forms.RadioButton();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label16 = new System.Windows.Forms.Label();
+			this.label17 = new System.Windows.Forms.Label();
+			this.tabPageQuery2 = new System.Windows.Forms.TabPage();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.radioButtonReadingModeSelect2 = new System.Windows.Forms.RadioButton();
+			this.radioButtonReadingModeSelectRead2 = new System.Windows.Forms.RadioButton();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.radioButtonConnectionModeDisconnected2 = new System.Windows.Forms.RadioButton();
+			this.radioButtonConnectionModeConnected2 = new System.Windows.Forms.RadioButton();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.checkBoxUseQuery1 = new System.Windows.Forms.CheckBox();
+			this.textBoxQuery1 = new System.Windows.Forms.TextBox();
+			this.textBoxWeight1 = new System.Windows.Forms.TextBox();
+			this.textBoxFetchSize1 = new System.Windows.Forms.TextBox();
+			this.textBoxArguments1 = new System.Windows.Forms.TextBox();
+			this.textBoxQuery2 = new System.Windows.Forms.TextBox();
+			this.checkBoxUseQuery2 = new System.Windows.Forms.CheckBox();
+			this.textBoxWeight2 = new System.Windows.Forms.TextBox();
+			this.textBoxFetchSize2 = new System.Windows.Forms.TextBox();
+			this.textBoxArguments2 = new System.Windows.Forms.TextBox();
+			this.checkBoxUseQuery3 = new System.Windows.Forms.CheckBox();
+			this.textBoxQuery3 = new System.Windows.Forms.TextBox();
+			this.textBoxWeight3 = new System.Windows.Forms.TextBox();
+			this.textBoxFetchSize3 = new System.Windows.Forms.TextBox();
+			this.textBoxArguments3 = new System.Windows.Forms.TextBox();
+			this.checkBoxUseQuery4 = new System.Windows.Forms.CheckBox();
+			this.textBoxQuery4 = new System.Windows.Forms.TextBox();
+			this.textBoxWeight4 = new System.Windows.Forms.TextBox();
+			this.textBoxFetchSize4 = new System.Windows.Forms.TextBox();
+			this.textBoxArguments4 = new System.Windows.Forms.TextBox();
+			this.checkBoxUseQuery5 = new System.Windows.Forms.CheckBox();
+			this.textBoxQuery5 = new System.Windows.Forms.TextBox();
+			this.textBoxWeight5 = new System.Windows.Forms.TextBox();
+			this.textBoxFetchSize5 = new System.Windows.Forms.TextBox();
+			this.textBoxArguments5 = new System.Windows.Forms.TextBox();
 			this.textBoxIp = new System.Windows.Forms.TextBox();
 			this.textBoxDatabase = new System.Windows.Forms.TextBox();
 			this.textBoxPort = new System.Windows.Forms.TextBox();
-			this.groupBoxStress = new System.Windows.Forms.GroupBox();
 			this.numericUpDownUserCount = new System.Windows.Forms.NumericUpDown();
-			this.labelOpenRate = new System.Windows.Forms.Label();
 			this.textBoxOpenRate = new System.Windows.Forms.TextBox();
 			this.textBoxQueryRate = new System.Windows.Forms.TextBox();
-			this.labelRequestPerSecond = new System.Windows.Forms.Label();
-			this.groupBoxQuery = new System.Windows.Forms.GroupBox();
-			this.groupBoxReadingMode = new System.Windows.Forms.GroupBox();
-			this.radioButtonReadingModeSelect = new System.Windows.Forms.RadioButton();
-			this.radioButtonReadingModeSelectRead = new System.Windows.Forms.RadioButton();
-			this.groupBoxConnectionMode = new System.Windows.Forms.GroupBox();
-			this.radioButtonDisconnected = new System.Windows.Forms.RadioButton();
-			this.radioButtonConnected = new System.Windows.Forms.RadioButton();
-			this.textBoxFetchSize = new System.Windows.Forms.TextBox();
-			this.textBoxArguments = new System.Windows.Forms.TextBox();
-			this.textBoxQuery = new System.Windows.Forms.TextBox();
-			this.labelFetchSize = new System.Windows.Forms.Label();
-			this.buttonCBT = new System.Windows.Forms.Button();
 			this.groupBoxServer.SuspendLayout();
 			this.groupBoxStress.SuspendLayout();
+			this.groupBoxConnectionMode1.SuspendLayout();
+			this.groupBoxReadingMode1.SuspendLayout();
+			this.tabControlQuery.SuspendLayout();
+			this.tabPageQuery1.SuspendLayout();
+			this.tabPageQuery3.SuspendLayout();
+			this.groupBox3.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			this.tabPageQuery4.SuspendLayout();
+			this.groupBox5.SuspendLayout();
+			this.groupBox6.SuspendLayout();
+			this.tabPageQuery5.SuspendLayout();
+			this.groupBox7.SuspendLayout();
+			this.groupBox8.SuspendLayout();
+			this.tabPageQuery2.SuspendLayout();
+			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).BeginInit();
-			this.groupBoxQuery.SuspendLayout();
-			this.groupBoxReadingMode.SuspendLayout();
-			this.groupBoxConnectionMode.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelIp
@@ -225,26 +306,11 @@
 			this.buttonClose.UseVisualStyleBackColor = true;
 			this.buttonClose.Click += new System.EventHandler(this.ButtonClose_Click);
 			// 
-			// labelQuery
-			// 
-			this.labelQuery.AutoSize = true;
-			this.labelQuery.Location = new System.Drawing.Point(9, 20);
-			this.labelQuery.Name = "labelQuery";
-			this.labelQuery.Size = new System.Drawing.Size(43, 12);
-			this.labelQuery.TabIndex = 0;
-			this.labelQuery.Text = "Query:";
-			// 
-			// labelArguments
-			// 
-			this.labelArguments.AutoSize = true;
-			this.labelArguments.Location = new System.Drawing.Point(9, 222);
-			this.labelArguments.Name = "labelArguments";
-			this.labelArguments.Size = new System.Drawing.Size(70, 12);
-			this.labelArguments.TabIndex = 1;
-			this.labelArguments.Text = "Arguments:";
-			// 
 			// listBoxLogs
 			// 
+			this.listBoxLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.listBoxLogs.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listBoxLogs.FormattingEnabled = true;
 			this.listBoxLogs.HorizontalScrollbar = true;
@@ -284,6 +350,939 @@
 			this.groupBoxServer.TabStop = false;
 			this.groupBoxServer.Text = "Server";
 			// 
+			// groupBoxStress
+			// 
+			this.groupBoxStress.Controls.Add(this.labelUserCount);
+			this.groupBoxStress.Controls.Add(this.numericUpDownUserCount);
+			this.groupBoxStress.Controls.Add(this.labelOpenRate);
+			this.groupBoxStress.Controls.Add(this.labelQueryRate);
+			this.groupBoxStress.Controls.Add(this.textBoxOpenRate);
+			this.groupBoxStress.Controls.Add(this.textBoxQueryRate);
+			this.groupBoxStress.Controls.Add(this.textBoxTotalQueryRate);
+			this.groupBoxStress.Controls.Add(this.labelTotalQueryRate);
+			this.groupBoxStress.Controls.Add(this.labelRequestPerSecond);
+			this.groupBoxStress.Controls.Add(this.label1);
+			this.groupBoxStress.Controls.Add(this.labelQueryPerSecond);
+			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
+			this.groupBoxStress.Name = "groupBoxStress";
+			this.groupBoxStress.Size = new System.Drawing.Size(267, 134);
+			this.groupBoxStress.TabIndex = 4;
+			this.groupBoxStress.TabStop = false;
+			this.groupBoxStress.Text = "Stress";
+			// 
+			// labelOpenRate
+			// 
+			this.labelOpenRate.AutoSize = true;
+			this.labelOpenRate.Location = new System.Drawing.Point(6, 103);
+			this.labelOpenRate.Name = "labelOpenRate";
+			this.labelOpenRate.Size = new System.Drawing.Size(68, 12);
+			this.labelOpenRate.TabIndex = 0;
+			this.labelOpenRate.Text = "Open Rate:";
+			// 
+			// labelRequestPerSecond
+			// 
+			this.labelRequestPerSecond.AutoSize = true;
+			this.labelRequestPerSecond.Location = new System.Drawing.Point(184, 103);
+			this.labelRequestPerSecond.Name = "labelRequestPerSecond";
+			this.labelRequestPerSecond.Size = new System.Drawing.Size(66, 12);
+			this.labelRequestPerSecond.TabIndex = 0;
+			this.labelRequestPerSecond.Text = "req. / sec.";
+			// 
+			// buttonCBT
+			// 
+			this.buttonCBT.Location = new System.Drawing.Point(173, 559);
+			this.buttonCBT.Name = "buttonCBT";
+			this.buttonCBT.Size = new System.Drawing.Size(75, 23);
+			this.buttonCBT.TabIndex = 7;
+			this.buttonCBT.TabStop = false;
+			this.buttonCBT.Text = "CBT";
+			this.buttonCBT.UseVisualStyleBackColor = true;
+			this.buttonCBT.Click += new System.EventHandler(this.ButtonCBT_Click);
+			// 
+			// labelFetchSize1
+			// 
+			this.labelFetchSize1.AutoSize = true;
+			this.labelFetchSize1.Location = new System.Drawing.Point(121, 197);
+			this.labelFetchSize1.Name = "labelFetchSize1";
+			this.labelFetchSize1.Size = new System.Drawing.Size(69, 12);
+			this.labelFetchSize1.TabIndex = 3;
+			this.labelFetchSize1.Text = "Fetch Size:";
+			// 
+			// groupBoxConnectionMode1
+			// 
+			this.groupBoxConnectionMode1.Controls.Add(this.radioButtonConnectionModeDisconnected1);
+			this.groupBoxConnectionMode1.Controls.Add(this.radioButtonConnectionModeConnected1);
+			this.groupBoxConnectionMode1.Location = new System.Drawing.Point(217, 198);
+			this.groupBoxConnectionMode1.Name = "groupBoxConnectionMode1";
+			this.groupBoxConnectionMode1.Size = new System.Drawing.Size(125, 75);
+			this.groupBoxConnectionMode1.TabIndex = 5;
+			this.groupBoxConnectionMode1.TabStop = false;
+			this.groupBoxConnectionMode1.Text = "Connection Mode:";
+			// 
+			// radioButtonConnectionModeDisconnected1
+			// 
+			this.radioButtonConnectionModeDisconnected1.AutoSize = true;
+			this.radioButtonConnectionModeDisconnected1.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonConnectionModeDisconnected1.Name = "radioButtonConnectionModeDisconnected1";
+			this.radioButtonConnectionModeDisconnected1.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonConnectionModeDisconnected1.TabIndex = 1;
+			this.radioButtonConnectionModeDisconnected1.Text = "Disconnected";
+			this.radioButtonConnectionModeDisconnected1.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnectionModeConnected1
+			// 
+			this.radioButtonConnectionModeConnected1.AutoSize = true;
+			this.radioButtonConnectionModeConnected1.Checked = true;
+			this.radioButtonConnectionModeConnected1.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnectionModeConnected1.Name = "radioButtonConnectionModeConnected1";
+			this.radioButtonConnectionModeConnected1.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnectionModeConnected1.TabIndex = 0;
+			this.radioButtonConnectionModeConnected1.TabStop = true;
+			this.radioButtonConnectionModeConnected1.Text = "Connected";
+			this.radioButtonConnectionModeConnected1.UseVisualStyleBackColor = true;
+			// 
+			// groupBoxReadingMode1
+			// 
+			this.groupBoxReadingMode1.Controls.Add(this.radioButtonReadingModeSelect1);
+			this.groupBoxReadingMode1.Controls.Add(this.radioButtonReadingModeSelectRead1);
+			this.groupBoxReadingMode1.Location = new System.Drawing.Point(348, 198);
+			this.groupBoxReadingMode1.Name = "groupBoxReadingMode1";
+			this.groupBoxReadingMode1.Size = new System.Drawing.Size(125, 75);
+			this.groupBoxReadingMode1.TabIndex = 6;
+			this.groupBoxReadingMode1.TabStop = false;
+			this.groupBoxReadingMode1.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect1
+			// 
+			this.radioButtonReadingModeSelect1.AutoSize = true;
+			this.radioButtonReadingModeSelect1.Checked = true;
+			this.radioButtonReadingModeSelect1.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonReadingModeSelect1.Name = "radioButtonReadingModeSelect1";
+			this.radioButtonReadingModeSelect1.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect1.TabIndex = 1;
+			this.radioButtonReadingModeSelect1.TabStop = true;
+			this.radioButtonReadingModeSelect1.Text = "Select (only)";
+			this.radioButtonReadingModeSelect1.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead1
+			// 
+			this.radioButtonReadingModeSelectRead1.AutoSize = true;
+			this.radioButtonReadingModeSelectRead1.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonReadingModeSelectRead1.Name = "radioButtonReadingModeSelectRead1";
+			this.radioButtonReadingModeSelectRead1.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead1.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead1.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead1.UseVisualStyleBackColor = true;
+			// 
+			// tabControlQuery
+			// 
+			this.tabControlQuery.Controls.Add(this.tabPageQuery1);
+			this.tabControlQuery.Controls.Add(this.tabPageQuery2);
+			this.tabControlQuery.Controls.Add(this.tabPageQuery3);
+			this.tabControlQuery.Controls.Add(this.tabPageQuery4);
+			this.tabControlQuery.Controls.Add(this.tabPageQuery5);
+			this.tabControlQuery.Location = new System.Drawing.Point(285, 12);
+			this.tabControlQuery.Name = "tabControlQuery";
+			this.tabControlQuery.SelectedIndex = 0;
+			this.tabControlQuery.Size = new System.Drawing.Size(488, 304);
+			this.tabControlQuery.TabIndex = 8;
+			// 
+			// tabPageQuery1
+			// 
+			this.tabPageQuery1.Controls.Add(this.groupBoxReadingMode1);
+			this.tabPageQuery1.Controls.Add(this.checkBoxUseQuery1);
+			this.tabPageQuery1.Controls.Add(this.groupBoxConnectionMode1);
+			this.tabPageQuery1.Controls.Add(this.textBoxQuery1);
+			this.tabPageQuery1.Controls.Add(this.labelQuery1);
+			this.tabPageQuery1.Controls.Add(this.textBoxWeight1);
+			this.tabPageQuery1.Controls.Add(this.textBoxFetchSize1);
+			this.tabPageQuery1.Controls.Add(this.textBoxArguments1);
+			this.tabPageQuery1.Controls.Add(this.labelWeight1);
+			this.tabPageQuery1.Controls.Add(this.labelArguments1);
+			this.tabPageQuery1.Controls.Add(this.labelFetchSize1);
+			this.tabPageQuery1.Location = new System.Drawing.Point(4, 22);
+			this.tabPageQuery1.Name = "tabPageQuery1";
+			this.tabPageQuery1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageQuery1.Size = new System.Drawing.Size(480, 278);
+			this.tabPageQuery1.TabIndex = 0;
+			this.tabPageQuery1.Text = "Query #1";
+			this.tabPageQuery1.UseVisualStyleBackColor = true;
+			// 
+			// labelQuery1
+			// 
+			this.labelQuery1.AutoSize = true;
+			this.labelQuery1.Location = new System.Drawing.Point(7, 9);
+			this.labelQuery1.Name = "labelQuery1";
+			this.labelQuery1.Size = new System.Drawing.Size(43, 12);
+			this.labelQuery1.TabIndex = 0;
+			this.labelQuery1.Text = "Query:";
+			// 
+			// labelWeight1
+			// 
+			this.labelWeight1.AutoSize = true;
+			this.labelWeight1.Location = new System.Drawing.Point(119, 236);
+			this.labelWeight1.Name = "labelWeight1";
+			this.labelWeight1.Size = new System.Drawing.Size(46, 12);
+			this.labelWeight1.TabIndex = 3;
+			this.labelWeight1.Text = "Weight:";
+			// 
+			// labelArguments1
+			// 
+			this.labelArguments1.AutoSize = true;
+			this.labelArguments1.Location = new System.Drawing.Point(7, 197);
+			this.labelArguments1.Name = "labelArguments1";
+			this.labelArguments1.Size = new System.Drawing.Size(70, 12);
+			this.labelArguments1.TabIndex = 1;
+			this.labelArguments1.Text = "Arguments:";
+			// 
+			// tabPageQuery3
+			// 
+			this.tabPageQuery3.Controls.Add(this.groupBox3);
+			this.tabPageQuery3.Controls.Add(this.groupBox4);
+			this.tabPageQuery3.Controls.Add(this.label6);
+			this.tabPageQuery3.Controls.Add(this.label7);
+			this.tabPageQuery3.Controls.Add(this.label8);
+			this.tabPageQuery3.Controls.Add(this.label9);
+			this.tabPageQuery3.Controls.Add(this.checkBoxUseQuery3);
+			this.tabPageQuery3.Controls.Add(this.textBoxQuery3);
+			this.tabPageQuery3.Controls.Add(this.textBoxWeight3);
+			this.tabPageQuery3.Controls.Add(this.textBoxFetchSize3);
+			this.tabPageQuery3.Controls.Add(this.textBoxArguments3);
+			this.tabPageQuery3.Location = new System.Drawing.Point(4, 22);
+			this.tabPageQuery3.Name = "tabPageQuery3";
+			this.tabPageQuery3.Size = new System.Drawing.Size(480, 278);
+			this.tabPageQuery3.TabIndex = 2;
+			this.tabPageQuery3.Text = "Query #3";
+			this.tabPageQuery3.UseVisualStyleBackColor = true;
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.radioButtonReadingModeSelect3);
+			this.groupBox3.Controls.Add(this.radioButtonReadingModeSelectRead3);
+			this.groupBox3.Location = new System.Drawing.Point(348, 198);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(125, 75);
+			this.groupBox3.TabIndex = 17;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect3
+			// 
+			this.radioButtonReadingModeSelect3.AutoSize = true;
+			this.radioButtonReadingModeSelect3.Checked = true;
+			this.radioButtonReadingModeSelect3.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonReadingModeSelect3.Name = "radioButtonReadingModeSelect3";
+			this.radioButtonReadingModeSelect3.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect3.TabIndex = 1;
+			this.radioButtonReadingModeSelect3.TabStop = true;
+			this.radioButtonReadingModeSelect3.Text = "Select (only)";
+			this.radioButtonReadingModeSelect3.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead3
+			// 
+			this.radioButtonReadingModeSelectRead3.AutoSize = true;
+			this.radioButtonReadingModeSelectRead3.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonReadingModeSelectRead3.Name = "radioButtonReadingModeSelectRead3";
+			this.radioButtonReadingModeSelectRead3.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead3.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead3.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead3.UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.radioButtonConnectionModeDisconnected3);
+			this.groupBox4.Controls.Add(this.radioButtonConnectionModeConnected3);
+			this.groupBox4.Location = new System.Drawing.Point(217, 198);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(125, 75);
+			this.groupBox4.TabIndex = 16;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Connection Mode:";
+			// 
+			// radioButtonConnectionModeDisconnected3
+			// 
+			this.radioButtonConnectionModeDisconnected3.AutoSize = true;
+			this.radioButtonConnectionModeDisconnected3.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonConnectionModeDisconnected3.Name = "radioButtonConnectionModeDisconnected3";
+			this.radioButtonConnectionModeDisconnected3.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonConnectionModeDisconnected3.TabIndex = 1;
+			this.radioButtonConnectionModeDisconnected3.Text = "Disconnected";
+			this.radioButtonConnectionModeDisconnected3.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnectionModeConnected3
+			// 
+			this.radioButtonConnectionModeConnected3.AutoSize = true;
+			this.radioButtonConnectionModeConnected3.Checked = true;
+			this.radioButtonConnectionModeConnected3.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnectionModeConnected3.Name = "radioButtonConnectionModeConnected3";
+			this.radioButtonConnectionModeConnected3.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnectionModeConnected3.TabIndex = 0;
+			this.radioButtonConnectionModeConnected3.TabStop = true;
+			this.radioButtonConnectionModeConnected3.Text = "Connected";
+			this.radioButtonConnectionModeConnected3.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(7, 9);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(43, 12);
+			this.label6.TabIndex = 7;
+			this.label6.Text = "Query:";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(119, 236);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(46, 12);
+			this.label7.TabIndex = 12;
+			this.label7.Text = "Weight:";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(7, 197);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(70, 12);
+			this.label8.TabIndex = 9;
+			this.label8.Text = "Arguments:";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(121, 197);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(69, 12);
+			this.label9.TabIndex = 13;
+			this.label9.Text = "Fetch Size:";
+			// 
+			// tabPageQuery4
+			// 
+			this.tabPageQuery4.Controls.Add(this.groupBox5);
+			this.tabPageQuery4.Controls.Add(this.groupBox6);
+			this.tabPageQuery4.Controls.Add(this.label10);
+			this.tabPageQuery4.Controls.Add(this.label11);
+			this.tabPageQuery4.Controls.Add(this.label12);
+			this.tabPageQuery4.Controls.Add(this.label13);
+			this.tabPageQuery4.Controls.Add(this.checkBoxUseQuery4);
+			this.tabPageQuery4.Controls.Add(this.textBoxQuery4);
+			this.tabPageQuery4.Controls.Add(this.textBoxWeight4);
+			this.tabPageQuery4.Controls.Add(this.textBoxFetchSize4);
+			this.tabPageQuery4.Controls.Add(this.textBoxArguments4);
+			this.tabPageQuery4.Location = new System.Drawing.Point(4, 22);
+			this.tabPageQuery4.Name = "tabPageQuery4";
+			this.tabPageQuery4.Size = new System.Drawing.Size(480, 278);
+			this.tabPageQuery4.TabIndex = 3;
+			this.tabPageQuery4.Text = "Query #4";
+			this.tabPageQuery4.UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Controls.Add(this.radioButtonReadingModeSelect4);
+			this.groupBox5.Controls.Add(this.radioButtonReadingModeSelectRead4);
+			this.groupBox5.Location = new System.Drawing.Point(348, 198);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(125, 75);
+			this.groupBox5.TabIndex = 17;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect4
+			// 
+			this.radioButtonReadingModeSelect4.AutoSize = true;
+			this.radioButtonReadingModeSelect4.Checked = true;
+			this.radioButtonReadingModeSelect4.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonReadingModeSelect4.Name = "radioButtonReadingModeSelect4";
+			this.radioButtonReadingModeSelect4.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect4.TabIndex = 1;
+			this.radioButtonReadingModeSelect4.TabStop = true;
+			this.radioButtonReadingModeSelect4.Text = "Select (only)";
+			this.radioButtonReadingModeSelect4.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead4
+			// 
+			this.radioButtonReadingModeSelectRead4.AutoSize = true;
+			this.radioButtonReadingModeSelectRead4.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonReadingModeSelectRead4.Name = "radioButtonReadingModeSelectRead4";
+			this.radioButtonReadingModeSelectRead4.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead4.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead4.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead4.UseVisualStyleBackColor = true;
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Controls.Add(this.radioButtonConnectionModeDisconnected4);
+			this.groupBox6.Controls.Add(this.radioButtonConnectionModeConnected4);
+			this.groupBox6.Location = new System.Drawing.Point(217, 198);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(125, 75);
+			this.groupBox6.TabIndex = 16;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Connection Mode:";
+			// 
+			// radioButtonConnectionModeDisconnected4
+			// 
+			this.radioButtonConnectionModeDisconnected4.AutoSize = true;
+			this.radioButtonConnectionModeDisconnected4.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonConnectionModeDisconnected4.Name = "radioButtonConnectionModeDisconnected4";
+			this.radioButtonConnectionModeDisconnected4.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonConnectionModeDisconnected4.TabIndex = 1;
+			this.radioButtonConnectionModeDisconnected4.Text = "Disconnected";
+			this.radioButtonConnectionModeDisconnected4.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnectionModeConnected4
+			// 
+			this.radioButtonConnectionModeConnected4.AutoSize = true;
+			this.radioButtonConnectionModeConnected4.Checked = true;
+			this.radioButtonConnectionModeConnected4.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnectionModeConnected4.Name = "radioButtonConnectionModeConnected4";
+			this.radioButtonConnectionModeConnected4.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnectionModeConnected4.TabIndex = 0;
+			this.radioButtonConnectionModeConnected4.TabStop = true;
+			this.radioButtonConnectionModeConnected4.Text = "Connected";
+			this.radioButtonConnectionModeConnected4.UseVisualStyleBackColor = true;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(7, 9);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(43, 12);
+			this.label10.TabIndex = 7;
+			this.label10.Text = "Query:";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(119, 236);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(46, 12);
+			this.label11.TabIndex = 12;
+			this.label11.Text = "Weight:";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(7, 197);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(70, 12);
+			this.label12.TabIndex = 9;
+			this.label12.Text = "Arguments:";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(121, 197);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(69, 12);
+			this.label13.TabIndex = 13;
+			this.label13.Text = "Fetch Size:";
+			// 
+			// tabPageQuery5
+			// 
+			this.tabPageQuery5.Controls.Add(this.groupBox7);
+			this.tabPageQuery5.Controls.Add(this.groupBox8);
+			this.tabPageQuery5.Controls.Add(this.label14);
+			this.tabPageQuery5.Controls.Add(this.label15);
+			this.tabPageQuery5.Controls.Add(this.label16);
+			this.tabPageQuery5.Controls.Add(this.label17);
+			this.tabPageQuery5.Controls.Add(this.checkBoxUseQuery5);
+			this.tabPageQuery5.Controls.Add(this.textBoxQuery5);
+			this.tabPageQuery5.Controls.Add(this.textBoxWeight5);
+			this.tabPageQuery5.Controls.Add(this.textBoxFetchSize5);
+			this.tabPageQuery5.Controls.Add(this.textBoxArguments5);
+			this.tabPageQuery5.Location = new System.Drawing.Point(4, 22);
+			this.tabPageQuery5.Name = "tabPageQuery5";
+			this.tabPageQuery5.Size = new System.Drawing.Size(480, 278);
+			this.tabPageQuery5.TabIndex = 4;
+			this.tabPageQuery5.Text = "Query #5";
+			this.tabPageQuery5.UseVisualStyleBackColor = true;
+			// 
+			// groupBox7
+			// 
+			this.groupBox7.Controls.Add(this.radioButtonReadingModeSelect5);
+			this.groupBox7.Controls.Add(this.radioButtonReadingModeSelectRead5);
+			this.groupBox7.Location = new System.Drawing.Point(348, 198);
+			this.groupBox7.Name = "groupBox7";
+			this.groupBox7.Size = new System.Drawing.Size(125, 75);
+			this.groupBox7.TabIndex = 17;
+			this.groupBox7.TabStop = false;
+			this.groupBox7.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect5
+			// 
+			this.radioButtonReadingModeSelect5.AutoSize = true;
+			this.radioButtonReadingModeSelect5.Checked = true;
+			this.radioButtonReadingModeSelect5.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonReadingModeSelect5.Name = "radioButtonReadingModeSelect5";
+			this.radioButtonReadingModeSelect5.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect5.TabIndex = 1;
+			this.radioButtonReadingModeSelect5.TabStop = true;
+			this.radioButtonReadingModeSelect5.Text = "Select (only)";
+			this.radioButtonReadingModeSelect5.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead5
+			// 
+			this.radioButtonReadingModeSelectRead5.AutoSize = true;
+			this.radioButtonReadingModeSelectRead5.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonReadingModeSelectRead5.Name = "radioButtonReadingModeSelectRead5";
+			this.radioButtonReadingModeSelectRead5.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead5.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead5.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead5.UseVisualStyleBackColor = true;
+			// 
+			// groupBox8
+			// 
+			this.groupBox8.Controls.Add(this.radioButtonConnectionModeDisconnected5);
+			this.groupBox8.Controls.Add(this.radioButtonConnectionModeConnected5);
+			this.groupBox8.Location = new System.Drawing.Point(217, 198);
+			this.groupBox8.Name = "groupBox8";
+			this.groupBox8.Size = new System.Drawing.Size(125, 75);
+			this.groupBox8.TabIndex = 16;
+			this.groupBox8.TabStop = false;
+			this.groupBox8.Text = "Connection Mode:";
+			// 
+			// radioButtonConnectionModeDisconnected5
+			// 
+			this.radioButtonConnectionModeDisconnected5.AutoSize = true;
+			this.radioButtonConnectionModeDisconnected5.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonConnectionModeDisconnected5.Name = "radioButtonConnectionModeDisconnected5";
+			this.radioButtonConnectionModeDisconnected5.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonConnectionModeDisconnected5.TabIndex = 1;
+			this.radioButtonConnectionModeDisconnected5.Text = "Disconnected";
+			this.radioButtonConnectionModeDisconnected5.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnectionModeConnected5
+			// 
+			this.radioButtonConnectionModeConnected5.AutoSize = true;
+			this.radioButtonConnectionModeConnected5.Checked = true;
+			this.radioButtonConnectionModeConnected5.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnectionModeConnected5.Name = "radioButtonConnectionModeConnected5";
+			this.radioButtonConnectionModeConnected5.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnectionModeConnected5.TabIndex = 0;
+			this.radioButtonConnectionModeConnected5.TabStop = true;
+			this.radioButtonConnectionModeConnected5.Text = "Connected";
+			this.radioButtonConnectionModeConnected5.UseVisualStyleBackColor = true;
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(7, 9);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(43, 12);
+			this.label14.TabIndex = 7;
+			this.label14.Text = "Query:";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(119, 236);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(46, 12);
+			this.label15.TabIndex = 12;
+			this.label15.Text = "Weight:";
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Location = new System.Drawing.Point(7, 197);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(70, 12);
+			this.label16.TabIndex = 9;
+			this.label16.Text = "Arguments:";
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(121, 197);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(69, 12);
+			this.label17.TabIndex = 13;
+			this.label17.Text = "Fetch Size:";
+			// 
+			// tabPageQuery2
+			// 
+			this.tabPageQuery2.Controls.Add(this.textBoxQuery2);
+			this.tabPageQuery2.Controls.Add(this.groupBox1);
+			this.tabPageQuery2.Controls.Add(this.groupBox2);
+			this.tabPageQuery2.Controls.Add(this.label2);
+			this.tabPageQuery2.Controls.Add(this.label3);
+			this.tabPageQuery2.Controls.Add(this.label4);
+			this.tabPageQuery2.Controls.Add(this.label5);
+			this.tabPageQuery2.Controls.Add(this.checkBoxUseQuery2);
+			this.tabPageQuery2.Controls.Add(this.textBoxWeight2);
+			this.tabPageQuery2.Controls.Add(this.textBoxFetchSize2);
+			this.tabPageQuery2.Controls.Add(this.textBoxArguments2);
+			this.tabPageQuery2.Location = new System.Drawing.Point(4, 22);
+			this.tabPageQuery2.Name = "tabPageQuery2";
+			this.tabPageQuery2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageQuery2.Size = new System.Drawing.Size(480, 278);
+			this.tabPageQuery2.TabIndex = 1;
+			this.tabPageQuery2.Text = "Query #2";
+			this.tabPageQuery2.UseVisualStyleBackColor = true;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.radioButtonReadingModeSelect2);
+			this.groupBox1.Controls.Add(this.radioButtonReadingModeSelectRead2);
+			this.groupBox1.Location = new System.Drawing.Point(348, 198);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(125, 75);
+			this.groupBox1.TabIndex = 17;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Reading Mode:";
+			// 
+			// radioButtonReadingModeSelect2
+			// 
+			this.radioButtonReadingModeSelect2.AutoSize = true;
+			this.radioButtonReadingModeSelect2.Checked = true;
+			this.radioButtonReadingModeSelect2.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonReadingModeSelect2.Name = "radioButtonReadingModeSelect2";
+			this.radioButtonReadingModeSelect2.Size = new System.Drawing.Size(96, 16);
+			this.radioButtonReadingModeSelect2.TabIndex = 1;
+			this.radioButtonReadingModeSelect2.TabStop = true;
+			this.radioButtonReadingModeSelect2.Text = "Select (only)";
+			this.radioButtonReadingModeSelect2.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonReadingModeSelectRead2
+			// 
+			this.radioButtonReadingModeSelectRead2.AutoSize = true;
+			this.radioButtonReadingModeSelectRead2.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonReadingModeSelectRead2.Name = "radioButtonReadingModeSelectRead2";
+			this.radioButtonReadingModeSelectRead2.Size = new System.Drawing.Size(93, 16);
+			this.radioButtonReadingModeSelectRead2.TabIndex = 0;
+			this.radioButtonReadingModeSelectRead2.Text = "Select/Read";
+			this.radioButtonReadingModeSelectRead2.UseVisualStyleBackColor = true;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.radioButtonConnectionModeDisconnected2);
+			this.groupBox2.Controls.Add(this.radioButtonConnectionModeConnected2);
+			this.groupBox2.Location = new System.Drawing.Point(217, 198);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(125, 75);
+			this.groupBox2.TabIndex = 16;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Connection Mode:";
+			// 
+			// radioButtonConnectionModeDisconnected2
+			// 
+			this.radioButtonConnectionModeDisconnected2.AutoSize = true;
+			this.radioButtonConnectionModeDisconnected2.Location = new System.Drawing.Point(6, 44);
+			this.radioButtonConnectionModeDisconnected2.Name = "radioButtonConnectionModeDisconnected2";
+			this.radioButtonConnectionModeDisconnected2.Size = new System.Drawing.Size(100, 16);
+			this.radioButtonConnectionModeDisconnected2.TabIndex = 1;
+			this.radioButtonConnectionModeDisconnected2.Text = "Disconnected";
+			this.radioButtonConnectionModeDisconnected2.UseVisualStyleBackColor = true;
+			// 
+			// radioButtonConnectionModeConnected2
+			// 
+			this.radioButtonConnectionModeConnected2.AutoSize = true;
+			this.radioButtonConnectionModeConnected2.Checked = true;
+			this.radioButtonConnectionModeConnected2.Location = new System.Drawing.Point(6, 20);
+			this.radioButtonConnectionModeConnected2.Name = "radioButtonConnectionModeConnected2";
+			this.radioButtonConnectionModeConnected2.Size = new System.Drawing.Size(84, 16);
+			this.radioButtonConnectionModeConnected2.TabIndex = 0;
+			this.radioButtonConnectionModeConnected2.TabStop = true;
+			this.radioButtonConnectionModeConnected2.Text = "Connected";
+			this.radioButtonConnectionModeConnected2.UseVisualStyleBackColor = true;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(7, 9);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(43, 12);
+			this.label2.TabIndex = 7;
+			this.label2.Text = "Query:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(119, 236);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(46, 12);
+			this.label3.TabIndex = 12;
+			this.label3.Text = "Weight:";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(7, 197);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(70, 12);
+			this.label4.TabIndex = 9;
+			this.label4.Text = "Arguments:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(121, 197);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(69, 12);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "Fetch Size:";
+			// 
+			// checkBoxUseQuery1
+			// 
+			this.checkBoxUseQuery1.AutoSize = true;
+			this.checkBoxUseQuery1.Checked = global::OraclePerfTest.Properties.Settings.Default.UseQuery1;
+			this.checkBoxUseQuery1.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxUseQuery1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::OraclePerfTest.Properties.Settings.Default, "UseQuery1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxUseQuery1.Location = new System.Drawing.Point(427, 6);
+			this.checkBoxUseQuery1.Name = "checkBoxUseQuery1";
+			this.checkBoxUseQuery1.Size = new System.Drawing.Size(46, 16);
+			this.checkBoxUseQuery1.TabIndex = 0;
+			this.checkBoxUseQuery1.Text = "Use";
+			this.checkBoxUseQuery1.UseVisualStyleBackColor = true;
+			// 
+			// textBoxQuery1
+			// 
+			this.textBoxQuery1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery1.Location = new System.Drawing.Point(9, 24);
+			this.textBoxQuery1.Multiline = true;
+			this.textBoxQuery1.Name = "textBoxQuery1";
+			this.textBoxQuery1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.textBoxQuery1.Size = new System.Drawing.Size(464, 165);
+			this.textBoxQuery1.TabIndex = 1;
+			this.textBoxQuery1.Text = global::OraclePerfTest.Properties.Settings.Default.Query1;
+			// 
+			// textBoxWeight1
+			// 
+			this.textBoxWeight1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Weight1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxWeight1.Location = new System.Drawing.Point(121, 251);
+			this.textBoxWeight1.Name = "textBoxWeight1";
+			this.textBoxWeight1.Size = new System.Drawing.Size(90, 21);
+			this.textBoxWeight1.TabIndex = 4;
+			this.textBoxWeight1.Text = global::OraclePerfTest.Properties.Settings.Default.Weight1;
+			// 
+			// textBoxFetchSize1
+			// 
+			this.textBoxFetchSize1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize1.Location = new System.Drawing.Point(121, 212);
+			this.textBoxFetchSize1.Name = "textBoxFetchSize1";
+			this.textBoxFetchSize1.Size = new System.Drawing.Size(90, 21);
+			this.textBoxFetchSize1.TabIndex = 3;
+			this.textBoxFetchSize1.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize1;
+			// 
+			// textBoxArguments1
+			// 
+			this.textBoxArguments1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxArguments1.Location = new System.Drawing.Point(9, 212);
+			this.textBoxArguments1.Multiline = true;
+			this.textBoxArguments1.Name = "textBoxArguments1";
+			this.textBoxArguments1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxArguments1.Size = new System.Drawing.Size(106, 60);
+			this.textBoxArguments1.TabIndex = 2;
+			this.textBoxArguments1.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments1;
+			// 
+			// textBoxQuery2
+			// 
+			this.textBoxQuery2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery2.Location = new System.Drawing.Point(9, 24);
+			this.textBoxQuery2.Multiline = true;
+			this.textBoxQuery2.Name = "textBoxQuery2";
+			this.textBoxQuery2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.textBoxQuery2.Size = new System.Drawing.Size(464, 165);
+			this.textBoxQuery2.TabIndex = 1;
+			this.textBoxQuery2.Text = global::OraclePerfTest.Properties.Settings.Default.Query2;
+			// 
+			// checkBoxUseQuery2
+			// 
+			this.checkBoxUseQuery2.AutoSize = true;
+			this.checkBoxUseQuery2.Checked = global::OraclePerfTest.Properties.Settings.Default.UseQuery2;
+			this.checkBoxUseQuery2.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxUseQuery2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::OraclePerfTest.Properties.Settings.Default, "UseQuery2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxUseQuery2.Location = new System.Drawing.Point(427, 6);
+			this.checkBoxUseQuery2.Name = "checkBoxUseQuery2";
+			this.checkBoxUseQuery2.Size = new System.Drawing.Size(46, 16);
+			this.checkBoxUseQuery2.TabIndex = 0;
+			this.checkBoxUseQuery2.Text = "Use";
+			this.checkBoxUseQuery2.UseVisualStyleBackColor = true;
+			// 
+			// textBoxWeight2
+			// 
+			this.textBoxWeight2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Weight2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxWeight2.Location = new System.Drawing.Point(121, 251);
+			this.textBoxWeight2.Name = "textBoxWeight2";
+			this.textBoxWeight2.Size = new System.Drawing.Size(90, 21);
+			this.textBoxWeight2.TabIndex = 4;
+			this.textBoxWeight2.Text = global::OraclePerfTest.Properties.Settings.Default.Weight2;
+			// 
+			// textBoxFetchSize2
+			// 
+			this.textBoxFetchSize2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize2.Location = new System.Drawing.Point(121, 212);
+			this.textBoxFetchSize2.Name = "textBoxFetchSize2";
+			this.textBoxFetchSize2.Size = new System.Drawing.Size(90, 21);
+			this.textBoxFetchSize2.TabIndex = 3;
+			this.textBoxFetchSize2.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize2;
+			// 
+			// textBoxArguments2
+			// 
+			this.textBoxArguments2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxArguments2.Location = new System.Drawing.Point(9, 212);
+			this.textBoxArguments2.Multiline = true;
+			this.textBoxArguments2.Name = "textBoxArguments2";
+			this.textBoxArguments2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxArguments2.Size = new System.Drawing.Size(106, 60);
+			this.textBoxArguments2.TabIndex = 2;
+			this.textBoxArguments2.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments2;
+			// 
+			// checkBoxUseQuery3
+			// 
+			this.checkBoxUseQuery3.AutoSize = true;
+			this.checkBoxUseQuery3.Checked = global::OraclePerfTest.Properties.Settings.Default.UseQuery3;
+			this.checkBoxUseQuery3.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxUseQuery3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::OraclePerfTest.Properties.Settings.Default, "UseQuery3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxUseQuery3.Location = new System.Drawing.Point(427, 6);
+			this.checkBoxUseQuery3.Name = "checkBoxUseQuery3";
+			this.checkBoxUseQuery3.Size = new System.Drawing.Size(46, 16);
+			this.checkBoxUseQuery3.TabIndex = 0;
+			this.checkBoxUseQuery3.Text = "Use";
+			this.checkBoxUseQuery3.UseVisualStyleBackColor = true;
+			// 
+			// textBoxQuery3
+			// 
+			this.textBoxQuery3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery3.Location = new System.Drawing.Point(9, 24);
+			this.textBoxQuery3.Multiline = true;
+			this.textBoxQuery3.Name = "textBoxQuery3";
+			this.textBoxQuery3.Size = new System.Drawing.Size(464, 165);
+			this.textBoxQuery3.TabIndex = 1;
+			this.textBoxQuery3.Text = global::OraclePerfTest.Properties.Settings.Default.Query3;
+			// 
+			// textBoxWeight3
+			// 
+			this.textBoxWeight3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Weight3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxWeight3.Location = new System.Drawing.Point(121, 251);
+			this.textBoxWeight3.Name = "textBoxWeight3";
+			this.textBoxWeight3.Size = new System.Drawing.Size(90, 21);
+			this.textBoxWeight3.TabIndex = 4;
+			this.textBoxWeight3.Text = global::OraclePerfTest.Properties.Settings.Default.Weight3;
+			// 
+			// textBoxFetchSize3
+			// 
+			this.textBoxFetchSize3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize3.Location = new System.Drawing.Point(121, 212);
+			this.textBoxFetchSize3.Name = "textBoxFetchSize3";
+			this.textBoxFetchSize3.Size = new System.Drawing.Size(90, 21);
+			this.textBoxFetchSize3.TabIndex = 3;
+			this.textBoxFetchSize3.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize3;
+			// 
+			// textBoxArguments3
+			// 
+			this.textBoxArguments3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxArguments3.Location = new System.Drawing.Point(9, 212);
+			this.textBoxArguments3.Multiline = true;
+			this.textBoxArguments3.Name = "textBoxArguments3";
+			this.textBoxArguments3.Size = new System.Drawing.Size(106, 60);
+			this.textBoxArguments3.TabIndex = 2;
+			this.textBoxArguments3.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments3;
+			// 
+			// checkBoxUseQuery4
+			// 
+			this.checkBoxUseQuery4.AutoSize = true;
+			this.checkBoxUseQuery4.Checked = global::OraclePerfTest.Properties.Settings.Default.UseQuery4;
+			this.checkBoxUseQuery4.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxUseQuery4.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::OraclePerfTest.Properties.Settings.Default, "UseQuery4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxUseQuery4.Location = new System.Drawing.Point(427, 6);
+			this.checkBoxUseQuery4.Name = "checkBoxUseQuery4";
+			this.checkBoxUseQuery4.Size = new System.Drawing.Size(46, 16);
+			this.checkBoxUseQuery4.TabIndex = 0;
+			this.checkBoxUseQuery4.Text = "Use";
+			this.checkBoxUseQuery4.UseVisualStyleBackColor = true;
+			// 
+			// textBoxQuery4
+			// 
+			this.textBoxQuery4.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery4.Location = new System.Drawing.Point(9, 24);
+			this.textBoxQuery4.Multiline = true;
+			this.textBoxQuery4.Name = "textBoxQuery4";
+			this.textBoxQuery4.Size = new System.Drawing.Size(464, 165);
+			this.textBoxQuery4.TabIndex = 1;
+			this.textBoxQuery4.Text = global::OraclePerfTest.Properties.Settings.Default.Query4;
+			// 
+			// textBoxWeight4
+			// 
+			this.textBoxWeight4.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Weight4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxWeight4.Location = new System.Drawing.Point(121, 251);
+			this.textBoxWeight4.Name = "textBoxWeight4";
+			this.textBoxWeight4.Size = new System.Drawing.Size(90, 21);
+			this.textBoxWeight4.TabIndex = 4;
+			this.textBoxWeight4.Text = global::OraclePerfTest.Properties.Settings.Default.Weight4;
+			// 
+			// textBoxFetchSize4
+			// 
+			this.textBoxFetchSize4.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize4.Location = new System.Drawing.Point(121, 212);
+			this.textBoxFetchSize4.Name = "textBoxFetchSize4";
+			this.textBoxFetchSize4.Size = new System.Drawing.Size(90, 21);
+			this.textBoxFetchSize4.TabIndex = 3;
+			this.textBoxFetchSize4.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize4;
+			// 
+			// textBoxArguments4
+			// 
+			this.textBoxArguments4.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxArguments4.Location = new System.Drawing.Point(9, 212);
+			this.textBoxArguments4.Multiline = true;
+			this.textBoxArguments4.Name = "textBoxArguments4";
+			this.textBoxArguments4.Size = new System.Drawing.Size(106, 60);
+			this.textBoxArguments4.TabIndex = 2;
+			this.textBoxArguments4.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments4;
+			// 
+			// checkBoxUseQuery5
+			// 
+			this.checkBoxUseQuery5.AutoSize = true;
+			this.checkBoxUseQuery5.Checked = global::OraclePerfTest.Properties.Settings.Default.UseQuery5;
+			this.checkBoxUseQuery5.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxUseQuery5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::OraclePerfTest.Properties.Settings.Default, "UseQuery5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxUseQuery5.Location = new System.Drawing.Point(427, 6);
+			this.checkBoxUseQuery5.Name = "checkBoxUseQuery5";
+			this.checkBoxUseQuery5.Size = new System.Drawing.Size(46, 16);
+			this.checkBoxUseQuery5.TabIndex = 0;
+			this.checkBoxUseQuery5.Text = "Use";
+			this.checkBoxUseQuery5.UseVisualStyleBackColor = true;
+			// 
+			// textBoxQuery5
+			// 
+			this.textBoxQuery5.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery5.Location = new System.Drawing.Point(9, 24);
+			this.textBoxQuery5.Multiline = true;
+			this.textBoxQuery5.Name = "textBoxQuery5";
+			this.textBoxQuery5.Size = new System.Drawing.Size(464, 165);
+			this.textBoxQuery5.TabIndex = 1;
+			this.textBoxQuery5.Text = global::OraclePerfTest.Properties.Settings.Default.Query5;
+			// 
+			// textBoxWeight5
+			// 
+			this.textBoxWeight5.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Weight5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxWeight5.Location = new System.Drawing.Point(121, 251);
+			this.textBoxWeight5.Name = "textBoxWeight5";
+			this.textBoxWeight5.Size = new System.Drawing.Size(90, 21);
+			this.textBoxWeight5.TabIndex = 4;
+			this.textBoxWeight5.Text = global::OraclePerfTest.Properties.Settings.Default.Weight5;
+			// 
+			// textBoxFetchSize5
+			// 
+			this.textBoxFetchSize5.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxFetchSize5.Location = new System.Drawing.Point(121, 212);
+			this.textBoxFetchSize5.Name = "textBoxFetchSize5";
+			this.textBoxFetchSize5.Size = new System.Drawing.Size(90, 21);
+			this.textBoxFetchSize5.TabIndex = 3;
+			this.textBoxFetchSize5.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize5;
+			// 
+			// textBoxArguments5
+			// 
+			this.textBoxArguments5.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxArguments5.Location = new System.Drawing.Point(9, 212);
+			this.textBoxArguments5.Multiline = true;
+			this.textBoxArguments5.Name = "textBoxArguments5";
+			this.textBoxArguments5.Size = new System.Drawing.Size(106, 60);
+			this.textBoxArguments5.TabIndex = 2;
+			this.textBoxArguments5.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments5;
+			// 
 			// textBoxIp
 			// 
 			this.textBoxIp.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "ServerIp", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -311,26 +1310,6 @@
 			this.textBoxPort.TabIndex = 1;
 			this.textBoxPort.Text = global::OraclePerfTest.Properties.Settings.Default.ServerPort;
 			// 
-			// groupBoxStress
-			// 
-			this.groupBoxStress.Controls.Add(this.labelUserCount);
-			this.groupBoxStress.Controls.Add(this.numericUpDownUserCount);
-			this.groupBoxStress.Controls.Add(this.labelOpenRate);
-			this.groupBoxStress.Controls.Add(this.labelQueryRate);
-			this.groupBoxStress.Controls.Add(this.textBoxOpenRate);
-			this.groupBoxStress.Controls.Add(this.textBoxQueryRate);
-			this.groupBoxStress.Controls.Add(this.textBoxTotalQueryRate);
-			this.groupBoxStress.Controls.Add(this.labelTotalQueryRate);
-			this.groupBoxStress.Controls.Add(this.labelRequestPerSecond);
-			this.groupBoxStress.Controls.Add(this.label1);
-			this.groupBoxStress.Controls.Add(this.labelQueryPerSecond);
-			this.groupBoxStress.Location = new System.Drawing.Point(12, 182);
-			this.groupBoxStress.Name = "groupBoxStress";
-			this.groupBoxStress.Size = new System.Drawing.Size(267, 134);
-			this.groupBoxStress.TabIndex = 4;
-			this.groupBoxStress.TabStop = false;
-			this.groupBoxStress.Text = "Stress";
-			// 
 			// numericUpDownUserCount
 			// 
 			this.numericUpDownUserCount.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::OraclePerfTest.Properties.Settings.Default, "UserCount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -352,15 +1331,6 @@
 			this.numericUpDownUserCount.Value = global::OraclePerfTest.Properties.Settings.Default.UserCount;
 			this.numericUpDownUserCount.TextChanged += new System.EventHandler(this.NumericUpDownUserCount_TextChanged);
 			// 
-			// labelOpenRate
-			// 
-			this.labelOpenRate.AutoSize = true;
-			this.labelOpenRate.Location = new System.Drawing.Point(6, 103);
-			this.labelOpenRate.Name = "labelOpenRate";
-			this.labelOpenRate.Size = new System.Drawing.Size(68, 12);
-			this.labelOpenRate.TabIndex = 0;
-			this.labelOpenRate.Text = "Open Rate:";
-			// 
 			// textBoxOpenRate
 			// 
 			this.textBoxOpenRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "OpenRate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -381,155 +1351,12 @@
 			this.textBoxQueryRate.Text = global::OraclePerfTest.Properties.Settings.Default.QueryRate;
 			this.textBoxQueryRate.TextChanged += new System.EventHandler(this.TextBoxQueryRate_TextChanged);
 			// 
-			// labelRequestPerSecond
-			// 
-			this.labelRequestPerSecond.AutoSize = true;
-			this.labelRequestPerSecond.Location = new System.Drawing.Point(184, 103);
-			this.labelRequestPerSecond.Name = "labelRequestPerSecond";
-			this.labelRequestPerSecond.Size = new System.Drawing.Size(66, 12);
-			this.labelRequestPerSecond.TabIndex = 0;
-			this.labelRequestPerSecond.Text = "req. / sec.";
-			// 
-			// groupBoxQuery
-			// 
-			this.groupBoxQuery.Controls.Add(this.groupBoxReadingMode);
-			this.groupBoxQuery.Controls.Add(this.groupBoxConnectionMode);
-			this.groupBoxQuery.Controls.Add(this.labelQuery);
-			this.groupBoxQuery.Controls.Add(this.textBoxFetchSize);
-			this.groupBoxQuery.Controls.Add(this.textBoxArguments);
-			this.groupBoxQuery.Controls.Add(this.textBoxQuery);
-			this.groupBoxQuery.Controls.Add(this.labelFetchSize);
-			this.groupBoxQuery.Controls.Add(this.labelArguments);
-			this.groupBoxQuery.Location = new System.Drawing.Point(285, 12);
-			this.groupBoxQuery.Name = "groupBoxQuery";
-			this.groupBoxQuery.Size = new System.Drawing.Size(487, 304);
-			this.groupBoxQuery.TabIndex = 5;
-			this.groupBoxQuery.TabStop = false;
-			this.groupBoxQuery.Text = "Query";
-			// 
-			// groupBoxReadingMode
-			// 
-			this.groupBoxReadingMode.Controls.Add(this.radioButtonReadingModeSelect);
-			this.groupBoxReadingMode.Controls.Add(this.radioButtonReadingModeSelectRead);
-			this.groupBoxReadingMode.Location = new System.Drawing.Point(350, 222);
-			this.groupBoxReadingMode.Name = "groupBoxReadingMode";
-			this.groupBoxReadingMode.Size = new System.Drawing.Size(127, 72);
-			this.groupBoxReadingMode.TabIndex = 6;
-			this.groupBoxReadingMode.TabStop = false;
-			this.groupBoxReadingMode.Text = "Reading Mode:";
-			// 
-			// radioButtonReadingModeSelect
-			// 
-			this.radioButtonReadingModeSelect.AutoSize = true;
-			this.radioButtonReadingModeSelect.Location = new System.Drawing.Point(6, 43);
-			this.radioButtonReadingModeSelect.Name = "radioButtonReadingModeSelect";
-			this.radioButtonReadingModeSelect.Size = new System.Drawing.Size(96, 16);
-			this.radioButtonReadingModeSelect.TabIndex = 1;
-			this.radioButtonReadingModeSelect.TabStop = true;
-			this.radioButtonReadingModeSelect.Text = "Select (only)";
-			this.radioButtonReadingModeSelect.UseVisualStyleBackColor = true;
-			// 
-			// radioButtonReadingModeSelectRead
-			// 
-			this.radioButtonReadingModeSelectRead.AutoSize = true;
-			this.radioButtonReadingModeSelectRead.Checked = true;
-			this.radioButtonReadingModeSelectRead.Location = new System.Drawing.Point(6, 21);
-			this.radioButtonReadingModeSelectRead.Name = "radioButtonReadingModeSelectRead";
-			this.radioButtonReadingModeSelectRead.Size = new System.Drawing.Size(93, 16);
-			this.radioButtonReadingModeSelectRead.TabIndex = 0;
-			this.radioButtonReadingModeSelectRead.TabStop = true;
-			this.radioButtonReadingModeSelectRead.Text = "Select/Read";
-			this.radioButtonReadingModeSelectRead.UseVisualStyleBackColor = true;
-			// 
-			// groupBoxConnectionMode
-			// 
-			this.groupBoxConnectionMode.Controls.Add(this.radioButtonDisconnected);
-			this.groupBoxConnectionMode.Controls.Add(this.radioButtonConnected);
-			this.groupBoxConnectionMode.Location = new System.Drawing.Point(217, 222);
-			this.groupBoxConnectionMode.Name = "groupBoxConnectionMode";
-			this.groupBoxConnectionMode.Size = new System.Drawing.Size(127, 72);
-			this.groupBoxConnectionMode.TabIndex = 5;
-			this.groupBoxConnectionMode.TabStop = false;
-			this.groupBoxConnectionMode.Text = "Connection Mode:";
-			// 
-			// radioButtonDisconnected
-			// 
-			this.radioButtonDisconnected.AutoSize = true;
-			this.radioButtonDisconnected.Location = new System.Drawing.Point(6, 44);
-			this.radioButtonDisconnected.Name = "radioButtonDisconnected";
-			this.radioButtonDisconnected.Size = new System.Drawing.Size(100, 16);
-			this.radioButtonDisconnected.TabIndex = 1;
-			this.radioButtonDisconnected.Text = "Disconnected";
-			this.radioButtonDisconnected.UseVisualStyleBackColor = true;
-			// 
-			// radioButtonConnected
-			// 
-			this.radioButtonConnected.AutoSize = true;
-			this.radioButtonConnected.Checked = true;
-			this.radioButtonConnected.Location = new System.Drawing.Point(6, 20);
-			this.radioButtonConnected.Name = "radioButtonConnected";
-			this.radioButtonConnected.Size = new System.Drawing.Size(84, 16);
-			this.radioButtonConnected.TabIndex = 0;
-			this.radioButtonConnected.TabStop = true;
-			this.radioButtonConnected.Text = "Connected";
-			this.radioButtonConnected.UseVisualStyleBackColor = true;
-			// 
-			// textBoxFetchSize
-			// 
-			this.textBoxFetchSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "FetchSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxFetchSize.Location = new System.Drawing.Point(123, 237);
-			this.textBoxFetchSize.Name = "textBoxFetchSize";
-			this.textBoxFetchSize.Size = new System.Drawing.Size(88, 21);
-			this.textBoxFetchSize.TabIndex = 4;
-			this.textBoxFetchSize.Text = global::OraclePerfTest.Properties.Settings.Default.FetchSize;
-			// 
-			// textBoxArguments
-			// 
-			this.textBoxArguments.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "QueryArguments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxArguments.Location = new System.Drawing.Point(11, 237);
-			this.textBoxArguments.Multiline = true;
-			this.textBoxArguments.Name = "textBoxArguments";
-			this.textBoxArguments.Size = new System.Drawing.Size(106, 56);
-			this.textBoxArguments.TabIndex = 2;
-			this.textBoxArguments.Text = global::OraclePerfTest.Properties.Settings.Default.QueryArguments;
-			// 
-			// textBoxQuery
-			// 
-			this.textBoxQuery.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.textBoxQuery.Location = new System.Drawing.Point(11, 35);
-			this.textBoxQuery.Multiline = true;
-			this.textBoxQuery.Name = "textBoxQuery";
-			this.textBoxQuery.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxQuery.Size = new System.Drawing.Size(466, 176);
-			this.textBoxQuery.TabIndex = 0;
-			this.textBoxQuery.Text = global::OraclePerfTest.Properties.Settings.Default.Query;
-			this.textBoxQuery.WordWrap = false;
-			// 
-			// labelFetchSize
-			// 
-			this.labelFetchSize.AutoSize = true;
-			this.labelFetchSize.Location = new System.Drawing.Point(121, 222);
-			this.labelFetchSize.Name = "labelFetchSize";
-			this.labelFetchSize.Size = new System.Drawing.Size(69, 12);
-			this.labelFetchSize.TabIndex = 3;
-			this.labelFetchSize.Text = "Fetch Size:";
-			// 
-			// buttonCBT
-			// 
-			this.buttonCBT.Location = new System.Drawing.Point(173, 559);
-			this.buttonCBT.Name = "buttonCBT";
-			this.buttonCBT.Size = new System.Drawing.Size(75, 23);
-			this.buttonCBT.TabIndex = 7;
-			this.buttonCBT.TabStop = false;
-			this.buttonCBT.Text = "CBT";
-			this.buttonCBT.UseVisualStyleBackColor = true;
-			this.buttonCBT.Click += new System.EventHandler(this.ButtonCBT_Click);
-			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 594);
+			this.ClientSize = new System.Drawing.Size(780, 594);
+			this.Controls.Add(this.tabControlQuery);
 			this.Controls.Add(this.buttonCBT);
 			this.Controls.Add(this.listBoxLogs);
 			this.Controls.Add(this.buttonClose);
@@ -538,7 +1365,6 @@
 			this.Controls.Add(this.labelLogs);
 			this.Controls.Add(this.groupBoxServer);
 			this.Controls.Add(this.groupBoxStress);
-			this.Controls.Add(this.groupBoxQuery);
 			this.Name = "Main";
 			this.Text = "Oracle Performance Test";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -546,13 +1372,38 @@
 			this.groupBoxServer.PerformLayout();
 			this.groupBoxStress.ResumeLayout(false);
 			this.groupBoxStress.PerformLayout();
+			this.groupBoxConnectionMode1.ResumeLayout(false);
+			this.groupBoxConnectionMode1.PerformLayout();
+			this.groupBoxReadingMode1.ResumeLayout(false);
+			this.groupBoxReadingMode1.PerformLayout();
+			this.tabControlQuery.ResumeLayout(false);
+			this.tabPageQuery1.ResumeLayout(false);
+			this.tabPageQuery1.PerformLayout();
+			this.tabPageQuery3.ResumeLayout(false);
+			this.tabPageQuery3.PerformLayout();
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox4.PerformLayout();
+			this.tabPageQuery4.ResumeLayout(false);
+			this.tabPageQuery4.PerformLayout();
+			this.groupBox5.ResumeLayout(false);
+			this.groupBox5.PerformLayout();
+			this.groupBox6.ResumeLayout(false);
+			this.groupBox6.PerformLayout();
+			this.tabPageQuery5.ResumeLayout(false);
+			this.tabPageQuery5.PerformLayout();
+			this.groupBox7.ResumeLayout(false);
+			this.groupBox7.PerformLayout();
+			this.groupBox8.ResumeLayout(false);
+			this.groupBox8.PerformLayout();
+			this.tabPageQuery2.ResumeLayout(false);
+			this.tabPageQuery2.PerformLayout();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserCount)).EndInit();
-			this.groupBoxQuery.ResumeLayout(false);
-			this.groupBoxQuery.PerformLayout();
-			this.groupBoxReadingMode.ResumeLayout(false);
-			this.groupBoxReadingMode.PerformLayout();
-			this.groupBoxConnectionMode.ResumeLayout(false);
-			this.groupBoxConnectionMode.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -581,27 +1432,95 @@
 		private System.Windows.Forms.Button buttonStart;
 		private System.Windows.Forms.Button buttonStop;
 		private System.Windows.Forms.Button buttonClose;
-		private System.Windows.Forms.Label labelQuery;
-		private System.Windows.Forms.TextBox textBoxQuery;
-		private System.Windows.Forms.Label labelArguments;
-		private System.Windows.Forms.TextBox textBoxArguments;
 		private System.Windows.Forms.ListBox listBoxLogs;
 		private System.Windows.Forms.Label labelLogs;
 		private System.Windows.Forms.GroupBox groupBoxServer;
 		private System.Windows.Forms.GroupBox groupBoxStress;
-		private System.Windows.Forms.GroupBox groupBoxQuery;
 		private System.Windows.Forms.Button buttonCBT;
-		private System.Windows.Forms.GroupBox groupBoxConnectionMode;
-		private System.Windows.Forms.RadioButton radioButtonDisconnected;
-		private System.Windows.Forms.RadioButton radioButtonConnected;
 		private System.Windows.Forms.Label labelOpenRate;
 		private System.Windows.Forms.TextBox textBoxOpenRate;
 		private System.Windows.Forms.Label labelRequestPerSecond;
-		private System.Windows.Forms.TextBox textBoxFetchSize;
-		private System.Windows.Forms.Label labelFetchSize;
-		private System.Windows.Forms.GroupBox groupBoxReadingMode;
-		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect;
-		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead;
+		private System.Windows.Forms.Label labelFetchSize1;
+		private System.Windows.Forms.TextBox textBoxFetchSize1;
+		private System.Windows.Forms.GroupBox groupBoxConnectionMode1;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeDisconnected1;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeConnected1;
+		private System.Windows.Forms.GroupBox groupBoxReadingMode1;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect1;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead1;
+		private System.Windows.Forms.TabControl tabControlQuery;
+		private System.Windows.Forms.TabPage tabPageQuery1;
+		private System.Windows.Forms.Label labelQuery1;
+		private System.Windows.Forms.TabPage tabPageQuery2;
+		private System.Windows.Forms.TextBox textBoxQuery1;
+		private System.Windows.Forms.TabPage tabPageQuery3;
+		private System.Windows.Forms.TabPage tabPageQuery4;
+		private System.Windows.Forms.TabPage tabPageQuery5;
+		private System.Windows.Forms.CheckBox checkBoxUseQuery1;
+		private System.Windows.Forms.TextBox textBoxArguments1;
+		private System.Windows.Forms.Label labelArguments1;
+		private System.Windows.Forms.TextBox textBoxWeight1;
+		private System.Windows.Forms.Label labelWeight1;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect3;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead3;
+		private System.Windows.Forms.CheckBox checkBoxUseQuery3;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeDisconnected3;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeConnected3;
+		private System.Windows.Forms.TextBox textBoxQuery3;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox textBoxWeight3;
+		private System.Windows.Forms.TextBox textBoxFetchSize3;
+		private System.Windows.Forms.TextBox textBoxArguments3;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.GroupBox groupBox5;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect4;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead4;
+		private System.Windows.Forms.CheckBox checkBoxUseQuery4;
+		private System.Windows.Forms.GroupBox groupBox6;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeDisconnected4;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeConnected4;
+		private System.Windows.Forms.TextBox textBoxQuery4;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.TextBox textBoxWeight4;
+		private System.Windows.Forms.TextBox textBoxFetchSize4;
+		private System.Windows.Forms.TextBox textBoxArguments4;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.GroupBox groupBox7;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect5;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead5;
+		private System.Windows.Forms.CheckBox checkBoxUseQuery5;
+		private System.Windows.Forms.GroupBox groupBox8;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeDisconnected5;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeConnected5;
+		private System.Windows.Forms.TextBox textBoxQuery5;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.TextBox textBoxWeight5;
+		private System.Windows.Forms.TextBox textBoxFetchSize5;
+		private System.Windows.Forms.TextBox textBoxArguments5;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.TextBox textBoxQuery2;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelect2;
+		private System.Windows.Forms.RadioButton radioButtonReadingModeSelectRead2;
+		private System.Windows.Forms.CheckBox checkBoxUseQuery2;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeDisconnected2;
+		private System.Windows.Forms.RadioButton radioButtonConnectionModeConnected2;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TextBox textBoxWeight2;
+		private System.Windows.Forms.TextBox textBoxFetchSize2;
+		private System.Windows.Forms.TextBox textBoxArguments2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label5;
 	}
 }
 

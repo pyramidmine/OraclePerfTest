@@ -12,7 +12,7 @@ namespace OraclePerfTest.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -109,72 +109,6 @@ namespace OraclePerfTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD" +
-            "_PK) NLJ_BATCHING */\r\n       A.ORD_NO ,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TO" +
-            "DAY_ADD_NO,\r\n       A.ORD_TODAY_ALL_NO,\r\n       A.ORD_TYPE_CD,\r\n       A.ORD_STA" +
-            "TUS_CD ,\r\n       A.ORD_DATE,\r\n       A.MOD_DATE,\r\n       A.PICKUP_DATE,\r\n       " +
-            "A.TAKEOUT_DATE,\r\n       A.END_DATE ,\r\n       A.ORD_CU_TEL,\r\n       A.ORD_CU_END_" +
-            "CNT,\r\n       A.EA_ADDR_4,\r\n       A.DVRY_DISTANCE,\r\n       A.DVRY_AMT ,\r\n       " +
-            "A.ORD_AMT,\r\n       A.DISCOUNT_AMT,\r\n       A.SRV_AMT,\r\n       A.CHARGE_TYPE,\r\n  " +
-            "     A.PAY_TYPE_CD ,\r\n       A.PAY_AMT,\r\n       A.PAY_MILEAGE,\r\n       B.TRAN_TY" +
-            "PE,\r\n       A.CTH_WK_NAME,\r\n       A.CTH_WK_TEL ,\r\n       A.ORD_MEMO,\r\n       B." +
-            "CTH_ST_NAME,\r\n       A.DVRY_CNT,\r\n       A.ORD_PATH_CD,\r\n       B.CTH_ST_TEL ,\r\n" +
-            "       B.ORD_CU_NAME,\r\n       A.TAKEOUT_YN,\r\n       A.ORD_ST_CODE,\r\n       A.ORD" +
-            "_ST_NAME,\r\n       A.DVRY_TYPE_CD ,\r\n       A.XY_ACC_TYPE,\r\n       A.EA_ADDR_5,\r\n" +
-            "       A.READY_TIME,\r\n       A.GOODS_NAMES,\r\n       A.ORG_PAY_TYPE ,\r\n       A.C" +
-            "ASH_MOVE_CNT,\r\n       A.CASH_MOVE_AMT,\r\n       B.ORD_BR_CODE,\r\n       A.EA_ADDR_" +
-            "6,\r\n       A.EA_ADDR_7 ,\r\n       A.PUT_USER_ID,\r\n       B.CTH_BR_CODE,\r\n       B" +
-            ".CTH_ST_CODE,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_DATE ,\r\n       A.READY_CH" +
-            "ANGE_DATE,\r\n       A.CTH_DVRY_TYPE_CD,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DV" +
-            "RY_TYPE_CD,\r\n       B.ORD_CU_MULTI_END_CNT ,\r\n       A.DVRY_EX_CHARGE,\r\n       A" +
-            ".DVRY_MNG_TYPE,\r\n       A.DVRY_MNG_FEE,\r\n       B.VAN_TYPE_CD,\r\n       B.CARD_AP" +
-            "PR_NUM ,\r\n       A.MOD_USER_ID,\r\n       B.ORD_MASTER_ST_CODE,\r\n       B.CTH_MNG_" +
-            "BR_CODE,\r\n       B.CTH_MNG_HD_CODE,\r\n       B.ORD_HD_CODE ,\r\n       A.EA_ADDR_MO" +
-            "D_CNT,\r\n       A.CTH_WK_ARR_DATE,\r\n       A.READY_CTH_YN,\r\n       A.CALL_ST_CODE" +
-            ",\r\n       A.SA_LAT_Y ,\r\n       A.SA_LNG_X,\r\n       A.CANCEL_DATE,\r\n       A.SA_A" +
-            "PP_ADDR,\r\n       A.POS_ORD_CODE,\r\n       B.EA_ADDR_10 ,\r\n       A.CTH_WK_CODE,\r\n" +
-            "       B.ACQUIRER_NAME,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n       B.ORD_BR" +
-            "_NAME ,\r\n       A.CU_050_NUM ,\r\n       TO_CHAR(A.ORD_DATE, \'YYYYMMDDHH24MISS\') A" +
-            "S CUSTOM_ORD_DATE ,\r\n       TO_CHAR(A.READY_CHANGE_DATE, \'YYYYMMDDHH24MISS\') AS " +
-            "CUSTOM_READY_CHANGE_DATE ,\r\n       TO_CHAR(A.CTH_WK_ARR_DATE, \'YYYYMMDDHH24MISS\'" +
-            ") AS CUSTOM_CTH_WK_ARR_DATE ,\r\n       TO_CHAR(A.PICKUP_DATE, \'YYYYMMDDHH24MISS\')" +
-            " AS CUSTOM_PICKUP_DATE ,\r\n       TO_CHAR(A.END_DATE, \'YYYYMMDDHH24MISS\') AS CUST" +
-            "OM_END_DATE ,\r\n       TO_CHAR(A.CANCEL_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CANCE" +
-            "L_DATE ,\r\n       TO_CHAR(A.CTH_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_DATE ,\r\n " +
-            "      TO_CHAR(A.MOD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_MOD_DATE ,\r\n       TO_CH" +
-            "AR(A.MOD_DATE, \'YYYYMMDDHH24MISSFF3\') AS CUSTOM_MOD_DATE_FF3 ,\r\n       TRUNC(A.D" +
-            "VRY_DISTANCE / 1000, 1) AS CUSTOM_DVRY_DISTANCE ,\r\n       B.EA_ADDR_STR ,\r\n     " +
-            "  A.ORG_ORD_NO,\r\n       A.ORG_ORD_PATH_CD ,\r\n       B.VAN_TYPE_STR AS ARR_VAN_TY" +
-            "PE_CD ,\r\n       TO_CHAR(A.PUT_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PUT_DATE,\r\n   " +
-            "    A.ORD_DATA_YN ,\r\n       A.DVRY_TAX_YN,\r\n       A.DVRY_NLT_TYPE,\r\n       B.ST" +
-            "_DVRY_HD_CODE,\r\n       B.ST_DVRY_BR_CODE,\r\n       A.CHARGE_HISTORY ,\r\n       A.A" +
-            "RR_TIME,\r\n       A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n " +
-            "      A.CTH_WK_GOODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FR" +
-            "OM MN_A1_TODAY A,\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND " +
-            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60)")]
-        public string Query {
-            get {
-                return ((string)(this["Query"]));
-            }
-            set {
-                this["Query"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public string QueryArguments {
-            get {
-                return ((string)(this["QueryArguments"]));
-            }
-            set {
-                this["QueryArguments"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
         public string OpenRate {
             get {
@@ -187,13 +121,638 @@ namespace OraclePerfTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize {
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD" +
+            "_PK) NLJ_BATCHING */\r\n       A.ORD_NO,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TOD" +
+            "AY_ADD_NO,\r\n       A.ORD_TODAY_ALL_NO,\r\n       A.ORD_TYPE_CD,\r\n       A.ORD_STAT" +
+            "US_CD,\r\n       A.ORD_DATE,\r\n       A.MOD_DATE,\r\n       A.PICKUP_DATE,\r\n       A." +
+            "TAKEOUT_DATE,\r\n       A.END_DATE,\r\n       A.ORD_CU_TEL,\r\n       A.ORD_CU_END_CNT" +
+            ",\r\n       A.EA_ADDR_4,\r\n       A.DVRY_DISTANCE,\r\n       A.DVRY_AMT,\r\n       A.OR" +
+            "D_AMT,\r\n       A.DISCOUNT_AMT,\r\n       A.SRV_AMT,\r\n       A.CHARGE_TYPE,\r\n      " +
+            " A.PAY_TYPE_CD,\r\n       A.PAY_AMT,\r\n       A.PAY_MILEAGE,\r\n       B.TRAN_TYPE,\r\n" +
+            "       A.CTH_WK_NAME,\r\n       A.CTH_WK_TEL,\r\n       A.ORD_MEMO,\r\n       B.CTH_ST" +
+            "_NAME,\r\n       A.DVRY_CNT,\r\n       A.ORD_PATH_CD,\r\n       B.CTH_ST_TEL,\r\n       " +
+            "B.ORD_CU_NAME,\r\n       A.TAKEOUT_YN,\r\n       A.ORD_ST_CODE,\r\n       A.ORD_ST_NAM" +
+            "E,\r\n       A.DVRY_TYPE_CD,\r\n       A.XY_ACC_TYPE,\r\n       A.EA_ADDR_5,\r\n       A" +
+            ".READY_TIME,\r\n       A.GOODS_NAMES,\r\n       A.ORG_PAY_TYPE,\r\n       A.CASH_MOVE_" +
+            "CNT,\r\n       A.CASH_MOVE_AMT,\r\n       B.ORD_BR_CODE,\r\n       A.EA_ADDR_6,\r\n     " +
+            "  A.EA_ADDR_7,\r\n       A.PUT_USER_ID,\r\n       B.CTH_BR_CODE,\r\n       B.CTH_ST_CO" +
+            "DE,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_DATE,\r\n       A.READY_CHANGE_DATE,\r" +
+            "\n       A.CTH_DVRY_TYPE_CD,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DVRY_TYPE_CD," +
+            "\r\n       B.ORD_CU_MULTI_END_CNT,\r\n       A.DVRY_EX_CHARGE,\r\n       A.DVRY_MNG_TY" +
+            "PE,\r\n       A.DVRY_MNG_FEE,\r\n       B.VAN_TYPE_CD,\r\n       B.CARD_APPR_NUM,\r\n   " +
+            "    A.MOD_USER_ID,\r\n       B.ORD_MASTER_ST_CODE,\r\n       B.CTH_MNG_BR_CODE,\r\n   " +
+            "    B.CTH_MNG_HD_CODE,\r\n       B.ORD_HD_CODE,\r\n       A.EA_ADDR_MOD_CNT,\r\n      " +
+            " A.CTH_WK_ARR_DATE,\r\n       A.READY_CTH_YN,\r\n       A.CALL_ST_CODE,\r\n       A.SA" +
+            "_LAT_Y,\r\n       A.SA_LNG_X,\r\n       A.CANCEL_DATE,\r\n       A.SA_APP_ADDR,\r\n     " +
+            "  A.POS_ORD_CODE,\r\n       B.EA_ADDR_10,\r\n       A.CTH_WK_CODE,\r\n       B.ACQUIRE" +
+            "R_NAME,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n       B.ORD_BR_NAME ,\r\n       " +
+            "A.CU_050_NUM ,\r\n       TO_CHAR(A.ORD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_ORD_DAT" +
+            "E ,\r\n       TO_CHAR(A.READY_CHANGE_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_READY_CHA" +
+            "NGE_DATE ,\r\n       TO_CHAR(A.CTH_WK_ARR_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_" +
+            "WK_ARR_DATE ,\r\n       TO_CHAR(A.PICKUP_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PICKU" +
+            "P_DATE ,\r\n       TO_CHAR(A.END_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_END_DATE ,\r\n " +
+            "      TO_CHAR(A.CANCEL_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CANCEL_DATE ,\r\n      " +
+            " TO_CHAR(A.CTH_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_DATE ,\r\n       TO_CHAR(A." +
+            "MOD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_MOD_DATE ,\r\n       TO_CHAR(A.MOD_DATE, \'" +
+            "YYYYMMDDHH24MISSFF3\') AS CUSTOM_MOD_DATE_FF3 ,\r\n       TRUNC(A.DVRY_DISTANCE / 1" +
+            "000, 1) AS CUSTOM_DVRY_DISTANCE ,\r\n       B.EA_ADDR_STR ,\r\n       A.ORG_ORD_NO,\r" +
+            "\n       A.ORG_ORD_PATH_CD ,\r\n       B.VAN_TYPE_STR AS ARR_VAN_TYPE_CD ,\r\n       " +
+            "TO_CHAR(A.PUT_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PUT_DATE,\r\n       A.ORD_DATA_Y" +
+            "N ,\r\n       A.DVRY_TAX_YN,\r\n       A.DVRY_NLT_TYPE,\r\n       B.ST_DVRY_HD_CODE,\r\n" +
+            "       B.ST_DVRY_BR_CODE,\r\n       A.CHARGE_HISTORY ,\r\n       A.ARR_TIME,\r\n      " +
+            " A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n       A.CTH_WK_G" +
+            "OODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FROM MN_A1_TODAY A" +
+            ",\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND A.ORD_DATA_YN = " +
+            "\'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60);")]
+        public string Query1 {
             get {
-                return ((string)(this["FetchSize"]));
+                return ((string)(this["Query1"]));
             }
             set {
-                this["FetchSize"] = value;
+                this["Query1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseQuery1 {
+            get {
+                return ((bool)(this["UseQuery1"]));
+            }
+            set {
+                this["UseQuery1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public string QueryArguments1 {
+            get {
+                return ((string)(this["QueryArguments1"]));
+            }
+            set {
+                this["QueryArguments1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize1 {
+            get {
+                return ((string)(this["FetchSize1"]));
+            }
+            set {
+                this["FetchSize1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string Weight1 {
+            get {
+                return ((string)(this["Weight1"]));
+            }
+            set {
+                this["Weight1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseQuery2 {
+            get {
+                return ((bool)(this["UseQuery2"]));
+            }
+            set {
+                this["UseQuery2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT ST_CODE ,\r\n       ST_NAME,\r\n       DATA_STATUS,\r\n       USER_ID,\r\n       P" +
+            "UT_DATE,\r\n       CASH_ST ,\r\n       AUTH_TEL,\r\n       VAN_TYPE_NAME,\r\n       BR_C" +
+            "ODE,\r\n       BR_NAME,\r\n       HD_CODE ,\r\n       HD_NAME,\r\n       IMG_TITLE_FILE," +
+            "\r\n       IMG_HOME_FILE,\r\n       TERMS_YN,\r\n       BR_MASTER_YN ,\r\n       BAROGO_" +
+            "YN,\r\n       VAN_TMN_ID,\r\n       MULTI_TYPE,\r\n       CHARGE_POS_YN ,\r\n       POS_" +
+            "TYPE_NAME,\r\n       POS_CON_YN,\r\n       POS_SHOP_CODE,\r\n       DVRY_TYPE_NAME,\r\n " +
+            "      DVRY_TAX_YN ,\r\n       CHARGE_DAY_POS,\r\n       CHARGE_DVY_ST,\r\n       CHARG" +
+            "E_DAY_DVY,\r\n       CASH_OSTD,\r\n       BIZNUM_AUTH_DATE,\r\n       VAN_TYPE_STR,\r\n " +
+            "      BIZNUM_AUTH_TYPE ,\r\n       BIZ_FILE_TYPE\r\n  FROM (SELECT ST_CODE ,\r\n      " +
+            "         ST_NAME,\r\n               DATA_STATUS,\r\n               USER_ID,\r\n       " +
+            "        PUT_DATE,\r\n               CASH_ST ,\r\n               AUTH_TEL,\r\n         " +
+            "      VAN_TYPE_NAME,\r\n               BR_CODE,\r\n               BR_NAME,\r\n        " +
+            "       HD_CODE ,\r\n               HD_NAME,\r\n               IMG_TITLE_FILE,\r\n     " +
+            "          IMG_HOME_FILE,\r\n               TERMS_YN,\r\n               BR_MASTER_YN " +
+            ",\r\n               BAROGO_YN,\r\n               VAN_TMN_ID,\r\n               MULTI_T" +
+            "YPE,\r\n               CHARGE_POS_YN ,\r\n               POS_TYPE_NAME,\r\n           " +
+            "    POS_CON_YN,\r\n               POS_SHOP_CODE,\r\n               DVRY_TYPE_NAME,\r\n" +
+            "               DVRY_TAX_YN ,\r\n               CHARGE_DAY_POS,\r\n               CHA" +
+            "RGE_DVY_ST,\r\n               CHARGE_DAY_DVY,\r\n               CASH_OSTD,\r\n        " +
+            "       BIZNUM_AUTH_DATE,\r\n               VAN_TYPE_STR,\r\n               BIZNUM_AU" +
+            "TH_TYPE ,\r\n               DECODE(BIZ_FILE, 0, \'미첨부\', \'첨부\') AS BIZ_FILE_TYPE ,\r\n " +
+            "              ROWNUM RN\r\n          FROM (SELECT /*+ FULL(A) INDEX(B MN_GR_USER_I" +
+            "X_4) USE_NL(B A) */A.ST_CODE ,\r\n                       A.ST_NAME,\r\n             " +
+            "          A.DATA_STATUS,\r\n                       B.USER_ID,\r\n                   " +
+            "    A.PUT_DATE,\r\n                       A.CASH_ST ,\r\n                       A.AU" +
+            "TH_TEL,\r\n                       FN_SY_GET_CODE_NAME (\'0001\' , \'VT\', A.VAN_TYPE_C" +
+            "D) AS VAN_TYPE_NAME,\r\n                       C.BR_CODE,\r\n                       " +
+            "C.BR_NAME,\r\n                       D.HD_CODE ,\r\n                       D.HD_NAME" +
+            ",\r\n                       E.IMG_TITLE_FILE,\r\n                       E.IMG_HOME_F" +
+            "ILE,\r\n                       E.TERMS_YN,\r\n                       A.BR_MASTER_YN " +
+            ",\r\n                       E.BAROGO_YN,\r\n                       A.VAN_TMN_ID,\r\n  " +
+            "                     E.MULTI_TYPE,\r\n                       A.CHARGE_POS_YN ,\r\n  " +
+            "                     FN_SY_GET_CODE_NAME (\'0001\' , \'PT\', E.POS_TYPE_CD) AS POS_T" +
+            "YPE_NAME,\r\n                       E.POS_CON_YN,\r\n                       E.POS_SH" +
+            "OP_CODE,\r\n                       DECODE(E.DVRY_TYPE_CD, \'1000\', \'만나기본배송그룹\', FN_S" +
+            "Y_GET_CODE_NAME (\'0001\' , \'O8\', E.DVRY_TYPE_CD)) AS DVRY_TYPE_NAME,\r\n           " +
+            "            E.DVRY_TAX_YN ,\r\n                       A.CHARGE_DAY_POS,\r\n         " +
+            "              A.CHARGE_DVY_ST,\r\n                       A.CHARGE_DAY_DVY,\r\n      " +
+            "                 A.CASH_OSTD,\r\n                       A.BIZNUM_AUTH_DATE,\r\n     " +
+            "                  A.VAN_TYPE_STR,\r\n                       A.BIZNUM_AUTH_TYPE ,\r\n" +
+            "                       (SELECT /*+ no_merge */COUNT(*)\r\n                        " +
+            "  FROM MN_GR_ST_UPLOAD\r\n                         WHERE DATA_STATUS = \'1\'\r\n      " +
+            "                     AND ST_CODE = A.ST_CODE\r\n                           AND FIL" +
+            "E_TYPE = \'1\') AS BIZ_FILE\r\n                  FROM MN_GR_ST A INNER JOIN MN_GR_US" +
+            "ER B ON A.ST_CODE = B.ST_CODE INNER JOIN MN_GR_BR C ON A.BR_CODE = C.BR_CODE INN" +
+            "ER JOIN MN_GR_HD D ON A.HD_CODE = D.HD_CODE INNER JOIN MN_GR_ST_ADD E ON A.ST_CO" +
+            "DE = E.ST_CODE\r\n                 WHERE B.USER_TYPE_CD = \'3000\'\r\n                " +
+            "   AND A.DATA_STATUS != \'0\'\r\n                   AND ( (NULL IS NULL\r\n           " +
+            "                        AND 1 = 1)\r\n                            OR (NULL IS NOT " +
+            "NULL\r\n                                   AND A.DATA_STATUS = NULL ) )\r\n         " +
+            "          AND A.PUT_DATE >= TO_DATE(\'20160401\' || \'000000\', \'YYYYMMDDHH24MISS\')\r" +
+            "\n                   AND A.PUT_DATE < (TO_DATE(\'20190825\' || \'000000\', \'YYYYMMDDH" +
+            "H24MISS\') + 1)\r\n                   AND ( (NULL IS NULL\r\n                        " +
+            "           AND 1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n       " +
+            "                            AND A.HD_CODE = NULL ) )\r\n                   AND ( (" +
+            "NULL IS NULL\r\n                                   AND 1 = 1)\r\n                   " +
+            "         OR (NULL IS NOT NULL\r\n                                   AND A.BR_CODE " +
+            "= NULL ) )\r\n                   AND ( (NULL IS NULL\r\n                            " +
+            "       AND 1 = 1)\r\n                            OR (NULL = \'1\'\r\n                 " +
+            "                  AND UPPER(A.ST_NAME) LIKE \'%\' || UPPER(NULL ) || \'%\')\r\n       " +
+            "                     OR (NULL = \'2\'\r\n                                   AND UPPE" +
+            "R(A.ST_CODE) LIKE \'%\' || UPPER(NULL ) || \'%\')\r\n                            OR (N" +
+            "ULL = \'3\'\r\n                                   AND UPPER(C.BR_NAME) LIKE \'%\' || U" +
+            "PPER(NULL ) || \'%\')\r\n                            OR (NULL = \'4\'\r\n               " +
+            "                    AND UPPER(C.BR_CODE) LIKE \'%\' || UPPER(NULL ) || \'%\')\r\n     " +
+            "                       OR (NULL = \'5\'\r\n                                   AND UP" +
+            "PER(D.HD_NAME) LIKE \'%\' || UPPER(NULL ) || \'%\')\r\n                            OR " +
+            "(NULL = \'6\'\r\n                                   AND UPPER(D.HD_CODE) LIKE \'%\' ||" +
+            " UPPER(NULL ) || \'%\')\r\n                            OR (NULL = \'7\' \r\n            " +
+            "                       AND UPPER(E.MKT_TAKER) LIKE \'%\' || UPPER(NULL ) || \'%\')\r\n" +
+            "                            OR (NULL = \'8\'\r\n                                   A" +
+            "ND A.AUTH_TEL LIKE \'%\' || NULL || \'%\')\r\n                            OR (NULL = \'" +
+            "9\'\r\n                                   AND A.BIZ_NUM LIKE \'%\' || NULL || \'%\') )\r" +
+            "\n                   AND ( (NULL IS NULL\r\n                                   AND " +
+            "1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n                      " +
+            "             AND E.ST_ADDR_4 LIKE \'%\' || NULL || \'%\') )\r\n                   AND " +
+            "( (NULL IS NULL\r\n                                   AND 1 = 1)\r\n                " +
+            "            OR (NULL IS NOT NULL\r\n                                   AND E.TERMS" +
+            "_YN = NULL ) )\r\n                   AND ( (NULL IS NULL\r\n                        " +
+            "            OR NULL IS NULL\r\n                                   AND 1 = 1)\r\n    " +
+            "                        OR ( NULL IS NOT NULL\r\n                                 " +
+            "  AND NULL IS NOT NULL\r\n                                   AND NULL = \'C1\'\r\n    " +
+            "                               AND INSTR(E.ORD_CATEGORY, NULL || \', \') > 0 )\r\n  " +
+            "                          OR ( NULL IS NOT NULL\r\n                               " +
+            "    AND NULL IS NOT NULL\r\n                                   AND NULL = \'P2\'\r\n  " +
+            "                                 AND INSTR(E.PRE_CATEGORY, NULL || \', \') > 0 ) )" +
+            "\r\n                   AND ( (NULL IS NULL\r\n                                   AND" +
+            " 1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n                     " +
+            "              AND NULL = \'0\'\r\n                                   AND (E.DVRY_TYP" +
+            "E_CD = \'\'\r\n                                            OR E.DVRY_TYPE_CD IS NULL" +
+            ") )\r\n                            OR (NULL IS NOT NULL\r\n                         " +
+            "          AND NULL != \'0\'\r\n                                   AND E.DVRY_TYPE_CD" +
+            " = NULL ) )\r\n                   AND ( (NULL IS NULL\r\n                           " +
+            "        AND 1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n          " +
+            "                         AND NULL = \'Y\'\r\n                                   AND " +
+            "A.CHARGE_POS_YN = \'Y\'\r\n                                   AND E.MULTI_TYPE != \'S" +
+            "\'\r\n                                   AND A.CHARGE_S_DAY_POS <= TO_CHAR(SYSDATE," +
+            " \'YYYYMMDD\') )\r\n                            OR (NULL IS NOT NULL\r\n              " +
+            "                     AND NULL = \'P\'\r\n                                   AND A.CH" +
+            "ARGE_POS_YN = \'Y\'\r\n                                   AND E.MULTI_TYPE != \'S\'\r\n " +
+            "                                  AND A.CHARGE_S_DAY_POS >= TO_CHAR(SYSDATE + 1," +
+            " \'YYYYMMDD\') )\r\n                            OR (NULL IS NOT NULL\r\n              " +
+            "                     AND NULL = \'N\'\r\n                                   AND A.CH" +
+            "ARGE_POS_YN = \'N\'\r\n                                   AND E.MULTI_TYPE != \'S\' ) " +
+            ")\r\n                   AND ( (NULL IS NULL\r\n                                   AN" +
+            "D 1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n                    " +
+            "               AND NULL = \'Y\'\r\n                                   AND A.CHARGE_U" +
+            "SE_YN = \'Y\'\r\n                                   AND A.CHARGE_S_DAY_USE <= TO_CHA" +
+            "R(SYSDATE, \'YYYYMMDD\') )\r\n                            OR (NULL IS NOT NULL\r\n    " +
+            "                               AND NULL = \'P\'\r\n                                 " +
+            "  AND A.CHARGE_USE_YN = \'Y\'\r\n                                   AND A.CHARGE_S_D" +
+            "AY_USE >= TO_CHAR(SYSDATE + 1, \'YYYYMMDD\') )\r\n                            OR (NU" +
+            "LL IS NOT NULL\r\n                                   AND NULL = \'N\'\r\n             " +
+            "                      AND A.CHARGE_USE_YN = \'N\' ) )\r\n                   AND ( (N" +
+            "ULL IS NULL\r\n                                   AND 1 = 1 )\r\n                   " +
+            "         OR (NULL IS NOT NULL\r\n                                   AND D.SERVICE_" +
+            "YN = NULL ) )\r\n                   AND ( (NULL IS NULL\r\n                         " +
+            "          AND 1 = 1)\r\n                            OR ( NULL IS NOT NULL\r\n       " +
+            "                            AND NULL = \'1\'\r\n                                   A" +
+            "ND A.ST_CODE IN(SELECT ST_CODE\r\n                                          FROM (" +
+            "SELECT /*+ no_merge */ST_CODE,\r\n                                                " +
+            "       SUM(DVRY_PATH_4_CNT + DVRY_PATH_5_CNT + DVRY_PATH_9_CNT) DVRY_CNT\r\n      " +
+            "                                            FROM MN_ST_ST_SALE_DAILY\r\n          " +
+            "                                       WHERE LOG_DATE >= TO_CHAR(SYSDATE - 2, \'Y" +
+            "YYYMMDD\')\r\n                                                 GROUP BY ST_CODE)\r\n " +
+            "                                        WHERE DVRY_CNT > 1 ) )\r\n                " +
+            "            OR ( NULL IS NOT NULL\r\n                                   AND NULL =" +
+            " \'2\'\r\n                                   AND A.ST_CODE IN(SELECT ST_CODE\r\n      " +
+            "                                    FROM (SELECT /*+ no_merge */ST_CODE,\r\n      " +
+            "                                                 SUM(DVRY_PATH_1_CNT) DVRY_PATH_" +
+            "1_CNT\r\n                                                  FROM MN_ST_ST_SALE_DAIL" +
+            "Y\r\n                                                 WHERE LOG_DATE >= TO_CHAR(SY" +
+            "SDATE - 2, \'YYYYMMDD\')\r\n                                                 GROUP B" +
+            "Y ST_CODE)\r\n                                         WHERE DVRY_PATH_1_CNT > 1 )" +
+            " )\r\n                            OR ( NULL IS NOT NULL\r\n                         " +
+            "          AND NULL = \'3\'\r\n                                   AND A.ST_CODE IN(SE" +
+            "LECT ST_CODE\r\n                                          FROM (SELECT /*+ no_merg" +
+            "e */ST_CODE,\r\n                                                       SUM(DVRY_EN" +
+            "D_CNT) DVRY_END_CNT\r\n                                                  FROM MN_S" +
+            "T_ST_SALE_DAILY\r\n                                                 WHERE LOG_DATE" +
+            " >= TO_CHAR(SYSDATE - 2, \'YYYYMMDD\')\r\n                                          " +
+            "       GROUP BY ST_CODE)\r\n                                         WHERE DVRY_EN" +
+            "D_CNT > 1 ) ) )\r\n                   AND ( (NULL IS NULL\r\n                       " +
+            "            AND 1 = 1)\r\n                            OR (NULL IS NOT NULL\r\n      " +
+            "                             AND A.BIZNUM_AUTH_TYPE = NULL ) )\r\n                " +
+            "   AND ( (NULL IS NULL\r\n                                   AND 1 = 1)\r\n         " +
+            "                   OR (NULL IS NOT NULL\r\n                                   AND " +
+            "NULL = \'R\'\r\n                                   AND A.VAN_TYPE_STR = NULL )\r\n    " +
+            "                        OR (NULL IS NOT NULL\r\n                                  " +
+            " AND NULL = \'N\'\r\n                                   AND A.VAN_TYPE_STR IS NULL)\r" +
+            "\n                            OR (NULL IS NOT NULL\r\n                             " +
+            "      AND NULL = \'Y\'\r\n                                   AND A.VAN_TYPE_STR IS N" +
+            "OT NULL\r\n                                   AND A.VAN_TYPE_STR != \'R\') )\r\n      " +
+            "             AND ( (NULL IS NULL\r\n                                   AND 1 = 1)\r" +
+            "\n                            OR (NULL IS NOT NULL\r\n                             " +
+            "      AND NULL = \'Y\'\r\n                                   AND E.DVRY_TAX_YN != \'N" +
+            "\')\r\n                            OR (NULL IS NOT NULL\r\n                          " +
+            "         AND NULL = \'N\'\r\n                                   AND E.DVRY_TAX_YN = " +
+            "\'N\') )\r\n                 ORDER BY A.ST_CODE DESC )\r\n         WHERE ROWNUM <= 30 " +
+            ")\r\n WHERE RN >= 1;")]
+        public string Query2 {
+            get {
+                return ((string)(this["Query2"]));
+            }
+            set {
+                this["Query2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QueryArguments2 {
+            get {
+                return ((string)(this["QueryArguments2"]));
+            }
+            set {
+                this["QueryArguments2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize2 {
+            get {
+                return ((string)(this["FetchSize2"]));
+            }
+            set {
+                this["FetchSize2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string Weight2 {
+            get {
+                return ((string)(this["Weight2"]));
+            }
+            set {
+                this["Weight2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseQuery3 {
+            get {
+                return ((bool)(this["UseQuery3"]));
+            }
+            set {
+                this["UseQuery3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT WK_CODE ,
+       HD_CODE,
+       BR_CODE,
+       ST_CODE,
+       WK_ATTEND_CD,
+       DATA_STATUS ,
+       CASH_WK,
+       CASH_DEPOSIT,
+       TO_CHAR(SYNC_DATE, 'YYYYMMDDHH24MISS') SYNC_DATE,
+       WK_NAME,
+       WK_BIZ_NUM ,
+       WK_AUTH_TEL,
+       WK_TEL,
+       SHARE_YN,
+       NO_SHARE_TIME,
+       ONCE_CTH_CNT ,
+       GRADE_CNT,
+       GRADE_SUM,
+       FIND_RANGE,
+       FIND_DVRY_DISTANCE,
+       DVRY_TYPE_CD ,
+       CASH_OSTD,
+       FN_SY_GET_WK_GRADE_TIME(GRADE_CNT, GRADE_SUM) GRADE_TIME,
+       GRADE_CNT,
+       GRADE_SUM
+  FROM MN_GR_WK
+ WHERE SYNC_DATE >=  sysdate-:1/(24*60*60);")]
+        public string Query3 {
+            get {
+                return ((string)(this["Query3"]));
+            }
+            set {
+                this["Query3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string QueryArguments3 {
+            get {
+                return ((string)(this["QueryArguments3"]));
+            }
+            set {
+                this["QueryArguments3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize3 {
+            get {
+                return ((string)(this["FetchSize3"]));
+            }
+            set {
+                this["FetchSize3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string Weight3 {
+            get {
+                return ((string)(this["Weight3"]));
+            }
+            set {
+                this["Weight3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseQuery4 {
+            get {
+                return ((bool)(this["UseQuery4"]));
+            }
+            set {
+                this["UseQuery4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ RULE */A.ORD_NO ,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TYPE_CD,\r\n    " +
+            "   A.ORD_STATUS_CD,\r\n       A.ORD_DATE,\r\n       A.TAKEOUT_YN ,\r\n       A.EA_ADDR" +
+            "_4,\r\n       A.EA_ADDR_5,\r\n       A.ORD_AMT,\r\n       A.SRV_AMT,\r\n       A.DVRY_AM" +
+            "T ,\r\n       A.DVRY_DISTANCE DISTANCE,\r\n       A.READY_TIME,\r\n       A.DVRY_CNT,\r" +
+            "\n       A.ORD_TODAY_ALL_NO,\r\n       A.TAKEOUT_DATE ,\r\n       A.ORD_CU_TEL,\r\n    " +
+            "   A.PAY_TYPE_CD,\r\n       A.ARR_TIME,\r\n       B.TRAN_TYPE,\r\n       A.DVRY_EX_CHA" +
+            "RGE ,\r\n       A.ORD_PATH_CD,\r\n       A.ORD_ST_CODE,\r\n       A.XY_ACC_TYPE,\r\n    " +
+            "   A.CHARGE_TYPE,\r\n       A.END_DATE ,\r\n       A.CANCEL_DATE,\r\n       B.ORD_BR_C" +
+            "ODE,\r\n       B.CTH_BR_CODE,\r\n       A.CTH_WK_NAME,\r\n       A.EA_ADDR_6 ,\r\n      " +
+            " A.EA_ADDR_7,\r\n       A.DVRY_TYPE_CD,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_D" +
+            "ATE,\r\n       A.MOD_DATE ,\r\n       A.READY_CHANGE_DATE,\r\n       A.CTH_DVRY_TYPE_C" +
+            "D,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DVRY_TYPE_CD,\r\n       B.CTH_ST_CODE ,\r" +
+            "\n       A.PICKUP_DATE,\r\n       A.SA_APP_ADDR,\r\n       A.ORD_ST_NAME,\r\n       A.O" +
+            "RD_MASTER_ST_CODE,\r\n       B.CTH_MNG_BR_CODE ,\r\n       A.READY_CTH_YN,\r\n       A" +
+            ".SA_LAT_Y,\r\n       A.SA_LNG_X,\r\n       A.POS_ORD_CODE,\r\n       B.EA_ADDR_10 ,\r\n " +
+            "      A.CTH_WK_CODE,\r\n       A.CU_050_NUM,\r\n       A.CTH_WK_ARR_DATE,\r\n       A." +
+            "ORG_PAY_TYPE,\r\n       A.ORG_ORD_NO ,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n  " +
+            "     A.ORG_ORD_PATH_CD,\r\n       A.PUT_USER_ID,\r\n       A.CTH_WK_TEL ,\r\n       A." +
+            "DVRY_MNG_TYPE,\r\n       A.ORD_MEMO,\r\n       A.CHARGE_HISTORY,\r\n       B.EA_ADDR_S" +
+            "TR,\r\n       A.DVRY_GRP_TYPE ,\r\n       A.CTH_WK_GOODS_PAY_TYPE\r\n  FROM MN_A1_TODA" +
+            "Y A,\r\n       (SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_1) */ORD_NO,\r\n" +
+            "               ORD_BR_CODE,\r\n               CTH_BR_CODE,\r\n               CTH_ST_" +
+            "CODE,\r\n               CTH_MNG_BR_CODE,\r\n               EA_ADDR_10,\r\n            " +
+            "   EA_ADDR_STR,\r\n               TRAN_TYPE\r\n          FROM MN_A1_TODAY_ADD\r\n     " +
+            "    WHERE ORD_BR_CODE = \'BA980\'\r\n         UNION ALL\r\nSELECT /*+ INDEX(MN_A1_TODA" +
+            "Y_ADD MN_A1_TODAY_ADD_IX_4) */ORD_NO,\r\n               ORD_BR_CODE,\r\n            " +
+            "   CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n " +
+            "              EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TYPE" +
+            "\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE ST_DVRY_BR_CODE = \'BA980\'\r\n    " +
+            "       AND ORD_BR_CODE NOT IN (\'BA980\')\r\n         UNION ALL\r\nSELECT /*+ INDEX(MN" +
+            "_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_5) */ORD_NO,\r\n               ORD_BR_CODE,\r\n    " +
+            "           CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_" +
+            "CODE,\r\n               EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               T" +
+            "RAN_TYPE\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE CTH_MNG_BR_CODE = \'BA98" +
+            "0\'\r\n           AND ORD_BR_CODE NOT IN (\'BA980\')\r\n           AND ST_DVRY_BR_CODE " +
+            "NOT IN (\'BA980\')\r\n         UNION ALL\r\nSELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD" +
+            " MN_A1_TODAY_ADD_PK) */ORD_NO,\r\n               ORD_BR_CODE,\r\n               CTH_" +
+            "BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n        " +
+            "       EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TYPE\r\n     " +
+            "     FROM MN_A1_TODAY_ADD\r\n         WHERE ORD_NO IN (SELECT ORD_NO\r\n            " +
+            "      FROM MN_A1_TODAY_CTH_SHARE\r\n                 WHERE SH_MNG_BR_CODE = \'BA980" +
+            "\')\r\n           AND ORD_BR_CODE NOT IN (\'BA980\')\r\n           AND ST_DVRY_BR_CODE " +
+            "NOT IN (\'BA980\') ) B\r\n WHERE A.ORD_NO = B.ORD_NO ;")]
+        public string Query4 {
+            get {
+                return ((string)(this["Query4"]));
+            }
+            set {
+                this["Query4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QueryArguments4 {
+            get {
+                return ((string)(this["QueryArguments4"]));
+            }
+            set {
+                this["QueryArguments4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize4 {
+            get {
+                return ((string)(this["FetchSize4"]));
+            }
+            set {
+                this["FetchSize4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string Weight4 {
+            get {
+                return ((string)(this["Weight4"]));
+            }
+            set {
+                this["Weight4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseQuery5 {
+            get {
+                return ((bool)(this["UseQuery5"]));
+            }
+            set {
+                this["UseQuery5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT P.ORD_NO ,\r\n       P.ORD_TODAY_ALL_NO,\r\n       P.ORD_STATUS_CD,\r\n       P." +
+            "CHARGE_TYPE,\r\n       P.PAY_TYPE_CD,\r\n       P.DVRY_AMT ,\r\n       P.DVRY_EX_CHARG" +
+            "E,\r\n       TO_CHAR(P.ORD_DATE, \'YYYYMMDDHH24MISS\') ORD_DATE,\r\n       TO_CHAR(P.R" +
+            "EADY_CHANGE_DATE, \'YYYYMMDDHH24MISS\') READY_CHANGE_DATE ,\r\n       TO_CHAR(P.CTH_" +
+            "WK_ARR_DATE, \'YYYYMMDDHH24MISS\') CTH_WK_ARR_DATE,\r\n       TO_CHAR(P.PICKUP_DATE," +
+            " \'YYYYMMDDHH24MISS\') PICKUP_DATE ,\r\n       TO_CHAR(P.END_DATE, \'YYYYMMDDHH24MISS" +
+            "\') END_DATE,\r\n       TO_CHAR(P.CANCEL_DATE, \'YYYYMMDDHH24MISS\') CANCEL_DATE,\r\n  " +
+            "     TRUNC(P.DVRY_DISTANCE / 1000, 1) DVRY_DISTANCE,\r\n       P.SA_APP_ADDR ,\r\n  " +
+            "     P.EA_ADDR_STR EA_ADDR ,\r\n       P.READY_CTH_YN,\r\n       NVL(P.READY_TIME, 0" +
+            ") READY_TIME,\r\n       P.SA_LAT_Y,\r\n       P.SA_LNG_X,\r\n       P.EA_LAT_Y ,\r\n    " +
+            "   P.EA_LNG_X,\r\n       TO_CHAR(P.CTH_DATE, \'YYYYMMDDHH24MISS\') CTH_DATE,\r\n      " +
+            " P.ORG_PAY_TYPE,\r\n       P.ORG_ORD_NO,\r\n       P.ST_DVRY_TYPE_CD ,\r\n       P.ORD" +
+            "_MEMO,\r\n       P.DVRY_TYPE_CD,\r\n       P.CTH_DVRY_TYPE_CD,\r\n       P.CTH_WK_CODE" +
+            ",\r\n       P.MOD_USER_ID ,\r\n       TO_CHAR(P.MOD_DATE, \'YYYYMMDDHH24MISS\') MOD_DA" +
+            "TE,\r\n       P.DVRY_LOCK_TIME,\r\n       P.ORD_MASTER_ST_CODE ,\r\n       P.VAN_TYPE_" +
+            "STR ARR_VAN_TYPE_CD,\r\n       P.CHARGE_HISTORY,\r\n       P.DVRY_GRP_TYPE,\r\n       " +
+            "TO_CHAR(P.MOD_DATE, \'YYYYMMDDHH24MISSFF3\') MOD_DATE_STAMP,\r\n       P.PRE_CTH_YN " +
+            ",\r\n       P.TAKEOUT_YN,\r\n       P.CTH_WK_GOODS_PAY_TYPE,\r\n       P.MOD_SEQ_NO\r\n " +
+            " FROM (SELECT /*+ LEADING(SUB) INDEX(A MN_A1_TODAY_PK) */A.ORD_NO,\r\n            " +
+            "   A.ORD_TODAY_ALL_NO,\r\n               A.ORD_STATUS_CD,\r\n               A.CHARGE" +
+            "_TYPE,\r\n               A.PAY_TYPE_CD,\r\n               A.DVRY_AMT,\r\n             " +
+            "  A.DVRY_EX_CHARGE ,\r\n               A.ORD_DATE,\r\n               A.READY_CHANGE_" +
+            "DATE,\r\n               A.CTH_WK_ARR_DATE,\r\n               A.PICKUP_DATE,\r\n       " +
+            "        A.END_DATE,\r\n               A.CANCEL_DATE,\r\n               A.DVRY_DISTAN" +
+            "CE,\r\n               DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, A.SA_APP_ADDR) SA" +
+            "_APP_ADDR ,\r\n               A.EA_ADDR_3,\r\n               A.EA_ADDR_4,\r\n         " +
+            "      B.EA_ADDR_11,\r\n               B.EA_ADDR_9,\r\n               A.EA_ADDR_6,\r\n " +
+            "              B.EA_ADDR_12,\r\n               B.EA_ADDR_10,\r\n               A.EA_A" +
+            "DDR_5,\r\n               A.EA_ADDR_7 ,\r\n               A.READY_CTH_YN,\r\n          " +
+            "     A.READY_TIME,\r\n               A.SA_LAT_Y,\r\n               A.SA_LNG_X,\r\n    " +
+            "           A.EA_LAT_Y,\r\n               A.EA_LNG_X,\r\n               A.CTH_DATE,\r\n" +
+            "               A.ORD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TYPE,\r\n            " +
+            "   A.ORG_ORD_NO,\r\n               A.ST_DVRY_TYPE_CD,\r\n               A.ORD_MEMO ," +
+            "\r\n               A.DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYPE_CD,\r\n          " +
+            "     A.CTH_WK_CODE,\r\n               A.MOD_USER_ID,\r\n               A.MOD_DATE,\r\n" +
+            "               A.DVRY_LOCK_TIME,\r\n               A.ORD_MASTER_ST_CODE,\r\n        " +
+            "       A.ORD_ST_CODE,\r\n               B.EA_ADDR_STR,\r\n               B.VAN_TYPE_" +
+            "STR ,\r\n               A.CHARGE_HISTORY,\r\n               A.DVRY_GRP_TYPE,\r\n      " +
+            "         A.PRE_CTH_YN,\r\n               A.TAKEOUT_YN,\r\n               A.CTH_WK_GO" +
+            "ODS_PAY_TYPE,\r\n               A.MOD_SEQ_NO\r\n          FROM MN_A1_TODAY A,\r\n     " +
+            "          MN_A1_TODAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO\r\n           AND " +
+            "A.ORD_STATUS_CD = \'2001\'\r\n           AND A.TAKEOUT_YN = \'N\'\r\n           AND A.OR" +
+            "D_NO IN (SELECT /*+ QB_NAME(SUB) */ORD_NO\r\n                  FROM MN_A1_TODAY_CT" +
+            "H_SHARE\r\n                 WHERE SH_DVRY_TYPE_CD = \'1608\' )\r\n         UNION ALL\r\n" +
+            "SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */A.ORD_NO,\r\n               A.ORD_TODAY_ALL" +
+            "_NO,\r\n               A.ORD_STATUS_CD,\r\n               A.CHARGE_TYPE,\r\n          " +
+            "     A.PAY_TYPE_CD,\r\n               A.DVRY_AMT,\r\n               A.DVRY_EX_CHARGE" +
+            " ,\r\n               A.ORD_DATE,\r\n               A.READY_CHANGE_DATE,\r\n           " +
+            "    A.CTH_WK_ARR_DATE,\r\n               A.PICKUP_DATE,\r\n               A.END_DATE" +
+            ",\r\n               A.CANCEL_DATE,\r\n               A.DVRY_DISTANCE,\r\n             " +
+            "  DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, A.SA_APP_ADDR) SA_APP_ADDR ,\r\n     " +
+            "          A.EA_ADDR_3,\r\n               A.EA_ADDR_4,\r\n               B.EA_ADDR_11" +
+            ",\r\n               B.EA_ADDR_9,\r\n               A.EA_ADDR_6,\r\n               B.EA" +
+            "_ADDR_12,\r\n               B.EA_ADDR_10,\r\n               A.EA_ADDR_5,\r\n          " +
+            "     A.EA_ADDR_7 ,\r\n               A.READY_CTH_YN,\r\n               A.READY_TIME," +
+            "\r\n               A.SA_LAT_Y,\r\n               A.SA_LNG_X,\r\n               A.EA_LA" +
+            "T_Y,\r\n               A.EA_LNG_X,\r\n               A.CTH_DATE,\r\n               A.O" +
+            "RD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TYPE,\r\n               A.ORG_ORD_NO,\r\n" +
+            "               A.ST_DVRY_TYPE_CD,\r\n               A.ORD_MEMO ,\r\n               A" +
+            ".DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYPE_CD,\r\n               A.CTH_WK_CODE" +
+            ",\r\n               A.MOD_USER_ID,\r\n               A.MOD_DATE,\r\n               A.D" +
+            "VRY_LOCK_TIME,\r\n               A.ORD_MASTER_ST_CODE,\r\n               A.ORD_ST_CO" +
+            "DE,\r\n               B.EA_ADDR_STR,\r\n               B.VAN_TYPE_STR ,\r\n           " +
+            "    A.CHARGE_HISTORY,\r\n               A.DVRY_GRP_TYPE,\r\n               A.PRE_CTH" +
+            "_YN,\r\n               A.TAKEOUT_YN,\r\n               A.CTH_WK_GOODS_PAY_TYPE,\r\n   " +
+            "            A.MOD_SEQ_NO\r\n          FROM MN_A1_TODAY A,\r\n               MN_A1_TO" +
+            "DAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO\r\n           AND A.ORD_STATUS_CD IN" +
+            " (\'3001\',\r\n                       \'3003\',\r\n                       \'4001\',\r\n     " +
+            "                  \'4002\')\r\n           AND A.CTH_WK_CODE = \'W03153\' ) P;")]
+        public string Query5 {
+            get {
+                return ((string)(this["Query5"]));
+            }
+            set {
+                this["Query5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QueryArguments5 {
+            get {
+                return ((string)(this["QueryArguments5"]));
+            }
+            set {
+                this["QueryArguments5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        public string FetchSize5 {
+            get {
+                return ((string)(this["FetchSize5"]));
+            }
+            set {
+                this["FetchSize5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string Weight5 {
+            get {
+                return ((string)(this["Weight5"]));
+            }
+            set {
+                this["Weight5"] = value;
             }
         }
     }

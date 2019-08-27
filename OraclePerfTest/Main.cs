@@ -34,6 +34,8 @@ namespace OraclePerfTest
 		System.Windows.Forms.Timer statTimer;
 		Statistics stat;
 		Random rand;
+		List<QuerySetting> querySettings = new List<QuerySetting>();
+		List<Tuple<int, int>> weights = new List<Tuple<int, int>>();
 
 		public Main()
 		{
@@ -50,7 +52,7 @@ namespace OraclePerfTest
 			this.statTimer = new System.Windows.Forms.Timer();
 			this.statTimer.Interval = STAT_REPORT_INTERVAL;
 			this.statTimer.Tick += StatTimerHandler;
-			this.stat = new Statistics();
+			this.stat = new Statistics(this.tabControlQuery.TabCount);
 
 			this.rand = new Random(RANDOM_SEED);
 		}
@@ -58,6 +60,9 @@ namespace OraclePerfTest
 		private void ButtonCBT_Click(object sender, EventArgs e)
 		{
 			AddLog("ButtonCBT_Click, started.");
+
+			SetQuerySettings();
+			QuerySetting querySetting = GetCurrentQuerySetting();
 
 			try
 			{
@@ -71,15 +76,15 @@ namespace OraclePerfTest
 						using (OracleCommand cmd = new OracleCommand())
 						{
 							cmd.Connection = conn;
-							if (GenerateOracleCommand(cmd))
+							if (GenerateOracleCommand(cmd, querySetting.Query, querySetting.Arguments))
 							{
-								if (this.radioButtonConnected.Checked)
+								if (querySetting.Connected)
 								{
 									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
-										if (this.radioButtonReadingModeSelectRead.Checked)
+										if (querySetting.SelectRead)
 										{
-											reader.FetchSize = long.Parse(Config.Default.FetchSize);
+											reader.FetchSize = querySetting.FetchSize;
 											int rows = 0;
 											int fields = 0;
 											while (reader.Read())
@@ -99,7 +104,7 @@ namespace OraclePerfTest
 								{
 									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
 									{
-										if (this.radioButtonReadingModeSelectRead.Checked)
+										if (querySetting.SelectRead)
 										{
 											DataTable dataTable = new DataTable();
 											adapter.Fill(dataTable);
@@ -214,6 +219,7 @@ namespace OraclePerfTest
 		private void ButtonStop_Click(object sender, EventArgs e)
 		{
 			StopJobs();
+			this.stat.ReportAndReset();
 			AddLog("ButtonStop_Click, stopped.");
 		}
 
@@ -326,14 +332,14 @@ namespace OraclePerfTest
 			return $"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={serverIp})(PORT={serverPort})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={databaseName})));User ID={databaseId};Password={databasePassword};Connection Timeout=30;Pooling=true;Statement Cache Size=1;";
 		}
 
-		private bool GenerateOracleCommand(OracleCommand cmd)
+		private bool GenerateOracleCommand(OracleCommand cmd, string query, string arguments)
 		{
 			try
 			{
 				cmd.AddToStatementCache = true;
-				cmd.CommandText = Config.Default.Query.Replace("\r\n", "");
+				cmd.CommandText = query.Replace("\r\n", "");
 
-				List<string> arquments = Config.Default.QueryArguments.Split('\n').ToList();
+				List<string> arquments = arguments.Split('\n').ToList();
 				for (int i = 0; i < arquments.Count; i++)
 				{
 					//
@@ -353,6 +359,18 @@ namespace OraclePerfTest
 			return true;
 		}
 
+		private QuerySetting GetCurrentQuerySetting()
+		{
+			return this.querySettings[this.tabControlQuery.SelectedIndex];
+		}
+
+		private QuerySetting GetRandomQuerySetting()
+		{
+			int randomNumber = this.rand.Next(this.weights.Last().Item2);
+			int index = this.weights.Find(x => randomNumber <= x.Item2).Item1;
+			return this.querySettings[index];
+		}
+
 		private void OpeningTimerHandler(object sender, ElapsedEventArgs args)
 		{
 			var randomIndex = Enumerable.Range(0, this.mocks.Count).OrderBy(x => Guid.NewGuid()).ToList();
@@ -360,7 +378,7 @@ namespace OraclePerfTest
 			int i = 0;
 			while (this.openingCancellationToken != CancellationToken.None
 				&& !this.openingCancellationToken.IsCancellationRequested
-				&& i < randomIndex.Count)
+				&& i++ < randomIndex.Count)
 			{
 				MockClient mock = null;
 				try
@@ -392,10 +410,6 @@ namespace OraclePerfTest
 					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
 					this.stat.AddErrorCount();
 				}
-				finally
-				{
-					i++;
-				}
 			}
 
 			bool CanOpen(ConnectionState state)
@@ -415,7 +429,7 @@ namespace OraclePerfTest
 			}
 		}
 
-		private void ReadingJob(MockClient mock, CancellationToken cancellationToken)
+		private void ReadingJob(MockClient mock, QuerySetting querySetting, CancellationToken cancellationToken)
 		{
 			try
 			{
@@ -426,20 +440,20 @@ namespace OraclePerfTest
 						using (OracleCommand cmd = new OracleCommand())
 						{
 							cmd.Connection = mock.Connection;
-							if (GenerateOracleCommand(cmd))
+							if (GenerateOracleCommand(cmd, querySetting.Query, querySetting.Arguments))
 							{
-								if (this.radioButtonConnected.Checked)
+								if (this.radioButtonConnectionModeConnected1.Checked)
 								{
 									using (OracleDataReader reader = cmd.ExecuteReader())
 									{
-										this.stat.AddReadCount();
-										if (this.radioButtonReadingModeSelectRead.Checked)
+										this.stat.AddReadCount(querySetting.Index, 1);
+										if (this.radioButtonReadingModeSelectRead1.Checked)
 										{
-											reader.FetchSize = long.Parse(Config.Default.FetchSize);
+											reader.FetchSize = querySetting.FetchSize;
 											while (reader.Read() && !cancellationToken.IsCancellationRequested)
 											{
-												this.stat.AddRowCount();
-												this.stat.AddFieldCount(reader.FieldCount);
+												this.stat.AddRowCount(querySetting.Index, 1);
+												this.stat.AddBytes(querySetting.Index, reader.RowSize);
 											}
 										}
 									}
@@ -448,13 +462,12 @@ namespace OraclePerfTest
 								{
 									using (OracleDataAdapter adapter = new OracleDataAdapter(cmd))
 									{
-										this.stat.AddReadCount();
-										if (this.radioButtonReadingModeSelectRead.Checked)
+										this.stat.AddReadCount(querySetting.Index, 1);
+										if (this.radioButtonReadingModeSelectRead1.Checked)
 										{
 											DataTable dataTable = new DataTable();
 											adapter.Fill(dataTable);
-											this.stat.AddRowCount(dataTable.Rows.Count);
-											this.stat.AddColumnCount(dataTable.Columns.Count);
+											this.stat.AddRowCount(querySetting.Index, 1);
 										}
 									}
 								}
@@ -505,9 +518,10 @@ namespace OraclePerfTest
 				MockClient mock = null;
 				try
 				{
-                    this.stat.AddReadRequestCount();
+					QuerySetting querySetting = GetRandomQuerySetting();
+					this.stat.AddReadRequestCount(querySetting.Index, 1);
 					mock = this.mocks[randomIndex[i]];
-					Task.Factory.StartNew(() => ReadingJob(mock, this.readingCancellationToken));
+					Task.Factory.StartNew(() => ReadingJob(mock, querySetting, this.readingCancellationToken));
 				}
 				catch (Exception ex)
 				{
@@ -548,8 +562,7 @@ namespace OraclePerfTest
 				this.textBoxDatabase.Enabled = false;
 				this.textBoxId.Enabled = false;
 				this.textBoxPassword.Enabled = false;
-				this.textBoxQuery.Enabled = false;
-				this.textBoxArguments.Enabled = false;
+				this.tabControlQuery.Enabled = false;
 			}
 			else
 			{
@@ -560,8 +573,33 @@ namespace OraclePerfTest
 				this.textBoxDatabase.Enabled = true;
 				this.textBoxId.Enabled = true;
 				this.textBoxPassword.Enabled = true;
-				this.textBoxQuery.Enabled = true;
-				this.textBoxArguments.Enabled = true;
+				this.tabControlQuery.Enabled = true;
+			}
+		}
+
+		private void SetQuerySettings()
+		{
+			this.querySettings.Clear();
+			this.weights.Clear();
+
+			int totalWeight = 0;
+			for (int i = 0; i < this.tabControlQuery.TabCount; i++)
+			{
+				QuerySetting querySetting = new QuerySetting();
+				{
+					TabPage page = this.tabControlQuery.TabPages[i];
+					querySetting.Index = i;
+					querySetting.UseQuery = (page.Controls[$"checkBoxUseQuery{i+1}"] as CheckBox).Checked;
+					querySetting.Query = (page.Controls[$"textBoxQuery{i+1}"] as TextBox).Text;
+					querySetting.Arguments = (page.Controls[$"textBoxArguments{i+1}"] as TextBox).Text;
+					querySetting.FetchSize = long.Parse((page.Controls[$"textBoxFetchSize{i+1}"] as TextBox).Text);
+					querySetting.Weight = int.Parse((page.Controls[$"textBoxWeight{i+1}"] as TextBox).Text);
+					querySetting.Connected = (page.Controls.Find($"radioButtonConnectionModeConnected{i+1}", true)[0] as RadioButton).Checked;
+					querySetting.SelectRead = (page.Controls.Find($"radioButtonReadingModeSelectRead{i+1}", true)[0] as RadioButton).Checked;
+				}
+				this.querySettings.Add(querySetting);
+				totalWeight = querySetting.Weight;
+				this.weights.Add(new Tuple<int, int>(i, totalWeight));
 			}
 		}
 
@@ -620,19 +658,35 @@ namespace OraclePerfTest
 			}
 		}
 
+		class QuerySetting
+		{
+			public int Index { get; set; }
+			public bool UseQuery { get; set; }
+			public string Query { get; set; }
+			public string Arguments { get; set; }
+			public long FetchSize { get; set; }
+			public int Weight { get; set; }
+			public bool Connected { get; set; }
+			public bool SelectRead { get; set; }
+		}
+
 		class Statistics
 		{
 			object lockObject = new object();
 			long openCount;
-			long readCount;
-            long readRequestCount;
-			long rowCount;
-			long columnCount;
-			long fieldCount;
+			long[] readRequests;
+			long[] reads;
+			long[] rows;
+			long[] bytes;
 			long errorCount;
 
-			public Statistics()
+			public Statistics(int queryCount)
 			{
+				this.readRequests = new long[queryCount];
+				this.reads = new long[queryCount];
+				this.rows = new long[queryCount];
+				this.bytes = new long[queryCount];
+
 				Reset();
 			}
 
@@ -644,43 +698,36 @@ namespace OraclePerfTest
 				}
 			}
 
-			public long AddReadCount(long count = 1)
+			public long AddReadRequestCount(int index, long count)
 			{
 				lock (this.lockObject)
 				{
-					return Interlocked.Add(ref this.readCount, count);
+					return Interlocked.Add(ref this.readRequests[index], count);
 				}
 			}
 
-			public long AddReadRequestCount(long count = 1)
+			public long AddReadCount(int index, long count)
 			{
 				lock (this.lockObject)
 				{
-					return Interlocked.Add(ref this.readRequestCount, count);
+					return Interlocked.Add(ref this.reads[index], count);
 				}
 			}
 
-			public long AddRowCount(long count = 1)
+
+			public long AddRowCount(int index, long count)
 			{
 				lock (this.lockObject)
 				{
-					return Interlocked.Add(ref this.rowCount, count);
+					return Interlocked.Add(ref this.rows[index], count);
 				}
 			}
 
-			public long AddColumnCount(long count = 1)
+			public long AddBytes(int index, long count)
 			{
 				lock (this.lockObject)
 				{
-					return Interlocked.Add(ref this.columnCount, count);
-				}
-			}
-
-			public long AddFieldCount(long count = 1)
-			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.fieldCount, count);
+					return Interlocked.Add(ref this.bytes[index], count);
 				}
 			}
 
@@ -697,7 +744,12 @@ namespace OraclePerfTest
 				StringBuilder sb = new StringBuilder(128);
 				lock (this.lockObject)
 				{
-					sb.AppendFormat($"OpenCnt:{this.openCount,2}, RequestCnt:{this.readRequestCount,3}, ReadCnt:{this.readCount,4}, RowCnt:{this.rowCount,5}, AverageRowCnt:{this.rowCount / Math.Max(1, this.readCount),4}, ErrorCnt:{this.errorCount,2}, ThreadCnt:{Process.GetCurrentProcess().Threads.Count,3}");
+					sb.AppendFormat($"OC:{this.openCount,2},");
+					for (int i = 0; i < this.readRequests.Length; i++)
+					{
+						sb.AppendFormat($"REQ#{i}:{this.readRequests[i]},RDC#{i}:{this.reads[i]},RWC#{i}:{this.rows[i]},ARWS#{i}:{this.bytes[i] / (double)Math.Max(1, this.rows[i]):F0},");
+					}
+					sb.AppendFormat($"EC:{this.errorCount,2}");
 					Reset();
 				}
 				return sb.ToString();
@@ -708,9 +760,10 @@ namespace OraclePerfTest
 				lock (this.lockObject)
 				{
 					this.openCount = 0;
-                    this.readRequestCount = 0;
-					this.readCount = 0;
-					this.rowCount = 0;
+					this.readRequests.All(x => { x = 0; return true; });
+					this.reads.All(x => { x = 0; return true; });
+					this.rows.All(x => { x = 0; return true; });
+					this.bytes.All(x => { x = 0; return true; });
 					this.errorCount = 0;
 				}
 			}
