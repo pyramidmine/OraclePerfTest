@@ -61,7 +61,7 @@ namespace OraclePerfTest
 		{
 			AddLog("ButtonCBT_Click, started.");
 
-			SetQuerySettings();
+			CollectQuerySettings();
 			QuerySetting querySetting = GetCurrentQuerySetting();
 
 			try
@@ -141,7 +141,6 @@ namespace OraclePerfTest
 
 		private void ButtonClose_Click(object sender, EventArgs e)
         {
-			Config.Default.Save();
             this.Close();
         }
 
@@ -194,6 +193,17 @@ namespace OraclePerfTest
 			//
 			try
 			{
+				CollectQuerySettings();
+				{
+					StringBuilder sb = new StringBuilder(1024);
+					sb.Append(@"ButtonStart_Click, weights:{");
+					for (int i = 0; i < this.weights.Count; i++)
+					{
+						sb.AppendFormat($"{this.weights[i].Item1}:{this.weights[i].Item2}{(i < this.weights.Count - 1 ? "," : "")}");
+					}
+					sb.Append(@"}");
+					AddLog(sb.ToString());
+				}
 				this.readingCancellation = new CancellationTokenSource();
 				this.readingCancellationToken = this.readingCancellation.Token;
 				this.readingTimer.Interval = 1000 / double.Parse(Config.Default.QueryRate);
@@ -242,6 +252,8 @@ namespace OraclePerfTest
 					StopJobs();
 				}
 			}
+
+			Config.Default.Save();
 		}
 
 		private void NumericUpDownUserCount_TextChanged(object sender, EventArgs e)
@@ -337,18 +349,17 @@ namespace OraclePerfTest
 			try
 			{
 				cmd.AddToStatementCache = true;
-				cmd.CommandText = query.Replace("\r\n", "");
+				cmd.CommandText = query.Replace("\r\n", ""); ;
 
-				List<string> arquments = arguments.Split('\n').ToList();
-				for (int i = 0; i < arquments.Count; i++)
+				List<string> argumentTokens = arguments.Split('\n').ToList();
+				for (int i = 0; i < argumentTokens.Count && !string.IsNullOrWhiteSpace(argumentTokens[i]); i++)
 				{
 					//
 					// TODO: Use correct OracleDbType
 					//
-					OracleParameter paramPeriod = new OracleParameter();
-					paramPeriod.OracleDbType = OracleDbType.Decimal;
-					paramPeriod.Value = int.Parse(arquments[i].Trim());
-					cmd.Parameters.Add(paramPeriod);
+					OracleParameter param = new OracleParameter($":{i+1}", OracleDbType.Decimal);
+					param.Value = int.Parse(argumentTokens[i].Trim());
+					cmd.Parameters.Add(param);
 				}
 			}
 			catch (OracleException ex)
@@ -367,7 +378,7 @@ namespace OraclePerfTest
 		private QuerySetting GetRandomQuerySetting()
 		{
 			int randomNumber = this.rand.Next(this.weights.Last().Item2);
-			int index = this.weights.Find(x => randomNumber <= x.Item2).Item1;
+			int index = this.weights.Find(x => randomNumber < x.Item2).Item1;
 			return this.querySettings[index];
 		}
 
@@ -378,7 +389,7 @@ namespace OraclePerfTest
 			int i = 0;
 			while (this.openingCancellationToken != CancellationToken.None
 				&& !this.openingCancellationToken.IsCancellationRequested
-				&& i++ < randomIndex.Count)
+				&& i < randomIndex.Count)
 			{
 				MockClient mock = null;
 				try
@@ -409,6 +420,10 @@ namespace OraclePerfTest
 				{
 					AddLog($"OpeningTimerHandler, mock index = {randomIndex[i]}, {ex.ToString()}, {ex.Message}");
 					this.stat.AddErrorCount();
+				}
+				finally
+				{
+					i++;
 				}
 			}
 
@@ -577,7 +592,7 @@ namespace OraclePerfTest
 			}
 		}
 
-		private void SetQuerySettings()
+		private void CollectQuerySettings()
 		{
 			this.querySettings.Clear();
 			this.weights.Clear();
@@ -590,16 +605,20 @@ namespace OraclePerfTest
 					TabPage page = this.tabControlQuery.TabPages[i];
 					querySetting.Index = i;
 					querySetting.UseQuery = (page.Controls[$"checkBoxUseQuery{i+1}"] as CheckBox).Checked;
-					querySetting.Query = (page.Controls[$"textBoxQuery{i+1}"] as TextBox).Text;
-					querySetting.Arguments = (page.Controls[$"textBoxArguments{i+1}"] as TextBox).Text;
-					querySetting.FetchSize = long.Parse((page.Controls[$"textBoxFetchSize{i+1}"] as TextBox).Text);
-					querySetting.Weight = int.Parse((page.Controls[$"textBoxWeight{i+1}"] as TextBox).Text);
+					querySetting.Query = Config.Default[$"Query{i + 1}"].ToString();
+					querySetting.Arguments = Config.Default[$"QueryArguments{i + 1}"].ToString();
+					querySetting.FetchSize = long.Parse(Config.Default[$"FetchSize{i + 1}"].ToString());
+					querySetting.Weight = int.Parse(Config.Default[$"Weight{i + 1}"].ToString());
 					querySetting.Connected = (page.Controls.Find($"radioButtonConnectionModeConnected{i+1}", true)[0] as RadioButton).Checked;
 					querySetting.SelectRead = (page.Controls.Find($"radioButtonReadingModeSelectRead{i+1}", true)[0] as RadioButton).Checked;
+					this.querySettings.Add(querySetting);
 				}
-				this.querySettings.Add(querySetting);
-				totalWeight = querySetting.Weight;
-				this.weights.Add(new Tuple<int, int>(i, totalWeight));
+
+				if (querySetting.UseQuery)
+				{
+					totalWeight += querySetting.Weight;
+					this.weights.Add(new Tuple<int, int>(i, totalWeight));
+				}
 			}
 		}
 
@@ -760,10 +779,10 @@ namespace OraclePerfTest
 				lock (this.lockObject)
 				{
 					this.openCount = 0;
-					this.readRequests.All(x => { x = 0; return true; });
-					this.reads.All(x => { x = 0; return true; });
-					this.rows.All(x => { x = 0; return true; });
-					this.bytes.All(x => { x = 0; return true; });
+					Array.Clear(this.readRequests, 0, this.readRequests.Length);
+					Array.Clear(this.reads, 0, this.reads.Length);
+					Array.Clear(this.rows, 0, this.rows.Length);
+					Array.Clear(this.bytes, 0, this.bytes.Length);
 					this.errorCount = 0;
 				}
 			}

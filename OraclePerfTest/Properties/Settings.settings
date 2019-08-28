@@ -28,82 +28,82 @@
     </Setting>
     <Setting Name="Query1" Type="System.String" Scope="User">
       <Value Profile="(Default)">SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD_PK) NLJ_BATCHING */
-       A.ORD_NO,
+       A.ORD_NO ,
        A.ORD_TODAY_NO,
        A.ORD_TODAY_ADD_NO,
        A.ORD_TODAY_ALL_NO,
        A.ORD_TYPE_CD,
-       A.ORD_STATUS_CD,
+       A.ORD_STATUS_CD ,
        A.ORD_DATE,
        A.MOD_DATE,
        A.PICKUP_DATE,
        A.TAKEOUT_DATE,
-       A.END_DATE,
+       A.END_DATE ,
        A.ORD_CU_TEL,
        A.ORD_CU_END_CNT,
        A.EA_ADDR_4,
        A.DVRY_DISTANCE,
-       A.DVRY_AMT,
+       A.DVRY_AMT ,
        A.ORD_AMT,
        A.DISCOUNT_AMT,
        A.SRV_AMT,
        A.CHARGE_TYPE,
-       A.PAY_TYPE_CD,
+       A.PAY_TYPE_CD ,
        A.PAY_AMT,
        A.PAY_MILEAGE,
        B.TRAN_TYPE,
        A.CTH_WK_NAME,
-       A.CTH_WK_TEL,
+       A.CTH_WK_TEL ,
        A.ORD_MEMO,
        B.CTH_ST_NAME,
        A.DVRY_CNT,
        A.ORD_PATH_CD,
-       B.CTH_ST_TEL,
+       B.CTH_ST_TEL ,
        B.ORD_CU_NAME,
        A.TAKEOUT_YN,
        A.ORD_ST_CODE,
        A.ORD_ST_NAME,
-       A.DVRY_TYPE_CD,
+       A.DVRY_TYPE_CD ,
        A.XY_ACC_TYPE,
        A.EA_ADDR_5,
        A.READY_TIME,
        A.GOODS_NAMES,
-       A.ORG_PAY_TYPE,
+       A.ORG_PAY_TYPE ,
        A.CASH_MOVE_CNT,
        A.CASH_MOVE_AMT,
        B.ORD_BR_CODE,
        A.EA_ADDR_6,
-       A.EA_ADDR_7,
+       A.EA_ADDR_7 ,
        A.PUT_USER_ID,
        B.CTH_BR_CODE,
        B.CTH_ST_CODE,
        A.CTH_WK_ARR_TIME,
-       A.CTH_DATE,
+       A.CTH_DATE ,
        A.READY_CHANGE_DATE,
        A.CTH_DVRY_TYPE_CD,
        A.DVRY_LOCK_TIME,
        A.ST_DVRY_TYPE_CD,
-       B.ORD_CU_MULTI_END_CNT,
+       B.ORD_CU_MULTI_END_CNT ,
        A.DVRY_EX_CHARGE,
        A.DVRY_MNG_TYPE,
        A.DVRY_MNG_FEE,
        B.VAN_TYPE_CD,
-       B.CARD_APPR_NUM,
+       B.CARD_APPR_NUM ,
        A.MOD_USER_ID,
        B.ORD_MASTER_ST_CODE,
        B.CTH_MNG_BR_CODE,
        B.CTH_MNG_HD_CODE,
-       B.ORD_HD_CODE,
+       B.ORD_HD_CODE ,
        A.EA_ADDR_MOD_CNT,
        A.CTH_WK_ARR_DATE,
        A.READY_CTH_YN,
        A.CALL_ST_CODE,
-       A.SA_LAT_Y,
+       A.SA_LAT_Y ,
        A.SA_LNG_X,
        A.CANCEL_DATE,
        A.SA_APP_ADDR,
        A.POS_ORD_CODE,
-       B.EA_ADDR_10,
+       B.EA_ADDR_10 ,
        A.CTH_WK_CODE,
        B.ACQUIRER_NAME,
        A.EA_LAT_Y,
@@ -150,10 +150,10 @@
     <Setting Name="QueryArguments1" Type="System.String" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="FetchSize1" Type="System.String" Scope="User">
+    <Setting Name="FetchSize1" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
-    <Setting Name="Weight1" Type="System.String" Scope="User">
+    <Setting Name="Weight1" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="UseQuery2" Type="System.Boolean" Scope="User">
@@ -422,10 +422,10 @@
     <Setting Name="QueryArguments2" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FetchSize2" Type="System.String" Scope="User">
+    <Setting Name="FetchSize2" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
-    <Setting Name="Weight2" Type="System.String" Scope="User">
+    <Setting Name="Weight2" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="UseQuery3" Type="System.Boolean" Scope="User">
@@ -463,10 +463,10 @@
     <Setting Name="QueryArguments3" Type="System.String" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="FetchSize3" Type="System.String" Scope="User">
+    <Setting Name="FetchSize3" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
-    <Setting Name="Weight3" Type="System.String" Scope="User">
+    <Setting Name="Weight3" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="UseQuery4" Type="System.Boolean" Scope="User">
@@ -596,10 +596,10 @@ SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */ORD_NO,
     <Setting Name="QueryArguments4" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FetchSize4" Type="System.String" Scope="User">
+    <Setting Name="FetchSize4" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
-    <Setting Name="Weight4" Type="System.String" Scope="User">
+    <Setting Name="Weight4" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="UseQuery5" Type="System.Boolean" Scope="User">
@@ -773,10 +773,10 @@ SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */A.ORD_NO,
     <Setting Name="QueryArguments5" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FetchSize5" Type="System.String" Scope="User">
+    <Setting Name="FetchSize5" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
-    <Setting Name="Weight5" Type="System.String" Scope="User">
+    <Setting Name="Weight5" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>

@@ -12,7 +12,7 @@ namespace OraclePerfTest.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -122,48 +122,48 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ LEADING(A) INDEX(A MN_A1_TODAY_IX_4) USE_NL(B) INDEX(B MN_A1_TODAY_ADD" +
-            "_PK) NLJ_BATCHING */\r\n       A.ORD_NO,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TOD" +
-            "AY_ADD_NO,\r\n       A.ORD_TODAY_ALL_NO,\r\n       A.ORD_TYPE_CD,\r\n       A.ORD_STAT" +
-            "US_CD,\r\n       A.ORD_DATE,\r\n       A.MOD_DATE,\r\n       A.PICKUP_DATE,\r\n       A." +
-            "TAKEOUT_DATE,\r\n       A.END_DATE,\r\n       A.ORD_CU_TEL,\r\n       A.ORD_CU_END_CNT" +
-            ",\r\n       A.EA_ADDR_4,\r\n       A.DVRY_DISTANCE,\r\n       A.DVRY_AMT,\r\n       A.OR" +
-            "D_AMT,\r\n       A.DISCOUNT_AMT,\r\n       A.SRV_AMT,\r\n       A.CHARGE_TYPE,\r\n      " +
-            " A.PAY_TYPE_CD,\r\n       A.PAY_AMT,\r\n       A.PAY_MILEAGE,\r\n       B.TRAN_TYPE,\r\n" +
-            "       A.CTH_WK_NAME,\r\n       A.CTH_WK_TEL,\r\n       A.ORD_MEMO,\r\n       B.CTH_ST" +
-            "_NAME,\r\n       A.DVRY_CNT,\r\n       A.ORD_PATH_CD,\r\n       B.CTH_ST_TEL,\r\n       " +
-            "B.ORD_CU_NAME,\r\n       A.TAKEOUT_YN,\r\n       A.ORD_ST_CODE,\r\n       A.ORD_ST_NAM" +
-            "E,\r\n       A.DVRY_TYPE_CD,\r\n       A.XY_ACC_TYPE,\r\n       A.EA_ADDR_5,\r\n       A" +
-            ".READY_TIME,\r\n       A.GOODS_NAMES,\r\n       A.ORG_PAY_TYPE,\r\n       A.CASH_MOVE_" +
-            "CNT,\r\n       A.CASH_MOVE_AMT,\r\n       B.ORD_BR_CODE,\r\n       A.EA_ADDR_6,\r\n     " +
-            "  A.EA_ADDR_7,\r\n       A.PUT_USER_ID,\r\n       B.CTH_BR_CODE,\r\n       B.CTH_ST_CO" +
-            "DE,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_DATE,\r\n       A.READY_CHANGE_DATE,\r" +
-            "\n       A.CTH_DVRY_TYPE_CD,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DVRY_TYPE_CD," +
-            "\r\n       B.ORD_CU_MULTI_END_CNT,\r\n       A.DVRY_EX_CHARGE,\r\n       A.DVRY_MNG_TY" +
-            "PE,\r\n       A.DVRY_MNG_FEE,\r\n       B.VAN_TYPE_CD,\r\n       B.CARD_APPR_NUM,\r\n   " +
-            "    A.MOD_USER_ID,\r\n       B.ORD_MASTER_ST_CODE,\r\n       B.CTH_MNG_BR_CODE,\r\n   " +
-            "    B.CTH_MNG_HD_CODE,\r\n       B.ORD_HD_CODE,\r\n       A.EA_ADDR_MOD_CNT,\r\n      " +
-            " A.CTH_WK_ARR_DATE,\r\n       A.READY_CTH_YN,\r\n       A.CALL_ST_CODE,\r\n       A.SA" +
-            "_LAT_Y,\r\n       A.SA_LNG_X,\r\n       A.CANCEL_DATE,\r\n       A.SA_APP_ADDR,\r\n     " +
-            "  A.POS_ORD_CODE,\r\n       B.EA_ADDR_10,\r\n       A.CTH_WK_CODE,\r\n       B.ACQUIRE" +
-            "R_NAME,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n       B.ORD_BR_NAME ,\r\n       " +
-            "A.CU_050_NUM ,\r\n       TO_CHAR(A.ORD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_ORD_DAT" +
-            "E ,\r\n       TO_CHAR(A.READY_CHANGE_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_READY_CHA" +
-            "NGE_DATE ,\r\n       TO_CHAR(A.CTH_WK_ARR_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_" +
-            "WK_ARR_DATE ,\r\n       TO_CHAR(A.PICKUP_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PICKU" +
-            "P_DATE ,\r\n       TO_CHAR(A.END_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_END_DATE ,\r\n " +
-            "      TO_CHAR(A.CANCEL_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CANCEL_DATE ,\r\n      " +
-            " TO_CHAR(A.CTH_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_DATE ,\r\n       TO_CHAR(A." +
-            "MOD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_MOD_DATE ,\r\n       TO_CHAR(A.MOD_DATE, \'" +
-            "YYYYMMDDHH24MISSFF3\') AS CUSTOM_MOD_DATE_FF3 ,\r\n       TRUNC(A.DVRY_DISTANCE / 1" +
-            "000, 1) AS CUSTOM_DVRY_DISTANCE ,\r\n       B.EA_ADDR_STR ,\r\n       A.ORG_ORD_NO,\r" +
-            "\n       A.ORG_ORD_PATH_CD ,\r\n       B.VAN_TYPE_STR AS ARR_VAN_TYPE_CD ,\r\n       " +
-            "TO_CHAR(A.PUT_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PUT_DATE,\r\n       A.ORD_DATA_Y" +
-            "N ,\r\n       A.DVRY_TAX_YN,\r\n       A.DVRY_NLT_TYPE,\r\n       B.ST_DVRY_HD_CODE,\r\n" +
-            "       B.ST_DVRY_BR_CODE,\r\n       A.CHARGE_HISTORY ,\r\n       A.ARR_TIME,\r\n      " +
-            " A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n       A.CTH_WK_G" +
-            "OODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FROM MN_A1_TODAY A" +
-            ",\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND A.ORD_DATA_YN = " +
-            "\'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60);")]
+            "_PK) NLJ_BATCHING */\r\n       A.ORD_NO ,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TO" +
+            "DAY_ADD_NO,\r\n       A.ORD_TODAY_ALL_NO,\r\n       A.ORD_TYPE_CD,\r\n       A.ORD_STA" +
+            "TUS_CD ,\r\n       A.ORD_DATE,\r\n       A.MOD_DATE,\r\n       A.PICKUP_DATE,\r\n       " +
+            "A.TAKEOUT_DATE,\r\n       A.END_DATE ,\r\n       A.ORD_CU_TEL,\r\n       A.ORD_CU_END_" +
+            "CNT,\r\n       A.EA_ADDR_4,\r\n       A.DVRY_DISTANCE,\r\n       A.DVRY_AMT ,\r\n       " +
+            "A.ORD_AMT,\r\n       A.DISCOUNT_AMT,\r\n       A.SRV_AMT,\r\n       A.CHARGE_TYPE,\r\n  " +
+            "     A.PAY_TYPE_CD ,\r\n       A.PAY_AMT,\r\n       A.PAY_MILEAGE,\r\n       B.TRAN_TY" +
+            "PE,\r\n       A.CTH_WK_NAME,\r\n       A.CTH_WK_TEL ,\r\n       A.ORD_MEMO,\r\n       B." +
+            "CTH_ST_NAME,\r\n       A.DVRY_CNT,\r\n       A.ORD_PATH_CD,\r\n       B.CTH_ST_TEL ,\r\n" +
+            "       B.ORD_CU_NAME,\r\n       A.TAKEOUT_YN,\r\n       A.ORD_ST_CODE,\r\n       A.ORD" +
+            "_ST_NAME,\r\n       A.DVRY_TYPE_CD ,\r\n       A.XY_ACC_TYPE,\r\n       A.EA_ADDR_5,\r\n" +
+            "       A.READY_TIME,\r\n       A.GOODS_NAMES,\r\n       A.ORG_PAY_TYPE ,\r\n       A.C" +
+            "ASH_MOVE_CNT,\r\n       A.CASH_MOVE_AMT,\r\n       B.ORD_BR_CODE,\r\n       A.EA_ADDR_" +
+            "6,\r\n       A.EA_ADDR_7 ,\r\n       A.PUT_USER_ID,\r\n       B.CTH_BR_CODE,\r\n       B" +
+            ".CTH_ST_CODE,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_DATE ,\r\n       A.READY_CH" +
+            "ANGE_DATE,\r\n       A.CTH_DVRY_TYPE_CD,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DV" +
+            "RY_TYPE_CD,\r\n       B.ORD_CU_MULTI_END_CNT ,\r\n       A.DVRY_EX_CHARGE,\r\n       A" +
+            ".DVRY_MNG_TYPE,\r\n       A.DVRY_MNG_FEE,\r\n       B.VAN_TYPE_CD,\r\n       B.CARD_AP" +
+            "PR_NUM ,\r\n       A.MOD_USER_ID,\r\n       B.ORD_MASTER_ST_CODE,\r\n       B.CTH_MNG_" +
+            "BR_CODE,\r\n       B.CTH_MNG_HD_CODE,\r\n       B.ORD_HD_CODE ,\r\n       A.EA_ADDR_MO" +
+            "D_CNT,\r\n       A.CTH_WK_ARR_DATE,\r\n       A.READY_CTH_YN,\r\n       A.CALL_ST_CODE" +
+            ",\r\n       A.SA_LAT_Y ,\r\n       A.SA_LNG_X,\r\n       A.CANCEL_DATE,\r\n       A.SA_A" +
+            "PP_ADDR,\r\n       A.POS_ORD_CODE,\r\n       B.EA_ADDR_10 ,\r\n       A.CTH_WK_CODE,\r\n" +
+            "       B.ACQUIRER_NAME,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n       B.ORD_BR" +
+            "_NAME ,\r\n       A.CU_050_NUM ,\r\n       TO_CHAR(A.ORD_DATE, \'YYYYMMDDHH24MISS\') A" +
+            "S CUSTOM_ORD_DATE ,\r\n       TO_CHAR(A.READY_CHANGE_DATE, \'YYYYMMDDHH24MISS\') AS " +
+            "CUSTOM_READY_CHANGE_DATE ,\r\n       TO_CHAR(A.CTH_WK_ARR_DATE, \'YYYYMMDDHH24MISS\'" +
+            ") AS CUSTOM_CTH_WK_ARR_DATE ,\r\n       TO_CHAR(A.PICKUP_DATE, \'YYYYMMDDHH24MISS\')" +
+            " AS CUSTOM_PICKUP_DATE ,\r\n       TO_CHAR(A.END_DATE, \'YYYYMMDDHH24MISS\') AS CUST" +
+            "OM_END_DATE ,\r\n       TO_CHAR(A.CANCEL_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CANCE" +
+            "L_DATE ,\r\n       TO_CHAR(A.CTH_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_CTH_DATE ,\r\n " +
+            "      TO_CHAR(A.MOD_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_MOD_DATE ,\r\n       TO_CH" +
+            "AR(A.MOD_DATE, \'YYYYMMDDHH24MISSFF3\') AS CUSTOM_MOD_DATE_FF3 ,\r\n       TRUNC(A.D" +
+            "VRY_DISTANCE / 1000, 1) AS CUSTOM_DVRY_DISTANCE ,\r\n       B.EA_ADDR_STR ,\r\n     " +
+            "  A.ORG_ORD_NO,\r\n       A.ORG_ORD_PATH_CD ,\r\n       B.VAN_TYPE_STR AS ARR_VAN_TY" +
+            "PE_CD ,\r\n       TO_CHAR(A.PUT_DATE, \'YYYYMMDDHH24MISS\') AS CUSTOM_PUT_DATE,\r\n   " +
+            "    A.ORD_DATA_YN ,\r\n       A.DVRY_TAX_YN,\r\n       A.DVRY_NLT_TYPE,\r\n       B.ST" +
+            "_DVRY_HD_CODE,\r\n       B.ST_DVRY_BR_CODE,\r\n       A.CHARGE_HISTORY ,\r\n       A.A" +
+            "RR_TIME,\r\n       A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n " +
+            "      A.CTH_WK_GOODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FR" +
+            "OM MN_A1_TODAY A,\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND " +
+            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60);")]
         public string Query1 {
             get {
                 return ((string)(this["Query1"]));
@@ -200,9 +200,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize1 {
+        public long FetchSize1 {
             get {
-                return ((string)(this["FetchSize1"]));
+                return ((long)(this["FetchSize1"]));
             }
             set {
                 this["FetchSize1"] = value;
@@ -212,9 +212,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string Weight1 {
+        public int Weight1 {
             get {
-                return ((string)(this["Weight1"]));
+                return ((int)(this["Weight1"]));
             }
             set {
                 this["Weight1"] = value;
@@ -419,9 +419,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize2 {
+        public long FetchSize2 {
             get {
-                return ((string)(this["FetchSize2"]));
+                return ((long)(this["FetchSize2"]));
             }
             set {
                 this["FetchSize2"] = value;
@@ -431,9 +431,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string Weight2 {
+        public int Weight2 {
             get {
-                return ((string)(this["Weight2"]));
+                return ((int)(this["Weight2"]));
             }
             set {
                 this["Weight2"] = value;
@@ -505,9 +505,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize3 {
+        public long FetchSize3 {
             get {
-                return ((string)(this["FetchSize3"]));
+                return ((long)(this["FetchSize3"]));
             }
             set {
                 this["FetchSize3"] = value;
@@ -517,9 +517,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string Weight3 {
+        public int Weight3 {
             get {
-                return ((string)(this["Weight3"]));
+                return ((int)(this["Weight3"]));
             }
             set {
                 this["Weight3"] = value;
@@ -607,9 +607,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize4 {
+        public long FetchSize4 {
             get {
-                return ((string)(this["FetchSize4"]));
+                return ((long)(this["FetchSize4"]));
             }
             set {
                 this["FetchSize4"] = value;
@@ -619,9 +619,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string Weight4 {
+        public int Weight4 {
             get {
-                return ((string)(this["Weight4"]));
+                return ((int)(this["Weight4"]));
             }
             set {
                 this["Weight4"] = value;
@@ -735,9 +735,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
-        public string FetchSize5 {
+        public long FetchSize5 {
             get {
-                return ((string)(this["FetchSize5"]));
+                return ((long)(this["FetchSize5"]));
             }
             set {
                 this["FetchSize5"] = value;
@@ -747,9 +747,9 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string Weight5 {
+        public int Weight5 {
             get {
-                return ((string)(this["Weight5"]));
+                return ((int)(this["Weight5"]));
             }
             set {
                 this["Weight5"] = value;
