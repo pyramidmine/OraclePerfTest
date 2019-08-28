@@ -711,65 +711,52 @@ namespace OraclePerfTest
 
 			public long AddOpenCount(long count = 1)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.openCount, count);
-				}
+				return Interlocked.Add(ref this.openCount, count);
 			}
 
 			public long AddReadRequestCount(int index, long count)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.readRequests[index], count);
-				}
+				return Interlocked.Add(ref this.readRequests[index], count);
 			}
 
 			public long AddReadCount(int index, long count)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.reads[index], count);
-				}
+				return Interlocked.Add(ref this.reads[index], count);
 			}
 
 
 			public long AddRowCount(int index, long count)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.rows[index], count);
-				}
+				return Interlocked.Add(ref this.rows[index], count);
 			}
 
 			public long AddBytes(int index, long count)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.bytes[index], count);
-				}
+				return Interlocked.Add(ref this.bytes[index], count);
 			}
 
 			public long AddErrorCount(long count = 1)
 			{
-				lock (this.lockObject)
-				{
-					return Interlocked.Add(ref this.errorCount, count);
-				}
+				return Interlocked.Add(ref this.errorCount, count);
 			}
 
 			public string ReportAndReset()
 			{
-				StringBuilder sb = new StringBuilder(128);
-				lock (this.lockObject)
+				StringBuilder sb = new StringBuilder(256);
 				{
-					sb.AppendFormat($"OC:{this.openCount,2},");
+					sb.AppendFormat($"OC:{Interlocked.Exchange(ref this.openCount, 0)},");
 					for (int i = 0; i < this.readRequests.Length; i++)
 					{
-						sb.AppendFormat($"REQ#{i}:{this.readRequests[i]},RDC#{i}:{this.reads[i]},RWC#{i}:{this.rows[i]},ARWS#{i}:{this.bytes[i] / (double)Math.Max(1, this.rows[i]):F0},");
+						long rowCount = Interlocked.Exchange(ref this.rows[i], 0);
+
+						sb.AppendFormat("QR#{0}:{{{1},{2},{3:F0},{4}}},",
+							i,
+							Interlocked.Exchange(ref this.readRequests[i], 0),
+							Interlocked.Exchange(ref this.reads[i], 0),
+							rowCount,
+							Interlocked.Exchange(ref this.bytes[i], 0) / (double)Math.Max(1, rowCount));
 					}
-					sb.AppendFormat($"EC:{this.errorCount,2}");
-					Reset();
+					sb.AppendFormat($",EC:{Interlocked.Exchange(ref this.errorCount, 0)}");
 				}
 				return sb.ToString();
 			}
