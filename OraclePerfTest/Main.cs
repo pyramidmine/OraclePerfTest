@@ -711,54 +711,75 @@ namespace OraclePerfTest
 
 			public long AddOpenCount(long count = 1)
 			{
-				return Interlocked.Add(ref this.openCount, count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.openCount, count);
+				}
 			}
 
 			public long AddReadRequestCount(int index, long count)
 			{
-				return Interlocked.Add(ref this.readRequests[index], count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.readRequests[index], count);
+				}
 			}
 
 			public long AddReadCount(int index, long count)
 			{
-				return Interlocked.Add(ref this.reads[index], count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.reads[index], count);
+				}
 			}
 
 
 			public long AddRowCount(int index, long count)
 			{
-				return Interlocked.Add(ref this.rows[index], count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.rows[index], count);
+				}
 			}
 
 			public long AddBytes(int index, long count)
 			{
-				return Interlocked.Add(ref this.bytes[index], count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.bytes[index], count);
+				}
 			}
 
 			public long AddErrorCount(long count = 1)
 			{
-				return Interlocked.Add(ref this.errorCount, count);
+				lock (this.lockObject)
+				{
+					return Interlocked.Add(ref this.errorCount, count);
+				}
 			}
 
 			public string ReportAndReset()
 			{
-				StringBuilder sb = new StringBuilder(256);
+				lock (this.lockObject)
 				{
-					sb.AppendFormat($"OC:{Interlocked.Exchange(ref this.openCount, 0)},");
-					for (int i = 0; i < this.readRequests.Length; i++)
+					StringBuilder sb = new StringBuilder(256);
 					{
-						long rowCount = Interlocked.Exchange(ref this.rows[i], 0);
+						sb.AppendFormat($"OC:{Interlocked.Exchange(ref this.openCount, 0)},");
+						for (int i = 0; i < this.readRequests.Length; i++)
+						{
+							long rowCount = Interlocked.Exchange(ref this.rows[i], 0);
 
-						sb.AppendFormat("QR#{0}:{{{1},{2},{3:F0},{4}}},",
-							i,
-							Interlocked.Exchange(ref this.readRequests[i], 0),
-							Interlocked.Exchange(ref this.reads[i], 0),
-							rowCount,
-							Interlocked.Exchange(ref this.bytes[i], 0) / (double)Math.Max(1, rowCount));
+							sb.AppendFormat("QR#{0}:{{{1},{2},{3:F0},{4}}},",
+								i,
+								Interlocked.Exchange(ref this.readRequests[i], 0),
+								Interlocked.Exchange(ref this.reads[i], 0),
+								rowCount,
+								Interlocked.Exchange(ref this.bytes[i], 0) / (double)Math.Max(1, rowCount));
+						}
+						sb.AppendFormat($"EC:{Interlocked.Exchange(ref this.errorCount, 0)}");
 					}
-					sb.AppendFormat($",EC:{Interlocked.Exchange(ref this.errorCount, 0)}");
+					return sb.ToString();
 				}
-				return sb.ToString();
 			}
 
 			public void Reset()

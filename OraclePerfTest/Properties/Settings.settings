@@ -142,7 +142,7 @@
        MN_A1_TODAY_ADD B
  WHERE A.ORD_NO = B.ORD_NO
    AND A.ORD_DATA_YN = 'Y'
-   AND A.MOD_DATE &gt;= sysdate-:1/(24*60*60);</Value>
+   AND A.MOD_DATE &gt;= sysdate-:1/(24*60*60)</Value>
     </Setting>
     <Setting Name="UseQuery1" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -417,7 +417,7 @@
                                    AND E.DVRY_TAX_YN = 'N') )
                  ORDER BY A.ST_CODE DESC )
          WHERE ROWNUM &lt;= 30 )
- WHERE RN &gt;= 1;</Value>
+ WHERE RN &gt;= 1</Value>
     </Setting>
     <Setting Name="QueryArguments2" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -458,7 +458,7 @@
        GRADE_CNT,
        GRADE_SUM
   FROM MN_GR_WK
- WHERE SYNC_DATE &gt;=  sysdate-:1/(24*60*60);</Value>
+ WHERE SYNC_DATE &gt;=  sysdate-:1/(24*60*60)</Value>
     </Setting>
     <Setting Name="QueryArguments3" Type="System.String" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -473,7 +473,8 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Query4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SELECT /*+ RULE */A.ORD_NO ,
+      <Value Profile="(Default)">SELECT /*+ RULE */
+       A.ORD_NO ,
        A.ORD_TODAY_NO,
        A.ORD_TYPE_CD,
        A.ORD_STATUS_CD,
@@ -541,7 +542,8 @@
        A.DVRY_GRP_TYPE ,
        A.CTH_WK_GOODS_PAY_TYPE
   FROM MN_A1_TODAY A,
-       (SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_1) */ORD_NO,
+       (SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_1) */
+               ORD_NO,
                ORD_BR_CODE,
                CTH_BR_CODE,
                CTH_ST_CODE,
@@ -551,8 +553,9 @@
                TRAN_TYPE
           FROM MN_A1_TODAY_ADD
          WHERE ORD_BR_CODE = 'BA980'
-         UNION ALL
-SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_4) */ORD_NO,
+        UNION ALL
+        SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_4) */
+               ORD_NO,
                ORD_BR_CODE,
                CTH_BR_CODE,
                CTH_ST_CODE,
@@ -560,11 +563,12 @@ SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_4) */ORD_NO,
                EA_ADDR_10,
                EA_ADDR_STR,
                TRAN_TYPE
-          FROM MN_A1_TODAY_ADD
-         WHERE ST_DVRY_BR_CODE = 'BA980'
-           AND ORD_BR_CODE NOT IN ('BA980')
-         UNION ALL
-SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_5) */ORD_NO,
+        FROM   MN_A1_TODAY_ADD
+        WHERE  ST_DVRY_BR_CODE = 'BA980'
+        AND    ORD_BR_CODE NOT IN ('BA980')
+        UNION ALL
+        SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_5) */
+               ORD_NO,
                ORD_BR_CODE,
                CTH_BR_CODE,
                CTH_ST_CODE,
@@ -576,8 +580,9 @@ SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_5) */ORD_NO,
          WHERE CTH_MNG_BR_CODE = 'BA980'
            AND ORD_BR_CODE NOT IN ('BA980')
            AND ST_DVRY_BR_CODE NOT IN ('BA980')
-         UNION ALL
-SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */ORD_NO,
+        UNION ALL
+        SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */
+               ORD_NO,
                ORD_BR_CODE,
                CTH_BR_CODE,
                CTH_ST_CODE,
@@ -587,11 +592,11 @@ SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */ORD_NO,
                TRAN_TYPE
           FROM MN_A1_TODAY_ADD
          WHERE ORD_NO IN (SELECT ORD_NO
-                  FROM MN_A1_TODAY_CTH_SHARE
-                 WHERE SH_MNG_BR_CODE = 'BA980')
-           AND ORD_BR_CODE NOT IN ('BA980')
-           AND ST_DVRY_BR_CODE NOT IN ('BA980') ) B
- WHERE A.ORD_NO = B.ORD_NO ;</Value>
+                            FROM MN_A1_TODAY_CTH_SHARE
+                           WHERE SH_MNG_BR_CODE = 'BA980')
+                             AND ORD_BR_CODE NOT IN ('BA980')
+                             AND ST_DVRY_BR_CODE NOT IN ('BA980') ) B
+ WHERE A.ORD_NO = B.ORD_NO </Value>
     </Setting>
     <Setting Name="QueryArguments4" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -648,7 +653,8 @@ SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */ORD_NO,
        P.TAKEOUT_YN,
        P.CTH_WK_GOODS_PAY_TYPE,
        P.MOD_SEQ_NO
-  FROM (SELECT /*+ LEADING(SUB) INDEX(A MN_A1_TODAY_PK) */A.ORD_NO,
+  FROM (SELECT /*+ LEADING(SUB) INDEX(A MN_A1_TODAY_PK) */
+               A.ORD_NO,
                A.ORD_TODAY_ALL_NO,
                A.ORD_STATUS_CD,
                A.CHARGE_TYPE,
@@ -705,11 +711,13 @@ SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_PK) */ORD_NO,
          WHERE A.ORD_NO = B.ORD_NO
            AND A.ORD_STATUS_CD = '2001'
            AND A.TAKEOUT_YN = 'N'
-           AND A.ORD_NO IN (SELECT /*+ QB_NAME(SUB) */ORD_NO
-                  FROM MN_A1_TODAY_CTH_SHARE
-                 WHERE SH_DVRY_TYPE_CD = '1608' )
-         UNION ALL
-SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */A.ORD_NO,
+           AND A.ORD_NO IN (SELECT /*+ QB_NAME(SUB) */
+                                   ORD_NO
+                              FROM MN_A1_TODAY_CTH_SHARE
+                             WHERE SH_DVRY_TYPE_CD = '1608' )
+        UNION ALL
+        SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */
+               A.ORD_NO,
                A.ORD_TODAY_ALL_NO,
                A.ORD_STATUS_CD,
                A.CHARGE_TYPE,
@@ -764,11 +772,8 @@ SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */A.ORD_NO,
           FROM MN_A1_TODAY A,
                MN_A1_TODAY_ADD B
          WHERE A.ORD_NO = B.ORD_NO
-           AND A.ORD_STATUS_CD IN ('3001',
-                       '3003',
-                       '4001',
-                       '4002')
-           AND A.CTH_WK_CODE = 'W03153' ) P;</Value>
+           AND A.ORD_STATUS_CD IN ('3001', '3003', '4001', '4002')
+           AND A.CTH_WK_CODE = 'W03153' ) P</Value>
     </Setting>
     <Setting Name="QueryArguments5" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

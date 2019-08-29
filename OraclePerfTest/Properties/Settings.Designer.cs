@@ -163,7 +163,7 @@ namespace OraclePerfTest.Properties {
             "RR_TIME,\r\n       A.DVRY_GRP_TYPE,\r\n       A.ORD_ST_TEL,\r\n       A.PRE_CTH_YN,\r\n " +
             "      A.CTH_WK_GOODS_PAY_TYPE ,\r\n       A.MOD_SEQ_NO,\r\n       A.EXT_ORD_NO\r\n  FR" +
             "OM MN_A1_TODAY A,\r\n       MN_A1_TODAY_ADD B\r\n WHERE A.ORD_NO = B.ORD_NO\r\n   AND " +
-            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60);")]
+            "A.ORD_DATA_YN = \'Y\'\r\n   AND A.MOD_DATE >= sysdate-:1/(24*60*60)")]
         public string Query1 {
             get {
                 return ((string)(this["Query1"]));
@@ -394,7 +394,7 @@ namespace OraclePerfTest.Properties {
             "\')\r\n                            OR (NULL IS NOT NULL\r\n                          " +
             "         AND NULL = \'N\'\r\n                                   AND E.DVRY_TAX_YN = " +
             "\'N\') )\r\n                 ORDER BY A.ST_CODE DESC )\r\n         WHERE ROWNUM <= 30 " +
-            ")\r\n WHERE RN >= 1;")]
+            ")\r\n WHERE RN >= 1")]
         public string Query2 {
             get {
                 return ((string)(this["Query2"]));
@@ -480,7 +480,7 @@ namespace OraclePerfTest.Properties {
        GRADE_CNT,
        GRADE_SUM
   FROM MN_GR_WK
- WHERE SYNC_DATE >=  sysdate-:1/(24*60*60);")]
+ WHERE SYNC_DATE >=  sysdate-:1/(24*60*60)")]
         public string Query3 {
             get {
                 return ((string)(this["Query3"]));
@@ -540,49 +540,51 @@ namespace OraclePerfTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ RULE */A.ORD_NO ,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TYPE_CD,\r\n    " +
-            "   A.ORD_STATUS_CD,\r\n       A.ORD_DATE,\r\n       A.TAKEOUT_YN ,\r\n       A.EA_ADDR" +
-            "_4,\r\n       A.EA_ADDR_5,\r\n       A.ORD_AMT,\r\n       A.SRV_AMT,\r\n       A.DVRY_AM" +
-            "T ,\r\n       A.DVRY_DISTANCE DISTANCE,\r\n       A.READY_TIME,\r\n       A.DVRY_CNT,\r" +
-            "\n       A.ORD_TODAY_ALL_NO,\r\n       A.TAKEOUT_DATE ,\r\n       A.ORD_CU_TEL,\r\n    " +
-            "   A.PAY_TYPE_CD,\r\n       A.ARR_TIME,\r\n       B.TRAN_TYPE,\r\n       A.DVRY_EX_CHA" +
-            "RGE ,\r\n       A.ORD_PATH_CD,\r\n       A.ORD_ST_CODE,\r\n       A.XY_ACC_TYPE,\r\n    " +
-            "   A.CHARGE_TYPE,\r\n       A.END_DATE ,\r\n       A.CANCEL_DATE,\r\n       B.ORD_BR_C" +
-            "ODE,\r\n       B.CTH_BR_CODE,\r\n       A.CTH_WK_NAME,\r\n       A.EA_ADDR_6 ,\r\n      " +
-            " A.EA_ADDR_7,\r\n       A.DVRY_TYPE_CD,\r\n       A.CTH_WK_ARR_TIME,\r\n       A.CTH_D" +
-            "ATE,\r\n       A.MOD_DATE ,\r\n       A.READY_CHANGE_DATE,\r\n       A.CTH_DVRY_TYPE_C" +
-            "D,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DVRY_TYPE_CD,\r\n       B.CTH_ST_CODE ,\r" +
-            "\n       A.PICKUP_DATE,\r\n       A.SA_APP_ADDR,\r\n       A.ORD_ST_NAME,\r\n       A.O" +
-            "RD_MASTER_ST_CODE,\r\n       B.CTH_MNG_BR_CODE ,\r\n       A.READY_CTH_YN,\r\n       A" +
-            ".SA_LAT_Y,\r\n       A.SA_LNG_X,\r\n       A.POS_ORD_CODE,\r\n       B.EA_ADDR_10 ,\r\n " +
-            "      A.CTH_WK_CODE,\r\n       A.CU_050_NUM,\r\n       A.CTH_WK_ARR_DATE,\r\n       A." +
-            "ORG_PAY_TYPE,\r\n       A.ORG_ORD_NO ,\r\n       A.EA_LAT_Y,\r\n       A.EA_LNG_X,\r\n  " +
-            "     A.ORG_ORD_PATH_CD,\r\n       A.PUT_USER_ID,\r\n       A.CTH_WK_TEL ,\r\n       A." +
-            "DVRY_MNG_TYPE,\r\n       A.ORD_MEMO,\r\n       A.CHARGE_HISTORY,\r\n       B.EA_ADDR_S" +
-            "TR,\r\n       A.DVRY_GRP_TYPE ,\r\n       A.CTH_WK_GOODS_PAY_TYPE\r\n  FROM MN_A1_TODA" +
-            "Y A,\r\n       (SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_1) */ORD_NO,\r\n" +
-            "               ORD_BR_CODE,\r\n               CTH_BR_CODE,\r\n               CTH_ST_" +
-            "CODE,\r\n               CTH_MNG_BR_CODE,\r\n               EA_ADDR_10,\r\n            " +
-            "   EA_ADDR_STR,\r\n               TRAN_TYPE\r\n          FROM MN_A1_TODAY_ADD\r\n     " +
-            "    WHERE ORD_BR_CODE = \'BA980\'\r\n         UNION ALL\r\nSELECT /*+ INDEX(MN_A1_TODA" +
-            "Y_ADD MN_A1_TODAY_ADD_IX_4) */ORD_NO,\r\n               ORD_BR_CODE,\r\n            " +
-            "   CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n " +
-            "              EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TYPE" +
-            "\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE ST_DVRY_BR_CODE = \'BA980\'\r\n    " +
-            "       AND ORD_BR_CODE NOT IN (\'BA980\')\r\n         UNION ALL\r\nSELECT /*+ INDEX(MN" +
-            "_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_5) */ORD_NO,\r\n               ORD_BR_CODE,\r\n    " +
-            "           CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_" +
-            "CODE,\r\n               EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               T" +
-            "RAN_TYPE\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE CTH_MNG_BR_CODE = \'BA98" +
-            "0\'\r\n           AND ORD_BR_CODE NOT IN (\'BA980\')\r\n           AND ST_DVRY_BR_CODE " +
-            "NOT IN (\'BA980\')\r\n         UNION ALL\r\nSELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_ADD" +
-            " MN_A1_TODAY_ADD_PK) */ORD_NO,\r\n               ORD_BR_CODE,\r\n               CTH_" +
-            "BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n        " +
-            "       EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TYPE\r\n     " +
-            "     FROM MN_A1_TODAY_ADD\r\n         WHERE ORD_NO IN (SELECT ORD_NO\r\n            " +
-            "      FROM MN_A1_TODAY_CTH_SHARE\r\n                 WHERE SH_MNG_BR_CODE = \'BA980" +
-            "\')\r\n           AND ORD_BR_CODE NOT IN (\'BA980\')\r\n           AND ST_DVRY_BR_CODE " +
-            "NOT IN (\'BA980\') ) B\r\n WHERE A.ORD_NO = B.ORD_NO ;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT /*+ RULE */\r\n       A.ORD_NO ,\r\n       A.ORD_TODAY_NO,\r\n       A.ORD_TYPE_" +
+            "CD,\r\n       A.ORD_STATUS_CD,\r\n       A.ORD_DATE,\r\n       A.TAKEOUT_YN ,\r\n       " +
+            "A.EA_ADDR_4,\r\n       A.EA_ADDR_5,\r\n       A.ORD_AMT,\r\n       A.SRV_AMT,\r\n       " +
+            "A.DVRY_AMT ,\r\n       A.DVRY_DISTANCE DISTANCE,\r\n       A.READY_TIME,\r\n       A.D" +
+            "VRY_CNT,\r\n       A.ORD_TODAY_ALL_NO,\r\n       A.TAKEOUT_DATE ,\r\n       A.ORD_CU_T" +
+            "EL,\r\n       A.PAY_TYPE_CD,\r\n       A.ARR_TIME,\r\n       B.TRAN_TYPE,\r\n       A.DV" +
+            "RY_EX_CHARGE ,\r\n       A.ORD_PATH_CD,\r\n       A.ORD_ST_CODE,\r\n       A.XY_ACC_TY" +
+            "PE,\r\n       A.CHARGE_TYPE,\r\n       A.END_DATE ,\r\n       A.CANCEL_DATE,\r\n       B" +
+            ".ORD_BR_CODE,\r\n       B.CTH_BR_CODE,\r\n       A.CTH_WK_NAME,\r\n       A.EA_ADDR_6 " +
+            ",\r\n       A.EA_ADDR_7,\r\n       A.DVRY_TYPE_CD,\r\n       A.CTH_WK_ARR_TIME,\r\n     " +
+            "  A.CTH_DATE,\r\n       A.MOD_DATE ,\r\n       A.READY_CHANGE_DATE,\r\n       A.CTH_DV" +
+            "RY_TYPE_CD,\r\n       A.DVRY_LOCK_TIME,\r\n       A.ST_DVRY_TYPE_CD,\r\n       B.CTH_S" +
+            "T_CODE ,\r\n       A.PICKUP_DATE,\r\n       A.SA_APP_ADDR,\r\n       A.ORD_ST_NAME,\r\n " +
+            "      A.ORD_MASTER_ST_CODE,\r\n       B.CTH_MNG_BR_CODE ,\r\n       A.READY_CTH_YN,\r" +
+            "\n       A.SA_LAT_Y,\r\n       A.SA_LNG_X,\r\n       A.POS_ORD_CODE,\r\n       B.EA_ADD" +
+            "R_10 ,\r\n       A.CTH_WK_CODE,\r\n       A.CU_050_NUM,\r\n       A.CTH_WK_ARR_DATE,\r\n" +
+            "       A.ORG_PAY_TYPE,\r\n       A.ORG_ORD_NO ,\r\n       A.EA_LAT_Y,\r\n       A.EA_L" +
+            "NG_X,\r\n       A.ORG_ORD_PATH_CD,\r\n       A.PUT_USER_ID,\r\n       A.CTH_WK_TEL ,\r\n" +
+            "       A.DVRY_MNG_TYPE,\r\n       A.ORD_MEMO,\r\n       A.CHARGE_HISTORY,\r\n       B." +
+            "EA_ADDR_STR,\r\n       A.DVRY_GRP_TYPE ,\r\n       A.CTH_WK_GOODS_PAY_TYPE\r\n  FROM M" +
+            "N_A1_TODAY A,\r\n       (SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_1) */" +
+            "\r\n               ORD_NO,\r\n               ORD_BR_CODE,\r\n               CTH_BR_COD" +
+            "E,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n              " +
+            " EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TYPE\r\n          F" +
+            "ROM MN_A1_TODAY_ADD\r\n         WHERE ORD_BR_CODE = \'BA980\'\r\n        UNION ALL\r\n  " +
+            "      SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TODAY_ADD_IX_4) */\r\n               " +
+            "ORD_NO,\r\n               ORD_BR_CODE,\r\n               CTH_BR_CODE,\r\n             " +
+            "  CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r\n               EA_ADDR_10,\r\n   " +
+            "            EA_ADDR_STR,\r\n               TRAN_TYPE\r\n        FROM   MN_A1_TODAY_A" +
+            "DD\r\n        WHERE  ST_DVRY_BR_CODE = \'BA980\'\r\n        AND    ORD_BR_CODE NOT IN " +
+            "(\'BA980\')\r\n        UNION ALL\r\n        SELECT /*+ INDEX(MN_A1_TODAY_ADD MN_A1_TOD" +
+            "AY_ADD_IX_5) */\r\n               ORD_NO,\r\n               ORD_BR_CODE,\r\n          " +
+            "     CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_BR_CODE,\r" +
+            "\n               EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n               TRAN_TY" +
+            "PE\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE CTH_MNG_BR_CODE = \'BA980\'\r\n  " +
+            "         AND ORD_BR_CODE NOT IN (\'BA980\')\r\n           AND ST_DVRY_BR_CODE NOT IN" +
+            " (\'BA980\')\r\n        UNION ALL\r\n        SELECT /*+ PUSH_SUBQ INDEX(MN_A1_TODAY_AD" +
+            "D MN_A1_TODAY_ADD_PK) */\r\n               ORD_NO,\r\n               ORD_BR_CODE,\r\n " +
+            "              CTH_BR_CODE,\r\n               CTH_ST_CODE,\r\n               CTH_MNG_" +
+            "BR_CODE,\r\n               EA_ADDR_10,\r\n               EA_ADDR_STR,\r\n             " +
+            "  TRAN_TYPE\r\n          FROM MN_A1_TODAY_ADD\r\n         WHERE ORD_NO IN (SELECT OR" +
+            "D_NO\r\n                            FROM MN_A1_TODAY_CTH_SHARE\r\n                  " +
+            "         WHERE SH_MNG_BR_CODE = \'BA980\')\r\n                             AND ORD_B" +
+            "R_CODE NOT IN (\'BA980\')\r\n                             AND ST_DVRY_BR_CODE NOT IN" +
+            " (\'BA980\') ) B\r\n WHERE A.ORD_NO = B.ORD_NO ")]
         public string Query4 {
             get {
                 return ((string)(this["Query4"]));
@@ -660,57 +662,58 @@ namespace OraclePerfTest.Properties {
             "STR ARR_VAN_TYPE_CD,\r\n       P.CHARGE_HISTORY,\r\n       P.DVRY_GRP_TYPE,\r\n       " +
             "TO_CHAR(P.MOD_DATE, \'YYYYMMDDHH24MISSFF3\') MOD_DATE_STAMP,\r\n       P.PRE_CTH_YN " +
             ",\r\n       P.TAKEOUT_YN,\r\n       P.CTH_WK_GOODS_PAY_TYPE,\r\n       P.MOD_SEQ_NO\r\n " +
-            " FROM (SELECT /*+ LEADING(SUB) INDEX(A MN_A1_TODAY_PK) */A.ORD_NO,\r\n            " +
-            "   A.ORD_TODAY_ALL_NO,\r\n               A.ORD_STATUS_CD,\r\n               A.CHARGE" +
-            "_TYPE,\r\n               A.PAY_TYPE_CD,\r\n               A.DVRY_AMT,\r\n             " +
-            "  A.DVRY_EX_CHARGE ,\r\n               A.ORD_DATE,\r\n               A.READY_CHANGE_" +
-            "DATE,\r\n               A.CTH_WK_ARR_DATE,\r\n               A.PICKUP_DATE,\r\n       " +
-            "        A.END_DATE,\r\n               A.CANCEL_DATE,\r\n               A.DVRY_DISTAN" +
-            "CE,\r\n               DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, A.SA_APP_ADDR) SA" +
-            "_APP_ADDR ,\r\n               A.EA_ADDR_3,\r\n               A.EA_ADDR_4,\r\n         " +
-            "      B.EA_ADDR_11,\r\n               B.EA_ADDR_9,\r\n               A.EA_ADDR_6,\r\n " +
-            "              B.EA_ADDR_12,\r\n               B.EA_ADDR_10,\r\n               A.EA_A" +
-            "DDR_5,\r\n               A.EA_ADDR_7 ,\r\n               A.READY_CTH_YN,\r\n          " +
-            "     A.READY_TIME,\r\n               A.SA_LAT_Y,\r\n               A.SA_LNG_X,\r\n    " +
-            "           A.EA_LAT_Y,\r\n               A.EA_LNG_X,\r\n               A.CTH_DATE,\r\n" +
-            "               A.ORD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TYPE,\r\n            " +
-            "   A.ORG_ORD_NO,\r\n               A.ST_DVRY_TYPE_CD,\r\n               A.ORD_MEMO ," +
-            "\r\n               A.DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYPE_CD,\r\n          " +
-            "     A.CTH_WK_CODE,\r\n               A.MOD_USER_ID,\r\n               A.MOD_DATE,\r\n" +
-            "               A.DVRY_LOCK_TIME,\r\n               A.ORD_MASTER_ST_CODE,\r\n        " +
-            "       A.ORD_ST_CODE,\r\n               B.EA_ADDR_STR,\r\n               B.VAN_TYPE_" +
-            "STR ,\r\n               A.CHARGE_HISTORY,\r\n               A.DVRY_GRP_TYPE,\r\n      " +
-            "         A.PRE_CTH_YN,\r\n               A.TAKEOUT_YN,\r\n               A.CTH_WK_GO" +
-            "ODS_PAY_TYPE,\r\n               A.MOD_SEQ_NO\r\n          FROM MN_A1_TODAY A,\r\n     " +
-            "          MN_A1_TODAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO\r\n           AND " +
-            "A.ORD_STATUS_CD = \'2001\'\r\n           AND A.TAKEOUT_YN = \'N\'\r\n           AND A.OR" +
-            "D_NO IN (SELECT /*+ QB_NAME(SUB) */ORD_NO\r\n                  FROM MN_A1_TODAY_CT" +
-            "H_SHARE\r\n                 WHERE SH_DVRY_TYPE_CD = \'1608\' )\r\n         UNION ALL\r\n" +
-            "SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */A.ORD_NO,\r\n               A.ORD_TODAY_ALL" +
-            "_NO,\r\n               A.ORD_STATUS_CD,\r\n               A.CHARGE_TYPE,\r\n          " +
-            "     A.PAY_TYPE_CD,\r\n               A.DVRY_AMT,\r\n               A.DVRY_EX_CHARGE" +
-            " ,\r\n               A.ORD_DATE,\r\n               A.READY_CHANGE_DATE,\r\n           " +
-            "    A.CTH_WK_ARR_DATE,\r\n               A.PICKUP_DATE,\r\n               A.END_DATE" +
-            ",\r\n               A.CANCEL_DATE,\r\n               A.DVRY_DISTANCE,\r\n             " +
-            "  DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, A.SA_APP_ADDR) SA_APP_ADDR ,\r\n     " +
-            "          A.EA_ADDR_3,\r\n               A.EA_ADDR_4,\r\n               B.EA_ADDR_11" +
-            ",\r\n               B.EA_ADDR_9,\r\n               A.EA_ADDR_6,\r\n               B.EA" +
-            "_ADDR_12,\r\n               B.EA_ADDR_10,\r\n               A.EA_ADDR_5,\r\n          " +
-            "     A.EA_ADDR_7 ,\r\n               A.READY_CTH_YN,\r\n               A.READY_TIME," +
-            "\r\n               A.SA_LAT_Y,\r\n               A.SA_LNG_X,\r\n               A.EA_LA" +
-            "T_Y,\r\n               A.EA_LNG_X,\r\n               A.CTH_DATE,\r\n               A.O" +
-            "RD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TYPE,\r\n               A.ORG_ORD_NO,\r\n" +
-            "               A.ST_DVRY_TYPE_CD,\r\n               A.ORD_MEMO ,\r\n               A" +
-            ".DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYPE_CD,\r\n               A.CTH_WK_CODE" +
-            ",\r\n               A.MOD_USER_ID,\r\n               A.MOD_DATE,\r\n               A.D" +
-            "VRY_LOCK_TIME,\r\n               A.ORD_MASTER_ST_CODE,\r\n               A.ORD_ST_CO" +
-            "DE,\r\n               B.EA_ADDR_STR,\r\n               B.VAN_TYPE_STR ,\r\n           " +
-            "    A.CHARGE_HISTORY,\r\n               A.DVRY_GRP_TYPE,\r\n               A.PRE_CTH" +
-            "_YN,\r\n               A.TAKEOUT_YN,\r\n               A.CTH_WK_GOODS_PAY_TYPE,\r\n   " +
-            "            A.MOD_SEQ_NO\r\n          FROM MN_A1_TODAY A,\r\n               MN_A1_TO" +
-            "DAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO\r\n           AND A.ORD_STATUS_CD IN" +
-            " (\'3001\',\r\n                       \'3003\',\r\n                       \'4001\',\r\n     " +
-            "                  \'4002\')\r\n           AND A.CTH_WK_CODE = \'W03153\' ) P;")]
+            " FROM (SELECT /*+ LEADING(SUB) INDEX(A MN_A1_TODAY_PK) */\r\n               A.ORD_" +
+            "NO,\r\n               A.ORD_TODAY_ALL_NO,\r\n               A.ORD_STATUS_CD,\r\n      " +
+            "         A.CHARGE_TYPE,\r\n               A.PAY_TYPE_CD,\r\n               A.DVRY_AM" +
+            "T,\r\n               A.DVRY_EX_CHARGE ,\r\n               A.ORD_DATE,\r\n             " +
+            "  A.READY_CHANGE_DATE,\r\n               A.CTH_WK_ARR_DATE,\r\n               A.PICK" +
+            "UP_DATE,\r\n               A.END_DATE,\r\n               A.CANCEL_DATE,\r\n           " +
+            "    A.DVRY_DISTANCE,\r\n               DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, " +
+            "A.SA_APP_ADDR) SA_APP_ADDR ,\r\n               A.EA_ADDR_3,\r\n               A.EA_A" +
+            "DDR_4,\r\n               B.EA_ADDR_11,\r\n               B.EA_ADDR_9,\r\n             " +
+            "  A.EA_ADDR_6,\r\n               B.EA_ADDR_12,\r\n               B.EA_ADDR_10,\r\n    " +
+            "           A.EA_ADDR_5,\r\n               A.EA_ADDR_7 ,\r\n               A.READY_CT" +
+            "H_YN,\r\n               A.READY_TIME,\r\n               A.SA_LAT_Y,\r\n               " +
+            "A.SA_LNG_X,\r\n               A.EA_LAT_Y,\r\n               A.EA_LNG_X,\r\n           " +
+            "    A.CTH_DATE,\r\n               A.ORD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TY" +
+            "PE,\r\n               A.ORG_ORD_NO,\r\n               A.ST_DVRY_TYPE_CD,\r\n          " +
+            "     A.ORD_MEMO ,\r\n               A.DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYP" +
+            "E_CD,\r\n               A.CTH_WK_CODE,\r\n               A.MOD_USER_ID,\r\n           " +
+            "    A.MOD_DATE,\r\n               A.DVRY_LOCK_TIME,\r\n               A.ORD_MASTER_S" +
+            "T_CODE,\r\n               A.ORD_ST_CODE,\r\n               B.EA_ADDR_STR,\r\n         " +
+            "      B.VAN_TYPE_STR ,\r\n               A.CHARGE_HISTORY,\r\n               A.DVRY_" +
+            "GRP_TYPE,\r\n               A.PRE_CTH_YN,\r\n               A.TAKEOUT_YN,\r\n         " +
+            "      A.CTH_WK_GOODS_PAY_TYPE,\r\n               A.MOD_SEQ_NO\r\n          FROM MN_A" +
+            "1_TODAY A,\r\n               MN_A1_TODAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO" +
+            "\r\n           AND A.ORD_STATUS_CD = \'2001\'\r\n           AND A.TAKEOUT_YN = \'N\'\r\n  " +
+            "         AND A.ORD_NO IN (SELECT /*+ QB_NAME(SUB) */\r\n                          " +
+            "         ORD_NO\r\n                              FROM MN_A1_TODAY_CTH_SHARE\r\n     " +
+            "                        WHERE SH_DVRY_TYPE_CD = \'1608\' )\r\n        UNION ALL\r\n   " +
+            "     SELECT /*+ INDEX(A MN_A1_TODAY_IX_3) */\r\n               A.ORD_NO,\r\n        " +
+            "       A.ORD_TODAY_ALL_NO,\r\n               A.ORD_STATUS_CD,\r\n               A.CH" +
+            "ARGE_TYPE,\r\n               A.PAY_TYPE_CD,\r\n               A.DVRY_AMT,\r\n         " +
+            "      A.DVRY_EX_CHARGE ,\r\n               A.ORD_DATE,\r\n               A.READY_CHA" +
+            "NGE_DATE,\r\n               A.CTH_WK_ARR_DATE,\r\n               A.PICKUP_DATE,\r\n   " +
+            "            A.END_DATE,\r\n               A.CANCEL_DATE,\r\n               A.DVRY_DI" +
+            "STANCE,\r\n               DECODE(A.SA_APP_ADDR, NULL, A.ORD_ST_NAME, A.SA_APP_ADDR" +
+            ") SA_APP_ADDR ,\r\n               A.EA_ADDR_3,\r\n               A.EA_ADDR_4,\r\n     " +
+            "          B.EA_ADDR_11,\r\n               B.EA_ADDR_9,\r\n               A.EA_ADDR_6" +
+            ",\r\n               B.EA_ADDR_12,\r\n               B.EA_ADDR_10,\r\n               A." +
+            "EA_ADDR_5,\r\n               A.EA_ADDR_7 ,\r\n               A.READY_CTH_YN,\r\n      " +
+            "         A.READY_TIME,\r\n               A.SA_LAT_Y,\r\n               A.SA_LNG_X,\r\n" +
+            "               A.EA_LAT_Y,\r\n               A.EA_LNG_X,\r\n               A.CTH_DAT" +
+            "E,\r\n               A.ORD_TODAY_ADD_NO,\r\n               A.ORG_PAY_TYPE,\r\n        " +
+            "       A.ORG_ORD_NO,\r\n               A.ST_DVRY_TYPE_CD,\r\n               A.ORD_ME" +
+            "MO ,\r\n               A.DVRY_TYPE_CD,\r\n               A.CTH_DVRY_TYPE_CD,\r\n      " +
+            "         A.CTH_WK_CODE,\r\n               A.MOD_USER_ID,\r\n               A.MOD_DAT" +
+            "E,\r\n               A.DVRY_LOCK_TIME,\r\n               A.ORD_MASTER_ST_CODE,\r\n    " +
+            "           A.ORD_ST_CODE,\r\n               B.EA_ADDR_STR,\r\n               B.VAN_T" +
+            "YPE_STR ,\r\n               A.CHARGE_HISTORY,\r\n               A.DVRY_GRP_TYPE,\r\n  " +
+            "             A.PRE_CTH_YN,\r\n               A.TAKEOUT_YN,\r\n               A.CTH_W" +
+            "K_GOODS_PAY_TYPE,\r\n               A.MOD_SEQ_NO\r\n          FROM MN_A1_TODAY A,\r\n " +
+            "              MN_A1_TODAY_ADD B\r\n         WHERE A.ORD_NO = B.ORD_NO\r\n           " +
+            "AND A.ORD_STATUS_CD IN (\'3001\', \'3003\', \'4001\', \'4002\')\r\n           AND A.CTH_WK" +
+            "_CODE = \'W03153\' ) P")]
         public string Query5 {
             get {
                 return ((string)(this["Query5"]));
