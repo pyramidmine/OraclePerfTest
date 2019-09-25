@@ -11,10 +11,10 @@
     <Setting Name="DatabaseName" Type="System.String" Scope="User">
       <Value Profile="(Default)">ALADIN</Value>
     </Setting>
-    <Setting Name="DatabaseId" Type="System.String" Scope="User">
+    <Setting Name="UserId" Type="System.String" Scope="User">
       <Value Profile="(Default)">MANNA</Value>
     </Setting>
-    <Setting Name="DatabasePassword" Type="System.String" Scope="User">
+    <Setting Name="UserPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)">Ekswnr59</Value>
     </Setting>
     <Setting Name="UserCount" Type="System.Decimal" Scope="User">

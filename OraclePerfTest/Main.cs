@@ -66,7 +66,7 @@ namespace OraclePerfTest
 
 			try
 			{
-				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.DatabaseId, Config.Default.DatabasePassword);
+				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.UserId, Config.Default.UserPassword);
 				using (OracleConnection conn = new OracleConnection(connectionString))
 				{
 					conn.Open();
@@ -153,7 +153,7 @@ namespace OraclePerfTest
 			//
 			try
 			{
-				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.DatabaseId, Config.Default.DatabasePassword);
+				string connectionString = GenerateConnectionString(Config.Default.ServerIp, Config.Default.ServerPort, Config.Default.DatabaseName, Config.Default.UserId, Config.Default.UserPassword);
 
 				for (int i = 0; i < Config.Default.UserCount; i++)
 				{

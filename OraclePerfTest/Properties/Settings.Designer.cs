@@ -12,7 +12,7 @@ namespace OraclePerfTest.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -62,24 +62,24 @@ namespace OraclePerfTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("MANNA")]
-        public string DatabaseId {
+        public string UserId {
             get {
-                return ((string)(this["DatabaseId"]));
+                return ((string)(this["UserId"]));
             }
             set {
-                this["DatabaseId"] = value;
+                this["UserId"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Ekswnr59")]
-        public string DatabasePassword {
+        public string UserPassword {
             get {
-                return ((string)(this["DatabasePassword"]));
+                return ((string)(this["UserPassword"]));
             }
             set {
-                this["DatabasePassword"] = value;
+                this["UserPassword"] = value;
             }
         }
         

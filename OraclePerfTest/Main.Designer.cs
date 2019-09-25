@@ -197,20 +197,22 @@
 			// 
 			// textBoxId
 			// 
+			this.textBoxId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.textBoxId.Location = new System.Drawing.Point(84, 101);
 			this.textBoxId.Name = "textBoxId";
 			this.textBoxId.Size = new System.Drawing.Size(168, 21);
 			this.textBoxId.TabIndex = 3;
-			this.textBoxId.Text = "MANNA";
+			this.textBoxId.Text = global::OraclePerfTest.Properties.Settings.Default.UserId;
 			// 
 			// textBoxPassword
 			// 
+			this.textBoxPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "UserPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.textBoxPassword.Location = new System.Drawing.Point(84, 128);
 			this.textBoxPassword.Name = "textBoxPassword";
 			this.textBoxPassword.PasswordChar = '*';
 			this.textBoxPassword.Size = new System.Drawing.Size(168, 21);
 			this.textBoxPassword.TabIndex = 4;
-			this.textBoxPassword.Text = "Ekswnr59";
+			this.textBoxPassword.Text = global::OraclePerfTest.Properties.Settings.Default.UserPassword;
 			// 
 			// labelDatabase
 			// 
@@ -596,6 +598,7 @@
 			// textBoxQuery1
 			// 
 			this.textBoxQuery1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxQuery1.Location = new System.Drawing.Point(9, 24);
 			this.textBoxQuery1.Multiline = true;
 			this.textBoxQuery1.Name = "textBoxQuery1";
@@ -603,6 +606,7 @@
 			this.textBoxQuery1.Size = new System.Drawing.Size(464, 165);
 			this.textBoxQuery1.TabIndex = 1;
 			this.textBoxQuery1.Text = global::OraclePerfTest.Properties.Settings.Default.Query1;
+			this.textBoxQuery1.WordWrap = false;
 			// 
 			// labelQuery1
 			// 
@@ -684,6 +688,7 @@
 			// textBoxQuery2
 			// 
 			this.textBoxQuery2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxQuery2.Location = new System.Drawing.Point(9, 24);
 			this.textBoxQuery2.Multiline = true;
 			this.textBoxQuery2.Name = "textBoxQuery2";
@@ -691,6 +696,7 @@
 			this.textBoxQuery2.Size = new System.Drawing.Size(464, 165);
 			this.textBoxQuery2.TabIndex = 1;
 			this.textBoxQuery2.Text = global::OraclePerfTest.Properties.Settings.Default.Query2;
+			this.textBoxQuery2.WordWrap = false;
 			// 
 			// groupBox1
 			// 
@@ -974,6 +980,7 @@
 			// textBoxQuery3
 			// 
 			this.textBoxQuery3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxQuery3.Location = new System.Drawing.Point(9, 24);
 			this.textBoxQuery3.Multiline = true;
 			this.textBoxQuery3.Name = "textBoxQuery3";
@@ -981,6 +988,7 @@
 			this.textBoxQuery3.Size = new System.Drawing.Size(464, 165);
 			this.textBoxQuery3.TabIndex = 1;
 			this.textBoxQuery3.Text = global::OraclePerfTest.Properties.Settings.Default.Query3;
+			this.textBoxQuery3.WordWrap = false;
 			// 
 			// textBoxWeight3
 			// 
@@ -1149,6 +1157,7 @@
 			// textBoxQuery4
 			// 
 			this.textBoxQuery4.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query4", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxQuery4.Location = new System.Drawing.Point(9, 24);
 			this.textBoxQuery4.Multiline = true;
 			this.textBoxQuery4.Name = "textBoxQuery4";
@@ -1156,6 +1165,7 @@
 			this.textBoxQuery4.Size = new System.Drawing.Size(464, 165);
 			this.textBoxQuery4.TabIndex = 1;
 			this.textBoxQuery4.Text = global::OraclePerfTest.Properties.Settings.Default.Query4;
+			this.textBoxQuery4.WordWrap = false;
 			// 
 			// textBoxWeight4
 			// 
@@ -1324,6 +1334,7 @@
 			// textBoxQuery5
 			// 
 			this.textBoxQuery5.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::OraclePerfTest.Properties.Settings.Default, "Query5", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.textBoxQuery5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxQuery5.Location = new System.Drawing.Point(9, 24);
 			this.textBoxQuery5.Multiline = true;
 			this.textBoxQuery5.Name = "textBoxQuery5";
@@ -1331,6 +1342,7 @@
 			this.textBoxQuery5.Size = new System.Drawing.Size(464, 165);
 			this.textBoxQuery5.TabIndex = 1;
 			this.textBoxQuery5.Text = global::OraclePerfTest.Properties.Settings.Default.Query5;
+			this.textBoxQuery5.WordWrap = false;
 			// 
 			// textBoxWeight5
 			// 
